@@ -1,6 +1,7 @@
 <?php
 
-  if ($_SESSION['security'] > 4) { 
+  if ( hasPermission('approve') ) {
+  //if ($_SESSION['security'] > 4) { 
 
     if (isset($_GET['pendpage'])) {
       $pendpage = $_GET['pendpage'];

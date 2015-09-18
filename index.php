@@ -373,8 +373,8 @@ include('engine.php');
             <?php
               if (isset($_SESSION['user'])) {
                 echo "<a href='?page=profile&profileid=$_SESSION[id]'>$_SESSION[user] </a> &nbsp;|&nbsp; ";
-                //SECURITY if ( hasPermission('approve', 'no') ) {
-                if ($_SESSION['security'] > 4) {
+                if ( hasPermission('approve') ) {
+                //if ($_SESSION['security'] > 4) {
                   $pendsql = "SELECT * FROM articlesPending WHERE del = 'n'";
                   $result = mysql_query($pendsql);
                   $pend = mysql_num_rows($result);
@@ -425,8 +425,8 @@ include('engine.php');
                       echo '<li><a href="?page=article&articleid=' . $job['id'] . '">' . $job['title'] . '</a><br />';
                       echo $job['location'] . '</li>';
                     }
-                    //SECURITY if ( hasPermission('job') ) {
-                    if (isset($_SESSION['security']) && $_SESSION['security'] > 3) { 
+                    if ( hasPermission('job') ) {
+                    //if (isset($_SESSION['security']) && $_SESSION['security'] > 3) { 
                       echo '<br />';
                       echo '<form method="post" action="?page=article">';
                         echo '<input type="hidden" name="action" value="add" />';
@@ -480,8 +480,8 @@ include('engine.php');
                       echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 9) . '...</a> ';
                       echo date('(m/d)', $event['startdate']) . '</li>';
                     }
-                    //SECURITY if ( hasPermission('event', 'no') ) {
-                    if (isset($_SESSION['security']) && $_SESSION['security'] > 3) { 
+                    if ( hasPermission('event') ) {
+                    //if (isset($_SESSION['security']) && $_SESSION['security'] > 3) { 
                       echo '<br />';
                       echo '<form method="post" action="?page=article">';
                         echo '<input type="hidden" name="action" value="add" />';

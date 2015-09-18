@@ -1,13 +1,15 @@
-<!----REAL CONTENT---->
-<?php if (isset($_SESSION['security']) && $_SESSION['security'] > 1) { ?>
-<form name="henry" method="post" action="index.php?page=article">
-  <input type="hidden" name="action" value="add" />
-  <input type="hidden" name="type" value="article" />
-  <input type="submit" style="float: right;" value="New Article" />
-</form>
+<?php 
 
-
-<?php }
+if ( hasPermission('article') ) {
+//if (isset($_SESSION['security']) && $_SESSION['security'] > 1) { 
+  echo "
+    <form name='henry' method='post' action='index.php?page=article'>
+      <input type='hidden' name='action' value='add' />
+      <input type='hidden' name='type' value='article' />
+      <input type='submit' style='float: right;' value='New Article' />
+    </form>
+  "; 
+}
 
 $limit = 15;
 
@@ -26,15 +28,18 @@ $limit = 15;
       $usersql = mysql_query("SELECT * FROM staff WHERE id = '$userids'");
       $userinfo = mysql_fetch_array($usersql);
 
-      echo "<li>"; 
-        echo "<b><a href='?page=article&articleid=$row[id]' style='font-size:12pt'>$row[title]</a></b>";
-        echo "<br />";
-        echo "<span style='font-size: 8pt;'>By: <a class='hidelink' href='?page=profile&profileid=$row[userid]'>$userinfo[fname] $userinfo[lname]</a> - "; 
-        echo date('M j, Y @ g:i a', $row['date']);
-        echo "</span>";
-        echo "<br />";
-        echo "<br />";
-      echo "</li>";
+      echo "
+        <li> 
+          <b><a href='?page=article&articleid=$row[id]' style='font-size:12pt'>$row[title]</a></b>
+          <br />
+          <span style='font-size: 8pt;'>
+            By: <a class='hidelink' href='?page=profile&profileid=$row[userid]'>$userinfo[fname] $userinfo[lname]</a>
+            -  " . date('M j, Y @ g:i a', $row['date']) . "
+          </span>
+          <br />
+          <br />
+        </li>
+      ";
 
     }
     echo '</ul>';
@@ -43,9 +48,6 @@ $limit = 15;
     echo "It didn't work :(";
     echo mysql_error();
   }
-
-
-
 
 
 ?>

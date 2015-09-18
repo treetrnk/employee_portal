@@ -80,7 +80,7 @@
    //    VIEW ARTICLE    //
   ////////////////////////
 
-    //SECURITY if ($S_admin or $article['userid'] == $_SESSION['id']) {
+    if ( hasPermission('admin') ||  $article['userid'] == $_SESSION['id']) {
     if ($_SESSION['security'] > 3) { 
       echo "
         <form method='post' action='index.php?page=article&articleid=$articleid'>

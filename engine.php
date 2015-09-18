@@ -161,7 +161,7 @@ if ( isset($_POST['login']) && $_POST['login'] == "y") {
             $_SESSION['user'] = $user;
             $_SESSION['fname'] = $fname;
             $_SESSION['lname'] = $lname;
-            $_SESSION['security'] = 1;
+            $_SESSION['security'] = $security;
             $message = "New user added. Please update your <a href='?page=profile&profileid=$userid'>profile</a>!";
           } else {
             $message = mysql_error();
@@ -229,13 +229,11 @@ if (isset($_SESSION['security'])) {
 
 
 //============ARTICLE SECURITY CHECK FUNCTION================
-function hasPermission($type, $isPending) {
+function hasPermission($type) {
   
   if ( isset($_SESSION['security']) ) {
 
-    if ($ispending == 'yes') {
-      $type .= '_pend';
-    } else { 
+    if ( !strstr($type, '_pend') ) {
       if ($S_admin) { return TRUE; }
     }
 

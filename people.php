@@ -57,14 +57,7 @@
 <br />
 <br />
 
-<?php if (isset($_SESSION['security']) && $_SESSION['security'] > 4) { ?>
-
-<form name="henry" method="post" action="?page=profile">
-  <input type="hidden" name="action" value="add" />
-  <input type="submit" value="New Emplyee" />
-</form>
-
-<?php } 
+<?php 
 
   multipageNav($limit, $total_rows);
 

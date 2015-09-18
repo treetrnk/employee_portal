@@ -66,7 +66,7 @@
   } else {
     
     if (mysql_num_rows($result) == 1) {
-      if ($_SESSION['id'] == $row['id'] or $_SESSION['security'] == 5) {                  /* VIEW PROFILE */
+      if ( hasPermission('admin') || $_SESSION['id'] == $row['id'] ) {                  /* VIEW PROFILE */
 ?>
 
       <form method="post" action="?page=profile&profileid=<?php echo $row['id']; ?>">
