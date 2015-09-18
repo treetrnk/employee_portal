@@ -299,7 +299,7 @@ if (isset($_POST['submit'])) {
 
       case 'employee':                                                      //ADD OR EDIT EMPLOYEE 
         $table = "staff";
-        if ($S_profile_pend) { $table = "staffPending"; $submit = 'add'; $message = $table; }
+        if ( hasPermission('profile_pend') ) { $table = "staffPending"; $submit = 'add'; $message = $table; }
         if (isset($_POST['fname']) && isset($_POST['lname']) && $_POST['birthday']) { //CHECK REQUIRED FIELDS
           extract($_POST, EXTR_OVERWRITE);
           $username = strtolower(substr($fname, 0, 1) . $lname);
@@ -341,7 +341,7 @@ if (isset($_POST['submit'])) {
 
         $table = "articles";
        
-          if ( hasPermission($type, 'yes') ) {$table = 'articlesPending'; $submit = "add"; }
+          if ( hasPermission($type . "_pend") ) {$table = 'articlesPending'; $submit = "add"; }
 
           if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type, 'no')) { //CHECK REQUIRED FIELDS
             extract($_POST, EXTR_OVERWRITE);
