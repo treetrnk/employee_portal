@@ -209,23 +209,6 @@ if ( $page == 'event' && isset($_GET['date']) ) {                            //E
 
 
 
-//=============SECURITY CHECK VARIABLES============
-if (isset($_SESSION['security'])) {
-  $S_admin        = strstr($_SESSION['security'], 'admin');
-  $S_approve      = strstr($_SESSION['security'], 'approve');
-  $S_article      = strstr($_SESSION['security'], 'article');
-  $S_article_pend = strstr($_SESSION['security'], 'article_pend');
-  $S_comment      = strstr($_SESSION['security'], 'job');
-  $S_comment_pend = strstr($_SESSION['security'], 'job_pend');
-  $S_event        = strstr($_SESSION['security'], 'event');
-  $S_event_pend   = strstr($_SESSION['security'], 'event_pend');
-  $S_job          = strstr($_SESSION['security'], 'job');
-  $S_job_pend     = strstr($_SESSION['security'], 'job_pend');
-  $S_help         = strstr($_SESSION['security'], 'help');
-  $S_help_pend    = strstr($_SESSION['security'], 'help_pend');
-  $S_profile      = strstr($_SESSION['security'], 'job');
-  $S_profile_pend = strstr($_SESSION['security'], 'job_pend');
-}
 
 
 //============ARTICLE SECURITY CHECK FUNCTION================
@@ -233,56 +216,71 @@ function hasPermission($type) {
   
   if ( isset($_SESSION['security']) ) {
 
+    $s_admin        = strstr($_SESSION['security'], 'admin');
+    $s_approve      = strstr($_SESSION['security'], 'approve');
+    $s_article      = strstr($_SESSION['security'], 'article');
+    $s_article_pend = strstr($_SESSION['security'], 'article_pend');
+    $s_comment      = strstr($_SESSION['security'], 'comment');
+    $s_comment_pend = strstr($_SESSION['security'], 'comment_pend');
+    $s_event        = strstr($_SESSION['security'], 'event');
+    $s_event_pend   = strstr($_SESSION['security'], 'event_pend');
+    $s_help         = strstr($_SESSION['security'], 'help');
+    $s_help_pend    = strstr($_SESSION['security'], 'help_pend');
+    $s_job          = strstr($_SESSION['security'], 'job');
+    $s_job_pend     = strstr($_SESSION['security'], 'job_pend');
+    $s_profile      = strstr($_SESSION['security'], 'profile');
+    $s_profile_pend = strstr($_SESSION['security'], 'profile_pend');
+
     if ( !strstr($type, '_pend') ) {
-      if ($S_admin) { return TRUE; }
+      if ($s_admin) { return TRUE; }
     }
 
     switch ($type) {
     
       case 'approve':
-        if ($S_approve) { return TRUE; }
+        if ($s_approve) { return TRUE; }
         break;
 
       case 'article':
-        if ($S_article) { return TRUE; }
+        if ($s_article) { return TRUE; }
         break;
       case 'article_pend':
-        if ($S_article_pend) { return TRUE; }
+        if ($s_article_pend) { return TRUE; }
         break;
 
       case 'comment':
-        if ($S_comment) { return TRUE; }
+        if ($s_comment) { return TRUE; }
         break;
       case 'comment_pend':
-        if ($S_comment_pend) { return TRUE; }
+        if ($s_comment_pend) { return TRUE; }
         break;
       
       case 'event':
-        if ($S_event) { return TRUE; }
+        if ($s_event) { return TRUE; }
         break;
       case 'event_pend':
-        if ($S_event_pend) { return TRUE; }
+        if ($s_event_pend) { return TRUE; }
         break;
       
       case 'help':
-        if ($S_help) { return TRUE; }
+        if ($s_help) { return TRUE; }
         break;
       case 'event_pend':
-        if ($S_help_pend) { return TRUE; }
+        if ($s_help_pend) { return TRUE; }
         break;
       
       case 'job':
-        if ($S_job) { return TRUE; }
+        if ($s_job) { return TRUE; }
         break;
       case 'job_pend':
-        if ($S_job_pend) { return TRUE; }
+        if ($s_job_pend) { return TRUE; }
         break;
 
       case 'profile':
-        if ($S_profile) { return TRUE; }
+        if ($s_profile) { return TRUE; }
         break;
       case 'profile_pend':
-        if ($S_profile_pend) { return TRUE; }
+        if ($s_profile_pend) { return TRUE; }
         break;
     }  
   
