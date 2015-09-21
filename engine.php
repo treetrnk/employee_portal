@@ -460,6 +460,45 @@ if (isset($_POST['submit'])) {
 
 
 
+
+//============== EMAIL FEEDBACK AND TICKETS ===============
+if (isset($_SESSION['security'])) {
+  if ($_POST['submit'] == "Send") { 
+    if (isset($_POST['subject']) && isset($_POST['body'])) {
+      if ($_POST['type'] == 'feedback') {
+        $subject = "ARM PORTAL - Feedback - $_POST[subject]";
+      } elseif ($_POST['type'] == 'ticket') {
+        $subject = $_POST['subject'];
+      }
+      
+      $to = "helpdesk@armgroup.net";
+      $body = $_POST['body'];
+      if ($_POST['type'] == 'ticket') { 
+        $body .= "
+
+
+          Sent from ARM PORTAL
+        ";
+      }
+      $headers = 'From: ' . $_SESSION['email'] . "\r\n" . 
+        'Reply-To: ' . $_SESSION['email'] . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+      mail ($to, $subject, $body, $headers);
+      $message = ucfirst($_POST['type']) . " submitted successfully!";
+
+
+    } else {
+      $page = "email";
+      $_GET['type'] = $_POST['type'];
+      $message = "Please fill out all fields.";
+
+    }
+  }
+}
+
+
+
 //==============USED FOR SAMPLE CONTENT==============
   $_GET['sample'] = 'y';
 
