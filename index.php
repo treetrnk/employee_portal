@@ -395,7 +395,7 @@ include('engine.php');
       </table>
       
       <div class="navlinkbar">      <!----NAVIGATION---->
-       <a href="?page=home" class="navlink">Home</a><a href="?page=people" class="navlink">People</a><a href="?page=resources" class="navlink">Resources</a><a href="?page=help" class="navlink">I.T. Help</a><!---<a href="?page=safety" class="navlink">Safety</a><a href="?page=hr" class="navlink">H.R.</a><a href="?page=training" class="navlink">Training</a><a href="?page=forum" class="navlink">Forum</a>--->
+       <a href="?page=home" class="navlink">Home</a><a href="?page=people" class="navlink">People</a><a href="?page=article&articleid=72" class="navlink">Resources</a><a href="?page=help" class="navlink">I.T. Help</a><!---<a href="?page=safety" class="navlink">Safety</a><a href="?page=hr" class="navlink">H.R.</a><a href="?page=training" class="navlink">Training</a><a href="?page=forum" class="navlink">Forum</a>--->
             <form style="float: right;">
               <label>Search <input type="text" size="20" /></label> &nbsp; <input style="margin-top: 6px; margin-left: 0px; margin-right: 3px;" type="image" src="img/search.png" align="right" alt="Search">&nbsp;
             </form>
