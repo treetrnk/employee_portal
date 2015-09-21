@@ -1,7 +1,6 @@
 <?php 
 
 if ( hasPermission('article') ) {
-//if (isset($_SESSION['security']) && $_SESSION['security'] > 1) { 
   echo "
     <form name='henry' method='post' action='index.php?page=article'>
       <input type='hidden' name='action' value='add' />
@@ -51,24 +50,3 @@ $limit = 15;
 
 
 ?>
-  
-
-
-<!----SAMPLE CONTENT
-<h3 class="sample">Sample Article 1</h3>
-<p class="sample">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus risus a risus gravida varius. Quisque porta congue felis, nec molestie nisi semper eu. Pellentesque ut ultrices ante, quis mattis mauris. Donec id condimentum nibh. Duis ut aliquet augue. Donec ornare ipsum rutrum sollicitudin mattis. Ut vel placerat dolor. . . . <span style="float: right" class="sample"><a href="?page=article">Read More</a></span></p>
-    <hr width=90% class="sample" />
-  <h3 class="sample">Sample Article 2</h3>
-<p class="sample">
-Aenean cursus volutpat neque, nec fermentum tortor porttitor eu. Praesent rhoncus aliquet suscipit. Morbi porta scelerisque leo. Ut semper sapien non nisl gravida, eu laoreet dui commodo. Integer semper augue sit amet turpis mattis, non scelerisque libero rhoncus. Sed vel libero eleifend, tincidunt purus ac, molestie quam. Mauris in blandit felis. . . . <span style="float: right" class="sample"><a href="?page=article">Read More</a></span></p>
-  <hr width=90% class="sample" />
-<h3 class="sample">Sample Article 3</h3>
-<p class="sample">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus risus a risus gravida varius. Quisque porta congue felis, nec molestie nisi semper eu. Pellentesque ut ultrices ante, quis mattis mauris. Donec id condimentum nibh. Duis ut aliquet augue. Donec ornare ipsum rutrum sollicitudin mattis. Ut vel placerat dolor. . . . <span style="float: right" class="sample"><a href="?page=article">Read More</a></span></p>
-  <hr width=90% class="sample" />
-<h3 class="sample">Sample Article 4</h3>
-<p class="sample">
-Aenean cursus volutpat neque, nec fermentum tortor porttitor eu. Praesent rhoncus aliquet suscipit. Morbi porta scelerisque leo. Ut semper sapien non nisl gravida, eu laoreet dui commodo. Integer semper augue sit amet turpis mattis, non scelerisque libero rhoncus. Sed vel libero eleifend, tincidunt purus ac, molestie quam. Mauris in blandit felis. . . . <span style="float: right" class="sample"><a href="?page=article">Read More</a></span></p>
-
----->

@@ -81,7 +81,6 @@
   ////////////////////////
 
     if ( hasPermission('admin') ||  $article['userid'] == $_SESSION['id']) {
-    //if ($_SESSION['security'] > 3) { 
       echo "
         <form method='post' action='index.php?page=article&articleid=$articleid'>
           <input type='hidden' name='action' value='edit' />

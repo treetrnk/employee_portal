@@ -4,7 +4,6 @@
   if ($result) {
     echo '<h2>I.T. Help</h2>';
     if ( hasPermission('help') ) {
-    //if (isset($_SESSION['security']) && $_SESSION['security'] > 4) {
       echo '<form name="wilbur" method="post" action="index.php?page=article">';
         echo '<input type="hidden" name="action" value="add" />';
         echo '<input type="hidden" name="type" value="help" />';

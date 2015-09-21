@@ -374,7 +374,6 @@ include('engine.php');
               if (isset($_SESSION['user'])) {
                 echo "<a href='?page=profile&profileid=$_SESSION[id]'>$_SESSION[user] </a> &nbsp;|&nbsp; ";
                 if ( hasPermission('approve') ) {
-                //if ($_SESSION['security'] > 4) {
                   $pendsql = "SELECT * FROM articlesPending WHERE del = 'n'";
                   $result = mysql_query($pendsql);
                   $pend = mysql_num_rows($result);
@@ -426,7 +425,6 @@ include('engine.php');
                       echo $job['location'] . '</li>';
                     }
                     if ( hasPermission('job') ) {
-                    //if (isset($_SESSION['security']) && $_SESSION['security'] > 3) { 
                       echo '<br />';
                       echo '<form method="post" action="?page=article">';
                         echo '<input type="hidden" name="action" value="add" />';
@@ -437,8 +435,6 @@ include('engine.php');
                     echo '</ul>';
                   }  
                 ?>
-                 <!--- <li class="sample"><a href="?page=article&articleid=job1">Field Tech I</a><br />Hershey, PA</li> 
-                  <li class="sample"><a href="?page=article&articleid=job2">CAD Designer</a><br />Canonsburg, PA</li> --->
                 </ul>
                 
                 <!----NEW HIRES---->
@@ -481,7 +477,6 @@ include('engine.php');
                       echo date('(m/d)', $event['startdate']) . '</li>';
                     }
                     if ( hasPermission('event') ) {
-                    //if (isset($_SESSION['security']) && $_SESSION['security'] > 3) { 
                       echo '<br />';
                       echo '<form method="post" action="?page=article">';
                         echo '<input type="hidden" name="action" value="add" />';
