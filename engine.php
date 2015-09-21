@@ -348,12 +348,12 @@ if (isset($_POST['submit'])) {
           
           if ($submit == "add") {        //ADD
             $password = sha1($username . $lname . date("md", $birthday));
-            $emp_sql = "INSERT INTO $table (username, password, fname, lname, initials, birthday, startday, location, title, email, phone, ext, picture, description, about, security, updateid) VALUES ('$username', '$password', '$fname', '$lname', '$initials', '$birthday', '$startday', '$location', '$title', '$email', '$phone', '$ext', '$picture', '$description', '$about', '1', '$profileid' )"; 
+            $emp_sql = "INSERT INTO $table (username, password, fname, lname, initials, birthday, startday, location, title, email, phone, ext, cellphone, picture, description, about, security, updateid) VALUES ('$username', '$password', '$fname', '$lname', '$initials', '$birthday', '$startday', '$location', '$title', '$email', '$phone', '$ext', '$cellphone', '$picture', '$description', '$about', '1', '$profileid' )"; 
           }
           if ($submit == "edit") {      //EDIT
             if ($_GET['profileid']) {
               $profileid = $_GET['profileid'];
-              $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', picture='$picture', description='$description', about='$about' WHERE id=$profileid";
+              $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', picture='$picture', description='$description', about='$about' WHERE id=$profileid";
             } else {
               $message .= 'No profile provided.<br />';
             }

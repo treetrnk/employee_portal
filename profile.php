@@ -9,7 +9,11 @@
     }
   }
   
-  if (isset($_POST['action'])) {                    /* ADD or EDIT EMPLOYEE */
+         ////////////////////
+        //  EDIT PROFILE  //
+       ////////////////////
+
+  if (isset($_POST['action'])) {
     $action = $_POST['action'];
     
     echo "<form method='post' action='?page=profile&profileid=$profileid'>";
@@ -49,8 +53,9 @@
                   if ($row['location'] == 'Wilkes-Barre, PA') { echo " selected "; } 
                   echo ">Wilkes-Barre, PA</option></select><br />
               Email: <input type='text' name='email' value='$row[email]' /><br />
-              Phone: <input type='text' name='phone' value='$row[phone]' /><br />
+              Office #: <input type='text' name='phone' value='$row[phone]' /><br />
               Extension: <input type='text' name='ext' value='$row[ext]' /><br />
+              Cell #: <input type='text' name='cellphone' value='$row[cellphone]' /><br />
               Start Day: <input type='text' id='datepicker' name='startday' value='" . date('Y/m/d', strtotime($row['startday'])) . "' /><br />
               Birthday: <input type='text' id='datepicker2' name='birthday' value='" . date('Y/m/d', strtotime($row['birthday'])) . "' /><br />
               Show Birthday: <input type='checkbox' name='showbday' value='y'";
@@ -78,8 +83,12 @@
   
   } else {
     
+         ////////////////////
+        //  VIEW PROFILE  //
+       ////////////////////
+
     if (mysql_num_rows($result) == 1) {
-      if ( hasPermission('admin') || $_SESSION['id'] == $row['id'] ) {                  /* VIEW PROFILE */
+      if ( hasPermission('admin') || $_SESSION['id'] == $row['id'] ) {
 
         echo "
           <form method='post' action='?page=profile&profileid=$row[id]'>
@@ -103,11 +112,11 @@
               $row[title]<br />";
               if ($row['location']) { echo $row['location'] . '<br />'; } 
                 echo "<br />
-              <a href='mailto:$row[email]'>$row[email]</a><br />";
-              if ($row ['phone'] && $row['ext']) {echo $row['phone'] . ' x' . $row['ext'];} 
-                echo "<br /><br />";
-              if ($row['startday']) { echo "<u>Start Date:</u>" . date('F j, Y', strtotime($row['startday'])); } 
+              <u>Email</u>: <a href='mailto:$row[email]'>$row[email]</a><br />";
+              if ($row['phone'] && $row['ext']) { echo "<u>Office #</u>: $row[phone] x$row[ext] <br />";} 
+              if ($row['cellphone']) { echo "<u>Cell #</u>: $row[cellphone] <br />";} 
                 echo "<br />";
+              if ($row['startday']) { echo "<u>Start Date</u>: " . date('F j, Y', strtotime($row['startday'])) . "<br />"; } 
               if ($row['birthday'] && $row['showbday'] == 'y') { echo "<u>Birthday:</u>" . date('F j', strtotime($row['birthday'])); }
                 echo "
             </td>
