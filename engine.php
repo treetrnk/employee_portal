@@ -463,7 +463,7 @@ if (isset($_POST['submit'])) {
 
 //============== EMAIL FEEDBACK AND TICKETS ===============
 if (isset($_SESSION['security'])) {
-  if ($_POST['submit'] == "Send") { 
+  if (isset($_POST['submit']) && $_POST['submit'] == "Send") { 
     if (isset($_POST['subject']) && isset($_POST['body'])) {
       if ($_POST['type'] == 'feedback') {
         $subject = "ARM PORTAL - Feedback - $_POST[subject]";

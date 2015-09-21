@@ -1,8 +1,17 @@
 <?php 
+  
+  echo "
+    <h2>I.T. Support</h2>
+    <br />
+    <div class='greenbox' style='width:300px;' align='center'>
+      <a href='?page=email&type=ticket' style='padding:20px; font-size:20px; color:#ffffff;'>Submit a Help Desk Ticket</a>
+    </div>
+  ";
+    
+
   $sql = "SELECT * FROM articles WHERE type = 'help' ORDER BY title";
   $result = mysql_query($sql);
   if ($result) {
-    echo '<h2>I.T. Help</h2>';
     if ( hasPermission('help') ) {
       echo '<form name="wilbur" method="post" action="index.php?page=article">';
         echo '<input type="hidden" name="action" value="add" />';
