@@ -295,57 +295,7 @@ include('engine.php');
         color: #0000ff;
         text-decoration: underline;
       } 
-/*
-      .calendar {
-        border-radius: 5px;
-        border-right: 1px solid #72aaff;
-        border-left: 1px solid #72aaff;
-        border-top: 1px solid #72aaff;
-        border-bottom: 1px solid #72aaff;
-      }
-      table.calendar tr td {
-        font-size: 11.5px;
-      }
-      .cal-current {
-        border-right: 1px solid #aaccff;
-        border-left: 1px solid #aaccff;
-        border-top: 1px solid #aaccff;
-        border-bottom: 1px solid #aaccff;
-
-      }
-      .cal-other {
-        border-right: 1px solid #aaccff;
-        border-left: 1px solid #aaccff;
-        border-top: 1px solid #aaccff;
-        border-bottom: 1px solid #aaccff;
-        background-color: #dedede;
-        color: #666666;
-      }
-      .cal-event {
-        border-radius: 20px;
-        border-right: 1px solid #aaccff;
-        border-left: 1px solid #aaccff;
-        border-top: 1px solid #aaccff;
-        border-bottom: 1px solid #aaccff;
-        background-color: #72aaff;
-      }
-      .cal-event a {
-        color: #222222;
-        text-decoration: none;
-      }
-      .cal-event a:hover {
-        color: #222222;
-        text-decoration: underline;
-        font-weight: bold;
-      }
-      .cal-normal {
-        border-right: 1px solid #aaccff;
-        border-left: 1px solid #aaccff;
-        border-top: 1px solid #aaccff;
-        border-bottom: 1px solid #aaccff;
-      }
-*/
-      .profile-links {
+     .profile-links {
         font-size: 11pt;
       }
       <?php if ($_GET['sample'] == false) { ?>
