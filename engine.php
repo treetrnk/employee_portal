@@ -147,6 +147,7 @@ if ( isset($_POST['login']) && $_POST['login'] == "y") {
           $_SESSION['user'] = $userdata['username'];
           $_SESSION['fname'] = $userdata['fname'];
           $_SESSION['lname'] = $userdata['lname'];
+          $_SESSION['email'] = $userdata['email'];
           $_SESSION['security'] = $userdata['security'];
         } else {
           $fname = ucfirst(substr($user, 0, 1));
@@ -298,36 +299,37 @@ if (isset($_POST['submit'])) {
     $type = $_POST['type'];
 
 
-    //PENDING ACTIONS
-    if ($submit == 'Approve') {
-      $submit = 'add';
-    } elseif ($submit == 'Deny') {
-      $to = $_POST['useremail'];
-      $subject = "ARM PORTAL - Submission titled '$_POST[title]' was rejected";
+    function pendingResponse($post, $id) {
+      if ($post[submit] == 'Approve') {
+        $verb = "APPROVED";
+        $line2 = "To view your $post[type] please follow this link: $website/index.php?page=article&articleid=$id"; 
+      } elseif ($post[submit] == 'Deny') {
+        $verb = "REJECTED";
+        $line2 = "If you have any questions, please direct them to $_SESSION[email].";
+      }
+      $to = $post['useremail'];
+      $subject = "ARM PORTAL - Submission #$post[id] was $verb";
       $body = "
-        The following submission to ARM PORTAL was rejected by USERID. 
-        Please email them at EMAIL if you have any questions.
-        <br />
-        <br />
-        Your submission:<br />
-        <table border=0 bgcolor=#cccccc>
-          <tr>
-            <td>
+        The following submission to ARM PORTAL was rejected by $_SESSION[fname] $_SESSION[lname].
+        $line2
 
-              <b>$_POST[title]</b><br />
-              $_POST[body]
 
-            </td>
-          </tr>
-        </table>
-        ";
-      $headers = "From: helpdesk@armgroup.net\r\n
-        Reply-To: CURRENTUSER@armgroup.net\r\n
-        X-Mailer: PHP/" . phpversion();
+        Your submission:
+            
+            TITLE:
+                    $post[title]
 
-      mail($to, $subject, $message, $headers);
+            BODY:
+                    " . strip_tags($_POST['body'])
+      ;
+      $headers = 'From: helpdesk@armgroup.net' . "\r\n" .
+        'Reply-To: ' . $_SESSION['email'] . "\r\n" .  
+        'X-Mailer: PHP/' . phpversion();
 
-    } 
+      mail($to, $subject, $body, $headers);
+
+    }
+
 
 
     switch ($type) {
@@ -335,6 +337,7 @@ if (isset($_POST['submit'])) {
       case 'employee':                                                      //ADD OR EDIT EMPLOYEE 
         $table = "staff";
         if ( hasPermission('profile_pend') ) { $table = "staffPending"; $submit = 'add'; $message = $table; }
+
         if (isset($_POST['fname']) && isset($_POST['lname']) && $_POST['birthday']) { //CHECK REQUIRED FIELDS
           extract($_POST, EXTR_OVERWRITE);
           $username = strtolower(substr($fname, 0, 1) . $lname);
@@ -377,6 +380,8 @@ if (isset($_POST['submit'])) {
         $table = "articles";
        
           if ( hasPermission($type . "_pend") ) {$table = 'articlesPending'; $submit = "add"; }
+          if ( $submit == 'Approve' ) { $submit = "add"; } 
+          if ( $submit == 'Deny' ) { pendingResponse($_POST, $_POST['id']); }
 
           if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type, 'no')) { //CHECK REQUIRED FIELDS
             extract($_POST, EXTR_OVERWRITE);
@@ -389,6 +394,7 @@ if (isset($_POST['submit'])) {
               $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
 
               $_GET['articleid'] = mysql_insert_id();
+              pendingResponse($_POST, $_GET['articleid']);
             } elseif ($submit == "edit") { //EDIT
               if ($_GET['articleid']) {
                 $articleid = $_GET['articleid'];

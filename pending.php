@@ -123,7 +123,7 @@
                   Title: 
                 </th>
                 <td>
-                  <input type='text' name='location' value='$row[title]' size=100% />
+                  <input type='text' name='title' value='$row[title]' size=100% />
                 </td>
               </tr>
               <tr>
@@ -165,7 +165,7 @@
                   Body: 
                 </th>
                 <td>
-                  <textarea name='body$count'>$row[body]</textarea>
+                  <textarea id='body$count' name='body'>$row[body]</textarea>
                   <script>
                     CKEDITOR.replace('body$count');
                   </script>
@@ -174,6 +174,7 @@
               <tr>
                 <td align='center' colspan='2'>
                   <input type='hidden' name='date' value='$row[date]' />
+                  <input type='hidden' name='id' value='$row[id]' />
                   <input type='hidden' name='count' value='$count' />
                   
                   <input type='submit' name='submit' value='Accept' /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
