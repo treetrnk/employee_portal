@@ -83,7 +83,7 @@
 
         $count ++;
 
-        $sql = "SELECT * FROM staff WHERE id = $row[userid]";
+        $sql = "SELECT * FROM staff WHERE id = $row[userid] AND del = 'n'";
         $result = mysql_query($sql);
         $userinfo = mysql_fetch_array($result);
         
@@ -173,8 +173,9 @@
               </tr>
               <tr>
                 <td align='center' colspan='2'>
-                  <input type='hidden' name='date' value='$row[date]' />
                   <input type='hidden' name='id' value='$row[id]' />
+                  <input type='hidden' name='date' value='$row[date]' />
+                  <input type='hidden' name='date' value='$row[date]' />
                   <input type='hidden' name='count' value='$count' />
                   
                   <input type='submit' name='submit' value='Accept' /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 

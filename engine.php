@@ -299,16 +299,16 @@ if (isset($_POST['submit'])) {
     $type = $_POST['type'];
 
 
-    function pendingResponse($post, $id) {
-      if ($post[submit] == 'Approve') {
+    function pendingResponse($id) {
+      if ($_POST[submit] == 'Approve') {
         $verb = "APPROVED";
-        $line2 = "To view your $post[type] please follow this link: $website/index.php?page=article&articleid=$id"; 
-      } elseif ($post[submit] == 'Deny') {
+        $line2 = "To view your $_POST[type] please follow this link: $website/index.php?page=article&articleid=$id"; 
+      } elseif ($_POST[submit] == 'Deny') {
         $verb = "REJECTED";
         $line2 = "If you have any questions, please direct them to $_SESSION[email].";
       }
-      $to = $post['useremail'];
-      $subject = "ARM PORTAL - Submission #$post[id] was $verb";
+      $to = $_POST['useremail'];
+      $subject = "ARM PORTAL - Submission #$_POST[id] was $verb";
       $body = "
         The following submission to ARM PORTAL was rejected by $_SESSION[fname] $_SESSION[lname].
         $line2
@@ -317,7 +317,7 @@ if (isset($_POST['submit'])) {
         Your submission:
             
             TITLE:
-                    $post[title]
+                    $_POST[title]
 
             BODY:
                     " . strip_tags($_POST['body'])
@@ -381,7 +381,7 @@ if (isset($_POST['submit'])) {
        
           if ( hasPermission($type . "_pend") ) {$table = 'articlesPending'; $submit = "add"; }
           if ( $submit == 'Approve' ) { $submit = "add"; } 
-          if ( $submit == 'Deny' ) { pendingResponse($_POST, $_POST['id']); }
+          if ( $submit == 'Deny' ) { pendingResponse($_POST['id']); }
 
           if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type, 'no')) { //CHECK REQUIRED FIELDS
             extract($_POST, EXTR_OVERWRITE);
@@ -394,7 +394,7 @@ if (isset($_POST['submit'])) {
               $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
 
               $_GET['articleid'] = mysql_insert_id();
-              pendingResponse($_POST, $_GET['articleid']);
+              pendingResponse($_GET['articleid']);
             } elseif ($submit == "edit") { //EDIT
               if ($_GET['articleid']) {
                 $articleid = $_GET['articleid'];
