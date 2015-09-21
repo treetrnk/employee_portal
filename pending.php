@@ -101,7 +101,7 @@
                 </th>
                 <td width=90% >
                   <input type='hidden' name='useremail' value='$userinfo[email]' />
-                  <input type='hidden' name='userid' value='$row[userid]' />
+                  <input type='hidden' name='penduserid' value='$row[userid]' />
                   $userinfo[fname] $userinfo[lname]
                 </td>
               </tr>
@@ -178,8 +178,8 @@
                   <input type='hidden' name='date' value='$row[date]' />
                   <input type='hidden' name='count' value='$count' />
                   
-                  <input type='submit' name='submit' value='Accept' /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                  <input type='submit' name='submit' value='Deny' />
+                  <input type='submit' name='submit' value='Approve' /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                  <input type='submit' name='submit' value='Reject' />
                 </td>
               </tr>
             </table>

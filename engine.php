@@ -2,6 +2,7 @@
 session_start();
 date_default_timezone_set('America/New_York');
 
+$website = '192.168.1.64';
 
 function add_mysql($field) {
   foreach ($field as $i) {
@@ -300,17 +301,17 @@ if (isset($_POST['submit'])) {
 
 
     function pendingResponse($id) {
-      if ($_POST[submit] == 'Approve') {
+      if ($_POST['submit'] == 'Approve') {
         $verb = "APPROVED";
         $line2 = "To view your $_POST[type] please follow this link: $website/index.php?page=article&articleid=$id"; 
-      } elseif ($_POST[submit] == 'Deny') {
+      } elseif ($_POST['submit'] == 'Reject') {
         $verb = "REJECTED";
         $line2 = "If you have any questions, please direct them to $_SESSION[email].";
       }
       $to = $_POST['useremail'];
-      $subject = "ARM PORTAL - Submission #$_POST[id] was $verb";
+      $subject = "ARM PORTAL - Submission #$_POST[id] has been $verb";
       $body = "
-        The following submission to ARM PORTAL was rejected by $_SESSION[fname] $_SESSION[lname].
+        The following submission to ARM PORTAL was $verb by $_SESSION[fname] $_SESSION[lname].
         $line2
 
 
@@ -332,10 +333,10 @@ if (isset($_POST['submit'])) {
 
 
 
-    switch ($type) {
-
-      case 'employee':                                                      //ADD OR EDIT EMPLOYEE 
-        $table = "staff";
+    switch ($type) {                                ////////////////
+                                                   //    STAF    //
+      case 'employee':                            //////////////// 
+        $table = "staff";    
         if ( hasPermission('profile_pend') ) { $table = "staffPending"; $submit = 'add'; $message = $table; }
 
         if (isset($_POST['fname']) && isset($_POST['lname']) && $_POST['birthday']) { //CHECK REQUIRED FIELDS
@@ -372,44 +373,79 @@ if (isset($_POST['submit'])) {
         }
 
       break;
-      case 'job':           // ADD/EDIT JOBS, EVENTS, ARTICLES, and HELP
-      case 'event':         // all of the above are considered articles
-      case 'article':
+      case 'job':                           ////////////////////
+      case 'event':                        //    ARTICLES    // 
+      case 'article':                     ////////////////////
       case 'help':
 
         $table = "articles";
        
           if ( hasPermission($type . "_pend") ) {$table = 'articlesPending'; $submit = "add"; }
-          if ( $submit == 'Approve' ) { $submit = "add"; } 
-          if ( $submit == 'Deny' ) { pendingResponse($_POST['id']); }
 
-          if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type, 'no')) { //CHECK REQUIRED FIELDS
+          if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) { //CHECK REQUIRED FIELDS
             extract($_POST, EXTR_OVERWRITE);
             $userid = $_SESSION['id'];
             $startdate = strtotime($startdate);
             $enddate = strtotime($enddate);
             $date = time();
+            
 
-            if ($submit == "add") { //ADD
-              $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+            switch ($_POST['submit']) {
 
-              $_GET['articleid'] = mysql_insert_id();
-              pendingResponse($_GET['articleid']);
-            } elseif ($submit == "edit") { //EDIT
-              if ($_GET['articleid']) {
-                $articleid = $_GET['articleid'];
-                //$art_sql = "UPDATE articles SET title='$title', body='$body', eventdate='$eventdate', location='$location', type='$type WHERE id=$articleid'";
-                $art_sql = "UPDATE articles SET title='$title', body='$body', startdate='$startdate', enddate='$enddate', type='$type' WHERE id=$articleid";
-              } else {
-                $message .= 'No profile provided.<br />';
-              }
-            } else {
-              $message .= "Submit is not set. <br /> Submit = " . $submit . ".<br />";
-            }
+              case 'add':   ///////////////  ADD  ////
+               
+                $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+                $_GET['articleid'] = mysql_insert_id();
+                $verb = "added";
+                break;
+
+                
+              case 'edit':  //////////////  EDIT  ////
+
+                if ($_GET['articleid']) {
+                  $articleid = $_GET['articleid'];
+                  $art_sql = "UPDATE articles SET title='$title', body='$body', startdate='$startdate', enddate='$enddate', type='$type' WHERE id=$articleid";
+                }
+                $verb = "edited";
+                break;
+
+
+              case 'Approve':   //////////////  APPROVE  ////
+
+                $sql = "UPDATE articlesPending SET del = 'y' WHERE id = $_POST[id]";
+                if (mysql_query($sql)) {
+                  $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$penduserid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+                  $_GET['articleid'] = mysql_insert_id();
+                  pendingResponse($_GET['articleid']);
+                }
+                $verb = "approved";
+                break;
+
+
+              case 'Reject':  //////////////////  REJECT  ////
+
+                pendingResponse($_POST['id']);
+                $art_sql = "UPDATE articlesPending SET del = 'y' WHERE id = $_POST[id]";
+                $verb = "rejected";
+                break;
+
               
+              case 'delete':  /////////////////  DELETE  ////
+            
+                //add delete sql
+                break;
+
+
+              default:        //////////////////  DEFAULT  ////
+             
+                $message .= 'No profile provided.<br />';
+                $message .= "Submit is not set. <br /> Submit = " . $submit . ".<br />";
+              }
+            
+            
             if (mysql_query($art_sql)) { // IF SUCCESS
               if (!$_GET[articleid]) { $_GET[articleid] = mysql_insert_id(); }
-              $message .= ucfirst($type) . " " . $submit . "ed successfully!!!";
+              $message .= ucfirst($type) . " " . $verb . " successfully!!!";
             } else { 
               $message .= "There was a problem.<br />" . mysql_error() . ".";
             }
