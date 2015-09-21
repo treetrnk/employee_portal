@@ -289,11 +289,46 @@ function hasPermission($type) {
 }
 
 
+
+
 //==============ADD OR EDIT STUFF==============
 if (isset($_POST['submit'])) {                      
   $submit = $_POST['submit'];
   if (isset($_POST['type'])) {
     $type = $_POST['type'];
+
+
+    //PENDING ACTIONS
+    if ($submit == 'Approve') {
+      $submit = 'add';
+    } elseif ($submit == 'Deny') {
+      $to = $_POST['useremail'];
+      $subject = "ARM PORTAL - Submission titled '$_POST[title]' was rejected";
+      $body = "
+        The following submission to ARM PORTAL was rejected by USERID. 
+        Please email them at EMAIL if you have any questions.
+        <br />
+        <br />
+        Your submission:<br />
+        <table border=0 bgcolor=#cccccc>
+          <tr>
+            <td>
+
+              <b>$_POST[title]</b><br />
+              $_POST[body]
+
+            </td>
+          </tr>
+        </table>
+        ";
+      $headers = "From: helpdesk@armgroup.net\r\n
+        Reply-To: CURRENTUSER@armgroup.net\r\n
+        X-Mailer: PHP/" . phpversion();
+
+      mail($to, $subject, $message, $headers);
+
+    } 
+
 
     switch ($type) {
 
@@ -380,6 +415,8 @@ if (isset($_POST['submit'])) {
     }
   }
 }
+
+
 
 //==============USED FOR SAMPLE CONTENT==============
   $_GET['sample'] = 'y';

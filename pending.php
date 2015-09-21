@@ -94,13 +94,14 @@
         echo "
           <div class='people-list' "; if ( $count % 2 == 0 ) { echo "style='background: #dedede;'"; } echo ">  
             
-            <form method='POST' action='engine.php'>
+            <form method='post' action='index.php?page=$page&pending=y'>
             <table width=90% border=0 cellpadding=5>
               <tr>
                 <th>
                   Author:
                 </th>
                 <td width=90% >
+                  <input type='hidden' name='useremail' value='$userinfo[email]' />
                   <input type='hidden' name='userid' value='$row[userid]' />
                   $userinfo[fname] $userinfo[lname]
                 </td>
@@ -177,7 +178,7 @@
                   <input type='hidden' name='count' value='$count' />
                   
                   <input type='submit' name='submit' value='Accept' /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                  <input type='button' name='submit' value='Deny' />
+                  <input type='submit' name='submit' value='Deny' />
                 </td>
               </tr>
             </table>
