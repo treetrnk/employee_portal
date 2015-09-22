@@ -52,8 +52,8 @@
     'Accounting',
     'Graphic Design',
     'Computer Support',
-    'Web Development'
-    'IT Infrastructure',
+    'Web Development',
+    'IT Infrastructure'
   );
   sort($areasOfExpertise);
 
