@@ -558,7 +558,11 @@ include('engine.php');
       </div>
 
       <div class='footer-links'>  <!---FOOTER LINKS--->
-        <?php include('footer.php'); ?>
+        ";
+        
+        include('footer.php'); 
+
+    echo "
       </div>
 
       <div class='footer'>        <!----FOOTER---->
