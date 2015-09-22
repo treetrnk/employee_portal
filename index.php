@@ -306,21 +306,24 @@ include('engine.php');
       </style>
       <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
   </head>
-  <body>
-      
-    <div class="wrapper">
 
-      <table class="header" cellspacing="0">    <!----HEADER---->
+<?php    
+    
+  echo "
+  <body>
+    <div class='wrapper'>
+
+      <table class='header' cellspacing='0'>    <!----HEADER---->
         <tr> 
           <td>
-            <a href="index.php"><img src='img/arm_logo.png' /></a>
+            <a href='index.php'><img src='img/arm_logo.png' /></a>
           </td>
-          <td align="center">
+          <td align='center'>
           </td>
-          <td align="right" valign="bottom">
-            <h1 style="color: #0D59A8;font-weight: normal;">Employee Portal</h1> <!----LOGIN/LOGOUT---->
-            <span class="profile-links">
-            <?php
+          <td align='right' valign='bottom'>
+            <h1 style='color: #0D59A8;font-weight: normal;'>Employee Portal</h1> <!----LOGIN/LOGOUT---->
+            <span class='profile-links'>
+  ";
               if (isset($_SESSION['user'])) {
                 echo "<a href='?page=profile&profileid=$_SESSION[id]'>$_SESSION[user] </a> &nbsp;|&nbsp; ";
                 if ( hasPermission('approve') ) {
@@ -338,34 +341,59 @@ include('engine.php');
               } else {
                 echo "<a href='?page=login'>Employee Login</a> <br />";
               } 
-            ?>
+
+  echo "
             </span>
           </td>
         </tr>
       </table>
-      
-      <div class="navlinkbar">      <!----NAVIGATION---->
-       <a href="?page=home" class="navlink">Home</a><a href="?page=people" class="navlink">People</a><a href="?page=article&articleid=72" class="navlink">Resources</a><a href="?page=help" class="navlink">I.T. Support</a><!---<a href="?page=safety" class="navlink">Safety</a><a href="?page=hr" class="navlink">H.R.</a><a href="?page=training" class="navlink">Training</a><a href="?page=forum" class="navlink">Forum</a>--->
-            <form style="float: right;">
-              <label>Search <input type="text" size="20" /></label> &nbsp; <input style="margin-top: 6px; margin-left: 0px; margin-right: 3px;" type="image" src="img/search.png" align="right" alt="Search">&nbsp;
+  ";
+             //////////////////
+            //  NAVIGATION  //
+           //////////////////
+
+      echo "<div class='navlinkbar'>";
+        echo "<a href='?page=home' class='navlink'>Home</a>";
+        echo "<a href='?page=people' class='navlink'>People</a>";
+        echo "<a href='?page=article&articleid=72' class='navlink'>Resources</a>";
+        echo "<a href='?page=help' class='navlink'>I.T. Support</a>";
+        //echo "<a href='?page=safety' class='navlink'>Safety</a>";
+        //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
+        //echo "<a href='?page=training' class='navlink'>Training</a>";
+        //echo "<a href='?page=forum' class='navlink'>Forum</a>";
+  
+  echo "
+            <form style='float: right;'>
+              <label>Search <input type='text' size='20' /></label> &nbsp; 
+              <input style='margin-top: 6px; margin-left: 0px; margin-right: 3px;' type='image' src='img/search.png' align='right' alt='Search'>&nbsp;
             </form>
       </div>
 
-      <div class="banner"></div>
-      
-      <div class="content">        <!----CONTENT---->
+      <div class='banner'></div>
+  ";
+
+         ///////////////
+        //  CONTENT  //
+       ///////////////
+
+  echo "
+      <div class='content'>  
         <hr color=#f3c60d width=100% />
         <br />
         <table width=100%>
           <tr>
-            <?php if ($page == 'home') { ?>
-            <td valign="top">
-              <div class="sidebar">
+  ";
 
-                <!----CAREER OPPORTUNITIES---->
+  if ($page == 'home') { 
+    echo "
+            <td valign='top'>
+              <div class='sidebar'>
+    ";
 
-                <h3>Career Opportunities</h3>
-                <?php 
+
+    //////////  CAREER OPPORTUNITIES  //////////
+
+                echo "<h3>Career Opportunities</h3>"; 
                   $jobsql = "SELECT * FROM articles WHERE type = 'job' ORDER BY date DESC LIMIT 5 ";
                   $result = mysql_query($jobsql);
                   if ($result) {
@@ -384,39 +412,94 @@ include('engine.php');
                     } 
                     echo '</ul>';
                   }  
-                ?>
-                </ul>
+                  echo "</ul>";
+
+
+    //////////  NEW HIRES  //////////
+          
+                  $newhires = array();
+                  $oldestdate = time() - $dateunits['month'];
+                  $newestdate = time() + ($dateunits['day'] * 15);
+                  $sql = "SELECT * FROM staff WHERE leaveday IS NULL";
+                  $result = mysql_query($sql);
+                  if ($result) {
+                    while ($staff = mysql_fetch_array($result)) {
+                      if ($staff['startday'] >= $oldestdate && $staff['startday'] <= $newestday) {
+                        $staffdate = date('(m/d)', $staff['startday']);
+                        array_push($newhires, "$staff[id] $staff[fname] $staff[lname] $staffdate");
+                      }
+                    }
+                  }
                 
-                <!----NEW HIRES---->
+              if ($newhires) {
+                echo "
+                  <h3>New Hires</h3>
+                  <ul>
+                ";
+              
+                foreach ($newhires as $i) {
+                  $employee = explode (' ', $i);
+                  $id = $employee[0];
+                  $fname = $employee[1];
+                  $lname = $employee[2];
+                  $day = $employee[3];
+                  echo "<li><a href='?page=profile&profileid=$id'>$fname $lname</a> $day</li>";
+                }
+              
+                echo "</ul><br />";
+              }
 
-                <h3>New Hires</h3>
-                <ul>
-                  <li class="sample"><a href="?page=profile&profileid=1">Nathan Hare</a> (11/10)</li> 
-                </ul><br />
 
-                <!----MOVING ON---->
-
+    //////////  MOVING ON  //////////
+              
+              echo "
                 <h3>Moving On</h3>
                 <ul>
-                  <li class="sample"><a href="?page=profile">Logan Miller</a> (11/12)</li> 
-                </ul><br />
+              ";
+
+                  echo "<li class='sample'><a href='?page=profile'>Logan Miller</a> (11/12)</li>";
+                  
+              echo "</ul><br />";
+
+
+          echo "      
               </div>
-            </td> <?php } ?>
-            <td valign="top" style="padding: 10px;" style="vertical-align: top;" class="main-content">
+            </td>
+          ";
+          } 
 
-              <?php if (isset($message)) {echo '<div class="message">' . $message . "</div><br /><br />";} include($page . '.php'); ?>
 
+               ////////////////////
+              //  MAIN CONTENT  //
+             ////////////////////
+
+          echo "<td valign='top' style='padding: 10px;' style='vertical-align: top;' class='main-content'>";
+
+
+            if (isset($message)) {echo "<div class='message'>$message</div><br /><br />";} 
+          
+            include($page . '.php'); 
+
+          
+          echo "
               <br />
               <br />
             </td>
-            <?php if ($page == 'home') { ?>
-            <td valign="top">
-              <div class="sidebar">
+          ";
 
-                <!----EVENTS---->
+        if ($page == 'home') { 
 
-                <h3>Events </h3>
-                <?php 
+          echo " 
+            <td valign='top'>
+              <div class='sidebar'>
+          ";
+
+
+
+    //////////  EVENTS  //////////
+
+          echo "<h3>Events </h3>";
+
                   include('mini-event-calendar/calendar.php');
                   $eventsql = "SELECT * FROM articles WHERE type = 'event' AND startdate >= '$todaystart' ORDER BY startdate ASC LIMIT 3 ";
                   $result = mysql_query($eventsql);
@@ -436,33 +519,49 @@ include('engine.php');
                     } 
                     echo '</ul>';
                   }  
-                ?>
 
-                <!----BIRTHDAYS---->
 
+    //////////  BIRTHDAYS  //////////
+
+          echo "
                 <h3>Birthdays</h3>
                 <ul>
-                  <li class="sample"><a href="?page=profile&profileid=1">Nathan Hare</a> (3/30)</li> 
+          ";
+
+                  echo "<li class='sample'><a href='?page=profile&profileid=1'>Nathan Hare</a> (3/30)</li>";
+
+          echo "
                 </ul>
                 <br />
+          ";
 
-                <!----Anniversaries---->
 
+    //////////  ANNIVERSARIES  //////////
+
+          echo "
                 <h3>Anniversaries</h3>
                 <ul>
-                  <li class="sample"><a href="?page=profile&profileid=3">Josh Kreider</a><br />(3yrs - 12/25)</li> 
+          ";
+
+                  echo "<li class='sample'><a href='?page=profile&profileid=3'>Josh Kreider</a><br />(3yrs - 12/25)</li>";
+
+          echo "
                 </ul>
               </div>
-            </td> <?php } ?>
+              </td>  
+          ";
+        }
+
+        echo "
           </tr>
         </table>
       </div>
 
-      <div class="footer-links">  <!---FOOTER LINKS--->
+      <div class='footer-links'>  <!---FOOTER LINKS--->
         <?php include('footer.php'); ?>
       </div>
 
-      <div class="footer">        <!----FOOTER---->
+      <div class='footer'>        <!----FOOTER---->
         <br />
         <br />
         &copy; Copyright 2011 ARM Group Inc. | Terms & Conditions<br />
@@ -475,3 +574,5 @@ include('engine.php');
 
   </body>
 </html>
+";
+?>
