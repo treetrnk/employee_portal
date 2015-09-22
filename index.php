@@ -298,6 +298,17 @@ include('engine.php');
      .profile-links {
         font-size: 11pt;
       }
+      .inline-left {
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 70px;
+        text-align: right;
+      }
+      .inline-right {
+        display: inline-block;
+        float: left;
+      }
       <?php if ($_GET['sample'] == false) { ?>
       .sample {
         display: none;
