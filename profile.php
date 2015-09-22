@@ -8,7 +8,56 @@
       $row = mysql_fetch_array($result);
     }
   }
-  
+
+  $areasOfExpertise = array (     ////  AREAS OF EXPERTISE  ////
+    'Water Supply', 
+    'Hydrogeology', 
+    'SRBC',
+    'Fill Management',
+    'Site Remediation',
+    'Brownfield/Act 2',
+    'Ecological/Wetlands',
+    'Cultural Resources',
+    'Threatened and Endagered Species',
+    'Aquatic Assessments',
+    'Watershed Management/Improvement',
+    'Environmental Permitting',
+    'NEPA',
+    'Spill Planning',
+    'Hazmat',
+    'Water Resources/Dams',
+    'Grotechnical',
+    'Soil Mechanics',
+    'Foundations',
+    'Sinkhole',
+    'Landfill',
+    'Solid Waste Management Facilities',
+    'Renewable Energy Services',
+    'GIS',
+    'GPS',
+    'Surveying',
+    'Stormwater Management',
+    'E&S Planning',
+    'Wastewater Treatment/Permitting',
+    'PADOT Highway Occupancy Permitting (HOP)',
+    'Oil & Gas',
+    'Construction Oversight/Certification',
+    'Electrical',
+    'Mechanical',
+    'Controls/Automation',
+    'Environmental/Geotechnical',
+    'Borehole',
+    'Marketing',
+    'Human Resources',
+    'Accounting',
+    'Graphic Design',
+    'Computer Support',
+    'Web Development'
+    'IT Infrastructure',
+  );
+  sort($areasOfExpertise);
+
+
          ////////////////////
         //  EDIT PROFILE  //
        ////////////////////
@@ -66,7 +115,22 @@
             <td valign='top' width=35%>  <!----ABOUT---->
               <div class='profile-about'>
                 <h3>Areas of expertise...</h3>
-                <textarea cols='36' rows='5' name='description' style='padding: 5px;'>$row[description]</textarea>
+                <center>
+                  <span class='smalltext' style='color:#333333'>(Use Ctrl+Click to select multiple items)</span>
+                </center>
+                <select name='description[]' size=10 style='width:100%' multiple>
+                ";
+      
+                  foreach ($areasOfExpertise as $i) {
+                    echo "<option value='$i'";
+                    if (strstr($row['description'], $i)) {
+                      echo " selected";
+                    } 
+                    echo ">$i</option>";
+                  }
+
+                echo "
+                </select>
               </div>
               <div class='profile-about'>
                 <h3>A bit about me...</h3>
@@ -89,7 +153,6 @@
 
     if (mysql_num_rows($result) == 1) {
       if ( hasPermission('admin') || $_SESSION['id'] == $row['id'] ) {
-
         echo "
           <form method='post' action='?page=profile&profileid=$row[id]'>
             <input type='hidden' name='action' value='edit' />
@@ -98,6 +161,7 @@
         ";
       }
       
+      $description = explode(' -- ', $row['description']);
       echo "
        <h2>$row[fname] $row[lname]</h2>
         <table width=100%>
@@ -123,7 +187,15 @@
             <td valign='top' width=35%>  <!----ABOUT---->
               <div class='profile-about'>
                 <h3>Areas of Expertise...</h3>
-                <p style='padding: 5px;'>$row[description]</p>
+                <ul>
+                ";
+
+                foreach ($description as $i) {
+                  echo "<li>$i</li>";
+                }  
+
+                echo "
+                </ul>
               </div>
               <div class='profile-about'>
                 <h3>A bit about me...</h3>

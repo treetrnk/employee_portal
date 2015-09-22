@@ -344,23 +344,40 @@ if (isset($_POST['submit'])) {
           $username = strtolower(substr($fname, 0, 1) . $lname);
           $birthday = date('Y-m-d', strtotime($birthday));
           $startday = date('Y-m-d', strtotime($startday));
-          if ($email == false) {$email = $username . '@armgroup.net';}
-          
-          if ($submit == "add") {        //ADD
-            $password = sha1($username . $lname . date("md", $birthday));
-            $emp_sql = "INSERT INTO $table (username, password, fname, lname, initials, birthday, startday, location, title, email, phone, ext, cellphone, picture, description, about, security, updateid) VALUES ('$username', '$password', '$fname', '$lname', '$initials', '$birthday', '$startday', '$location', '$title', '$email', '$phone', '$ext', '$cellphone', '$picture', '$description', '$about', '1', '$profileid' )"; 
+          $description = "";
+          foreach ($_POST['description'] as $i) {
+            if ($description != "") { $description .= ' -- '; }
+            $description .= $i;
           }
-          if ($submit == "edit") {      //EDIT
-            if ($_GET['profileid']) {
-              $profileid = $_GET['profileid'];
-              $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', picture='$picture', description='$description', about='$about' WHERE id=$profileid";
-            } else {
-              $message .= 'No profile provided.<br />';
-            }
-          } else {
-            $message .= "Submit is not set. <br /> Submit = " . $submit . ".<br />";
+          if ($email == false) {$email = $username . '@armgroup.net';}
+
+
+          switch ($_POST['submit']) {
+
+            case 'add':   ////////////////  ADD  ////
+    
+              $password = sha1($username . $lname . date("md", $birthday));
+              $emp_sql = "INSERT INTO $table (username, password, fname, lname, initials, birthday, startday, location, title, email, phone, ext, cellphone, picture, description, about, security, updateid) VALUES ('$username', '$password', '$fname', '$lname', '$initials', '$birthday', '$startday', '$location', '$title', '$email', '$phone', '$ext', '$cellphone', '$picture', '$description', '$about', '1', '$profileid' )"; 
+              break;
+
+
+            case 'edit':   ///////////////  EDIT  ////
+
+              if ($_GET['profileid']) {
+                $profileid = $_GET['profileid'];
+                $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', picture='$picture', description='$description', about='$about' WHERE id=$profileid";
+              } else {
+                $message .= 'No profile provided.<br />';
+              }
+              break;
+
+
+            default:  ////////////////  DEFAULT  ////
+
+              $message .= "Submit is not set. <br /> Submit = " . $submit . ".<br />";
           }
             
+
           if (mysql_query($emp_sql)) { // IF SUCCESS
             if (!$_GET['profileid']) { $_GET['profileid'] = mysql_insert_id(); }
             $message .= "Profile " . $submit . "ed successfully!!!";
