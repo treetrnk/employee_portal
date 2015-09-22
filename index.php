@@ -417,37 +417,17 @@ include('engine.php');
 
     //////////  NEW HIRES  //////////
           
-                  $newhires = array();
-                  $oldestdate = time() - $dateunits['month'];
-                  $newestdate = time() + ($dateunits['day'] * 15);
-                  $sql = "SELECT * FROM staff WHERE leaveday IS NULL";
-                  $result = mysql_query($sql);
-                  if ($result) {
-                    while ($staff = mysql_fetch_array($result)) {
-                      if ($staff['startday'] >= $oldestdate && $staff['startday'] <= $newestday) {
-                        $staffdate = date('(m/d)', $staff['startday']);
-                        array_push($newhires, "$staff[id] $staff[fname] $staff[lname] $staffdate");
-                      }
-                    }
-                  }
-                
-              if ($newhires) {
-                echo "
-                  <h3>New Hires</h3>
-                  <ul>
-                ";
-              
-                foreach ($newhires as $i) {
-                  $employee = explode (' ', $i);
-                  $id = $employee[0];
-                  $fname = $employee[1];
-                  $lname = $employee[2];
-                  $day = $employee[3];
-                  echo "<li><a href='?page=profile&profileid=$id'>$fname $lname</a> $day</li>";
-                }
-              
-                echo "</ul><br />";
-              }
+              echo "
+                <h3>New Hires</h3>
+                <ul>
+              ";
+
+                $before = 0;
+                $after = $dateunits['month'];
+
+                fillSidebar($before, $after, 'startday');
+
+              echo "</ul><br />";
 
 
     //////////  MOVING ON  //////////
@@ -457,8 +437,11 @@ include('engine.php');
                 <ul>
               ";
 
-                  echo "<li class='sample'><a href='?page=profile'>Logan Miller</a> (11/12)</li>";
-                  
+                $before = $dateunits['day'] * 20;
+                $after = $dateunits['day'] * 20;
+                
+                fillSidebar($before, $after, 'leaveday');
+
               echo "</ul><br />";
 
 
@@ -528,7 +511,10 @@ include('engine.php');
                 <ul>
           ";
 
-                  echo "<li class='sample'><a href='?page=profile&profileid=1'>Nathan Hare</a> (3/30)</li>";
+                $before = $dateunits['day'] * 15;
+                $after = $dateunits['day'] * 15;
+
+                fillSidebar($before, $after, 'birthday');
 
           echo "
                 </ul>
@@ -543,7 +529,10 @@ include('engine.php');
                 <ul>
           ";
 
-                  echo "<li class='sample'><a href='?page=profile&profileid=3'>Josh Kreider</a><br />(3yrs - 12/25)</li>";
+                $before = $dateunits['day'] * 15;
+                $after = $dateunits['day'] * 15;
+
+                fillSidebar($before, $after, 'anniversary');
 
           echo "
                 </ul>

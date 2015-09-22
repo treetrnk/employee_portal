@@ -516,7 +516,74 @@ if (isset($_SESSION['security'])) {
 
 
 
+
+//============== FILL SIDEBARS FUNCTION ================
+function fillSidebar($start, $end, $field) {
+
+  $sidebar = array();
+
+  $dateunits = array (
+    'year' => 31536000,
+    'month' => 2592000,
+    'week' => 604800,
+    'day' => 86400,
+    'hour' => 3600,
+    'minute' => 60,
+    'second' => 1
+  );
+
+
+  $oldestdate = time() - $start;
+  $newestdate = time() + $end;
+  
+  $sql = "SELECT * FROM staff";
+  if ($field == 'leaveday') { $sql .= " WHERE leaveday IS NOT NULL"; } 
+    else { $sql .= " WHERE leaveday IS NULL"; }
+  $result = mysql_query($sql);
+
+  if ($result) {
+
+//////  CREATE EMPLOYEE ARRAY  //////
+
+    while ($staff = mysql_fetch_array($result)) {
+
+      if ($field == 'anniversary') { $day = strtotime($staff['startday']); } 
+        else { $day = strtotime($staff["$field"]); }
+
+      if ($field == 'birthday' || $field == 'anniversary') {
+        $day = strtotime(date('M j ', $day) . date('Y', time()));
+      }
+      
+      if ($day > $oldestdate && $day < $newestdate) {
+
+        if ($field == 'anniversary') { 
+          $amount = strval(($day - strtotime($staff['startday'])) / $dateunits['year']);
+          $staffdate = "<br />($amount" . "yrs - " . date('n/j)', strtotime($staff['startday']));
+        } else {
+          $staffdate = date('(n/j)', strtotime($staff["$field"]));
+        }
+            
+        array_push($sidebar, "$staff[id] --  $staff[fname] --  $staff[lname] --  $staffdate");
+      }
+    }
+  }
+
+  if ($sidebar) {
+    foreach ($sidebar as $i) {
+      $employee = explode (' -- ', $i);
+      $id = $employee[0];
+      $fname = $employee[1];
+      $lname = $employee[2];
+      $day = $employee[3];
+      echo "<li><a href='?page=profile&profileid=$id'>$fname $lname</a> $day</li>";
+    }
+  }
+}
+
+
+
+
 //==============USED FOR SAMPLE CONTENT==============
-  $_GET['sample'] = 'y';
+$_GET['sample'] = 'y';
 
 ?>
