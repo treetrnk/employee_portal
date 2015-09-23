@@ -62,6 +62,13 @@ $dateunits = array (
 
 
 
+//============== MESSAGE FUNCTION =============
+function message($message) {
+  echo "<div class='message'>$message</div><br /><br />";
+} 
+
+
+
 //==============MULTIPAGE NAVIGATION==============
 function multipageNav($limit, $total_rows) {
   global $_POST;

@@ -284,7 +284,13 @@ include('engine.php');
         margin-left: auto;
       }
       .message a {
-        color: #0000cc;
+        color: #ffffff;
+        text-decoration: underline;
+        /*font-weight: bold;*/
+      }
+      .message a:hover {
+        color: #000000;
+        text-decoration: underline;
         /*font-weight: bold;*/
       }
       .hidelink:active, .hidelink:visited, .hidelink:link {
