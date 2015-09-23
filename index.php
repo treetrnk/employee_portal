@@ -380,8 +380,8 @@ include('engine.php');
         //echo "<a href='?page=forum' class='navlink'>Forum</a>";
   
   echo "
-            <form style='float: right;'>
-              <label>Search <input type='text' size='20' /></label> &nbsp; 
+            <form method='post' action='?page=search' style='float: right;'>
+              <label>Search <input type='text' name='search' size='20' /></label> &nbsp; 
               <input style='margin-top: 6px; margin-left: 0px; margin-right: 3px;' type='image' src='img/search.png' align='right' alt='Search'>&nbsp;
             </form>
       </div>
