@@ -390,6 +390,7 @@ if (isset($_POST['submit'])) {
         }
 
       break;
+      case 'resources':
       case 'job':                           ////////////////////
       case 'event':                        //    ARTICLES    // 
       case 'article':                     ////////////////////

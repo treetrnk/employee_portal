@@ -1,6 +1,6 @@
 <?php 
 
-  $sql = "SELECT * FROM articles WHERE id = 72";
+  $sql = "SELECT * FROM articles WHERE type = 'resources' LIMIT 1";
   $result = mysql_query($sql);
   if ($result) {
     $article = mysql_fetch_array($result);
