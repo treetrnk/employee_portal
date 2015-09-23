@@ -69,6 +69,7 @@
   ";
 
   multipageNav($limit, $total_rows);
+  echo "<br />";
 
    /////////////////////// 
   //    PEOPLE LIST    //
@@ -81,7 +82,7 @@
 
       echo "
 
-        <div class='people-list' style='height: 80px;";
+        <div class='people-list' style='height: 80px; border:1px solid #dedede;";
           if ($count % 2 == 0) { echo 'background: #dedede;'; } 
           echo "'>
         <a href='?page=profile&profileid=$row[id]'>
