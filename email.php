@@ -54,7 +54,7 @@
 
 
   } else {
-    message("You must be logged in to use this feature."); 
+    message("You must be <a href='?page=login'>logged in</a> to use this feature."); 
     echo "<p>If you are having trouble logging in, please email I.T. at <a href ='mailto:helpdesk@armgroup.net'>helpdesk@armgroup.net</a></p>";
   }
 

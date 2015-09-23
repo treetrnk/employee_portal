@@ -64,7 +64,7 @@ $dateunits = array (
 
 //============== MESSAGE FUNCTION =============
 function message($message) {
-  echo "<div class='message'>$message</div><br /><br />";
+  echo "<br /><div class='message'>$message</div><br />";
 } 
 
 
