@@ -54,7 +54,7 @@
 
 
   } else {
-      echo "<p>You must be logged in to use this page</p>";
+      echo "<p>You must be logged in to use this page. If you are having trouble logging in, please email I.T. at <a href ='mailto:helpdesk@armgroup.net'>helpdesk@armgroup.net</a></p>";
   }
 
 ?>

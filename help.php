@@ -3,10 +3,6 @@
   echo "
     <h2>I.T. Support</h2>
     <br />
-  ";
-
-  if ( isset($_SESSION['security']) ) {
-    echo "
       <table width=100%>
         <tr>
           <td>
@@ -16,14 +12,13 @@
           </td>
           <td>
             <div class='greenbox' style='width:300px;' align='center'>
-              <a href='?page=email&type=ticket' style='padding:20px; font-size:18px; color:#ffffff;'>Submit ARM Portal Feedback</a>
+              <a href='?page=email&type=feedback' style='padding:20px; font-size:18px; color:#ffffff;'>Submit ARM Portal Feedback</a>
             </div>
           </td>
         </tr>
       </table>
       <br /><br />
   ";
-  }
 
   $sql = "SELECT * FROM articles WHERE type = 'help' ORDER BY title";
   $result = mysql_query($sql);
