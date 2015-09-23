@@ -108,9 +108,30 @@
     echo "
       $article[body]
       <br /><br />
+      <form method='post' action='?page=article&articleid=$articleid'>
+        <input type='submit' name='submit' value='Subscribe' style='float:right;' />
+      </form>
       <span style='font-size: 8pt;'>
         By: <a class='hidelink' href='?page=profile&profileid=$article[userid]'>$userinfo[fname] $userinfo[lname]</a> - " . date('M j, Y @ g:i a', $article['date']) . "
       </span>
+      <br /><br /><br /><br />
+      
+      <div style='width:60%; margin-right:auto; margin-left:auto; text-align:right;'>
+    ";
+
+        if ( hasPermission('comment') ) {
+          echo "
+            <form method='post' action='?page=article&articleid=$articleid'>
+              <textarea style='width:100%; height:75px;'></textarea>
+              <input style='margin-right:auto; margin-left:auto;' type='submit' name='submit' value='Comment' />
+            </form>
+          ";
+        }
+        
+
+
+    echo "
+      </div>
     ";  
      
  

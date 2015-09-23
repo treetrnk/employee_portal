@@ -58,7 +58,7 @@
         <label>State College, PA <input type='checkbox' name='statecollege' value='state college' onchange='this.form.submit()'"; 
           if (in_array("state college", $location)) { echo 'checked'; } 
           echo " /></label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <label>Wilkes-Barre, PA <input type='checkbox' name='wilkesbarre' value='wilkes-barre' onchange='this.form.submit()'"; 
+        <label>Wilkes-Barre, PA <input type='checkbox' name='wilkesbarre' value='wilkes-barre' onChange='this.form.submit()'"; 
           if (in_array("wilkes-barre", $location)) { echo 'checked'; } 
           echo " /></label>
       </form> 
