@@ -366,7 +366,7 @@ include('engine.php');
       echo "<div class='navlinkbar'>";
         echo "<a href='?page=home' class='navlink'>Home</a>";
         echo "<a href='?page=people' class='navlink'>People</a>";
-        echo "<a href='?page=article&articleid=72' class='navlink'>Resources</a>";
+        echo "<a href='?page=resources' class='navlink'>Resources</a>";
         echo "<a href='?page=help' class='navlink'>I.T. Support</a>";
         //echo "<a href='?page=safety' class='navlink'>Safety</a>";
         //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
