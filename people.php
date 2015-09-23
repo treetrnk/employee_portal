@@ -95,15 +95,15 @@
               <b>Phone:</b>
             </td>
             <td width=50%>
-              $row[phone]
+              $row[phone] (x$row[ext])
             </td>
           </tr>
           <tr>
             <td align='right'>
-              <b>Extenstion:</b>
+              <b>Cellphone:</b>
             </th>
             <td>
-              $row[ext]
+              $row[cellphone]
             </td>
           </tr>
           <tr>
