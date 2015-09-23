@@ -49,7 +49,24 @@
       echo "
         <br />
         <b>Location</b><br />
-        <input type='text' name='location' value='$article[location]' /><br />
+        <select name='location'>
+          <option default>Choose one...</option>
+          <option value='Canonsburg, PA'"; 
+            if ($article['location'] == 'Canonsburg, PA') { echo " selected "; } 
+            echo ">Canonsburg, PA</option>
+          <option value='Columbia, MD'"; 
+            if ($article['location'] == 'Columbia, MD') { echo " selected "; } 
+            echo ">Columbia, MD</option>
+          <option value='Hershey, PA'"; 
+            if ($article['location'] == 'Hershey, PA') { echo " selected "; } 
+            echo ">Hershey, PA</option>
+          <option value='State College, PA'"; 
+            if ($article['location'] == 'State College, PA') { echo " selected "; } 
+            echo ">State College, PA</option>
+          <option value='Wilkes-Barre, PA'"; 
+            if ($arcticle['location'] == 'Wilkes-Barre, PA') { echo " selected "; } 
+            echo ">Wilkes-Barre, PA</option>
+        </select><br />
       ";
     } else { 
       echo "
@@ -85,7 +102,7 @@
         <form method='post' action='index.php?page=article&articleid=$articleid'>
           <input type='hidden' name='action' value='edit' />
           <input type='hidden' name='type' value='$type' />
-          <input type='submit' value='Edit Article' />
+          <input type='submit' value='Edit Article' style='float:right; position:relative; top:18px;' />
         </form>
       ";
     }

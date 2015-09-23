@@ -9,7 +9,7 @@
   }
   
   echo "
-    <h2>Resources</h2>
+    <h2>$article[title]</h2>
     <div style='width: 700px; margin-right: auto; margin-left: auto;'>
   ";
   
@@ -23,7 +23,6 @@
       ";
     }
 
-    echo "<h2>$article[title]</h2>";
     echo "
       $article[body]
       <br /><br />

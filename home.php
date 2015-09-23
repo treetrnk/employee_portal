@@ -5,7 +5,7 @@ if ( hasPermission('article') ) {
     <form name='henry' method='post' action='index.php?page=article'>
       <input type='hidden' name='action' value='add' />
       <input type='hidden' name='type' value='article' />
-      <input type='submit' style='float: right;' value='New Article' />
+      <input type='submit' style='float: right; position:relative; top:20;' value='New Article' />
     </form>
   "; 
 }
