@@ -203,9 +203,9 @@ if (isset($_POST['submit'])) {
 
 
 
-    switch ($type) {                                ////////////////
-                                                   //    STAF    //
-      case 'employee':                            //////////////// 
+    switch ($type) {                                /////////////////
+                                                   //    STAFF    //
+      case 'employee':                            ///////////////// 
         $table = "staff";    
         if ( hasPermission('profile_pend') ) { $table = "staffPending"; $submit = 'add'; $message = $table; }
 
@@ -271,7 +271,6 @@ if (isset($_POST['submit'])) {
        
           if ( hasPermission($type . "_pend") ) {$table = 'articlesPending'; $submit = "add"; }
 
-          if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) { //CHECK REQUIRED FIELDS
             extract($_POST, EXTR_OVERWRITE);
             $userid = $_SESSION['id'];
             if ( isset($startdate) && isset($enddate) ) {
@@ -290,29 +289,53 @@ if (isset($_POST['submit'])) {
 
               case 'add':   ///////////////  ADD  ////
                
-                $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
-                $_GET['articleid'] = mysql_insert_id();
+                if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
+                  $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+                  $_GET['articleid'] = mysql_insert_id();
+                } else { 
+                  $message = "Please fill all fields.";
+                }
                 $verb = "added";
                 break;
 
                 
               case 'edit':  //////////////  EDIT  ////
 
-                if ($_GET['articleid']) {
-                  $articleid = $_GET['articleid'];
-                  $art_sql = "UPDATE articles SET title='$title', body='$body', startdate='$startdate', enddate='$enddate', type='$type' WHERE id=$articleid";
+                if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
+                  if ($_GET['articleid']) {
+                    $articleid = $_GET['articleid'];
+                    $art_sql = "UPDATE articles SET title='$title', body='$body', startdate='$startdate', enddate='$enddate', type='$type' WHERE id=$articleid";
+                  }
+                } else { 
+                  $message = "Please fill all fields.";
                 }
                 $verb = "edited";
                 break;
 
 
+              case 'Delete':  //////////////  DELETE  ////
+
+                if ($_GET['articleid']) {
+                  $art_sql = "UPDATE articles SET del = 'y' WHERE id = $_GET[articleid]";
+                } else {
+                  $message = "Unknown article . . .";
+                }
+                $page = "home";
+                $verb = "deleted";
+                break;
+
+
               case 'Approve':   //////////////  APPROVE  ////
 
-                $sql = "UPDATE articlesPending SET del = 'y' WHERE id = $_POST[id]";
-                if (mysql_query($sql)) {
-                  $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$penduserid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
-                  $_GET['articleid'] = mysql_insert_id();
-                  pendingResponse($_GET['articleid']);
+                if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
+                  $sql = "UPDATE articlesPending SET del = 'y' WHERE id = $_POST[id]";
+                  if (mysql_query($sql)) {
+                    $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$penduserid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+                    $_GET['articleid'] = mysql_insert_id();
+                    pendingResponse($_GET['articleid']);
+                  }
+                } else { 
+                  $message = "Please fill all fields.";
                 }
                 $verb = "approved";
                 break;
@@ -326,12 +349,6 @@ if (isset($_POST['submit'])) {
                 break;
 
               
-              case 'delete':  /////////////////  DELETE  ////
-            
-                //add delete sql
-                break;
-
-
               default:        //////////////////  DEFAULT  ////
              
                 $message .= 'No profile provided.<br />';
@@ -340,16 +357,11 @@ if (isset($_POST['submit'])) {
             
             
             if (mysql_query($art_sql)) { // IF SUCCESS
-              if (!$_GET[articleid]) { $_GET[articleid] = mysql_insert_id(); }
+              if (!$_GET['articleid']) { $_GET[articleid] = mysql_insert_id(); }
               $message .= ucfirst($type) . " " . $verb . " successfully!!!";
             } else { 
               $message .= "There was a problem.<br />" . mysql_error() . ".";
             }
-          } else { //IF REQUIRED FIELDS ARE EMPTY
-            $message = "Please fill all fields.";
-          }
-
-      break;
     }
   }
 }

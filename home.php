@@ -13,7 +13,7 @@ if ( hasPermission('article') ) {
 $limit = 15;
 
   echo '<h2>Recent Posts</h2>';
-  $sql = "SELECT * FROM articles WHERE type = 'article' ORDER BY date DESC";
+  $sql = "SELECT * FROM articles WHERE type = 'article' AND del = 'n' ORDER BY date DESC";
   $total_rows = mysql_num_rows(mysql_query($sql));
   $sql = $sql . " LIMIT $limit";
   if (isset($_GET['offset'])) { $sql = $sql . " OFFSET $_GET[offset]"; }

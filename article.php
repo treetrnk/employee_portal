@@ -102,7 +102,8 @@
         <form method='post' action='index.php?page=article&articleid=$articleid'>
           <input type='hidden' name='action' value='edit' />
           <input type='hidden' name='type' value='$type' />
-          <input type='submit' value='Edit Article' style='float:right; position:relative; top:18px;' />
+          <input type='submit' name='submit' value='Delete' style='float:right; position:relative; top:18px;' />
+          <input type='submit' value='Edit' style='float:right; position:relative; top:18px;' />
         </form>
       ";
     }
