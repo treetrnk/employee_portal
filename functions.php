@@ -141,16 +141,16 @@ function hasPermission($type) {
     $permissions = array( // ----LIST AVAILABLE PERMISSIONS----
       'admin',            // All Permissions
       'approve',          // Approve or reject pending items
-      'article',          // Submit articles
-      'article_pend',     // Submit articles that require approval
-      'comment',          // Submit comments
-      'comment_pend',     // Submit comments that require approval
-      'event',            // Submit events
-      'event_pend',       // Submit events that require approval
-      'help',             // Submit help articles
-      'help_event',       // Submit help articles that require approval
-      'job',              // Submit jobs
-      'job_pend',         // Submit jobs that require approval
+      'article',          // Add articles
+      'article_pend',     // Add articles that require approval
+      'comment',          // Add comments
+      'comment_pend',     // Add comments that require approval
+      'event',            // Add events
+      'event_pend',       // Add events that require approval
+      'help',             // Add help articles
+      'help_event',       // Add help articles that require approval
+      'job',              // Add jobs
+      'job_pend',         // Add jobs that require approval
       'profile',          // Edit your profile
       'profile_pend'      // Edit your profile, changes require approval
     );
@@ -188,6 +188,10 @@ function hasPermission($type) {
    /////////////////
   //  ADD MYSQL  //
  /////////////////
+
+// I started building this function to build sql statements for me
+// I abandoned it because it may be more work than it is worth to 
+// make it modular.
 
 function add_mysql($field) {
   foreach ($field as $i) {
