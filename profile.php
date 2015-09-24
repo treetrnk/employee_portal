@@ -105,12 +105,23 @@ if (isset($_POST['action'])) {
             Office #: <input type='text' name='phone' value='$row[phone]' placeholder='(999)999-9999' /><br />
             Extension: <input type='text' name='ext' value='$row[ext]' placeholder='9999'/><br />
             Cell #: <input type='text' name='cellphone' value='$row[cellphone]' placeholder='(999)999-9999' /><br />
-            Start Day: <input type='text' id='datepicker' name='startday' value='" . date('Y/m/d', strtotime($row['startday'])) . "' placeholder='yyyy/mm/dd' /><br />
-            Birthday: <input type='text' id='datepicker2' name='birthday' value='" . date('Y/m/d', strtotime($row['birthday'])) . "' placeholder='yyyy/mm/dd' /><br />
+            Start Day: <input type='text' id='datepicker' name='startday' value='";
+              if (isset($row['startday'])) { echo date('Y/m/d', strtotime($row['startday'])); }
+              echo "' placeholder='yyyy/mm/dd' /><br />
+            Birthday: <input type='text' id='datepicker2' name='birthday' value='"; 
+              if (isset($row['birthday'])) { echo date('Y/m/d', strtotime($row['birthday'])); }
+              echo "' placeholder='yyyy/mm/dd' /><br />
             Show Birthday: <input type='checkbox' name='showbday' value='y'";
               if ($row['showbday'] == 'y') { echo ' checked'; }
-              echo " /><br />
-            </b></div>
+                echo " /><br />";
+
+            if ( hasPermission('admin') ) {             
+              echo "<br />Leave Date: <input type='text' id='datepicker3' name='leaveday 'placeholder='yyyy/mm/dd' /><br /></b>";
+              echo "<center><span style='font-size:9pt;'>***This will delete the profile***</span></center><br />";
+            }
+
+              echo "
+            </div>
           </td>
           <td valign='top' width=35%>  <!----ABOUT---->
             <div class='profile-about'>

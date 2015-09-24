@@ -512,7 +512,7 @@ include('engine.php');
                   if ($result) {
                     echo '<ul>';
                     while ($event = mysql_fetch_array($result)) {
-                      echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 15) . '...</a> ';
+                      echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 18) . '...</a> ';
                       echo date('(m/d)', $event['startdate']) . '</li>';
                     }
                     if ( hasPermission('event') ) {
