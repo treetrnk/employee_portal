@@ -24,8 +24,7 @@ function fillSidebar($start, $end, $field) {
   $newestdate = time() + $end;
   
   $sql = "SELECT * FROM staff";
-  if ($field == 'leaveday') { $sql .= " WHERE leaveday IS NOT NULL"; } 
-    else { $sql .= " WHERE leaveday IS NULL"; }
+  if ($field != 'leaveday') { $sql .= " WHERE leaveday IS NULL"; }
   $result = mysql_query($sql);
 
   if ($result) {

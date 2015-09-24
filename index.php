@@ -329,8 +329,13 @@ include('engine.php');
   echo "
   <body>
     <div class='wrapper'>
+  ";
+           //////////////
+          //  HEADER  //
+         //////////////
 
-      <table class='header' cellspacing='0'>    <!----HEADER---->
+  echo "
+      <table class='header' cellspacing='0'> 
         <tr> 
           <td>
             <a href='index.php'><img src='img/arm_logo.png' /></a>
@@ -374,11 +379,11 @@ include('engine.php');
         echo "<a href='?page=people' class='navlink'>People</a>";
         echo "<a href='?page=resources' class='navlink'>Resources</a>";
         echo "<a href='?page=help' class='navlink'>I.T. Support</a>";
-        echo "<a href='?page=offices' class='navlink'>Offices</a>";
         //echo "<a href='?page=safety' class='navlink'>Safety</a>";
         //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
         //echo "<a href='?page=training' class='navlink'>Training</a>";
-        //echo "<a href='?page=forum' class='navlink'>Forum</a>";
+        //echo "<a href='?page=offices' class='navlink'>Offices</a>";
+        echo "<a href='?page=forum' class='navlink'>Forum</a>";
   
   echo "
             <form method='post' action='?page=search' style='float: right;'>
@@ -502,12 +507,12 @@ include('engine.php');
           echo "<h3>Events </h3>";
 
                   include('mini-event-calendar/calendar.php');
-                  $eventsql = "SELECT * FROM articles WHERE type = 'event' AND startdate >= '$todaystart' ORDER BY startdate ASC LIMIT 3 ";
+                  $eventsql = "SELECT * FROM articles WHERE type = 'event' AND startdate >= '$todaystart' ORDER BY startdate ASC LIMIT 5";
                   $result = mysql_query($eventsql);
                   if ($result) {
                     echo '<ul>';
                     while ($event = mysql_fetch_array($result)) {
-                      echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 9) . '...</a> ';
+                      echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 15) . '...</a> ';
                       echo date('(m/d)', $event['startdate']) . '</li>';
                     }
                     if ( hasPermission('event') ) {
@@ -569,10 +574,14 @@ include('engine.php');
         
         include('footer.php'); 
 
-    echo "
-      </div>
+    echo "</div>";
 
-      <div class='footer'>        <!----FOOTER---->
+               //////////////
+              //  FOOTER  //
+             //////////////
+
+    echo "
+      <div class='footer'>
         <br />
         <br />
         &copy; Copyright 2011 ARM Group Inc. | Terms & Conditions<br />
