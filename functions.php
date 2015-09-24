@@ -138,75 +138,49 @@ function hasPermission($type) {
   
   if ( isset($_SESSION['security']) ) {
 
-    $s_admin        = strstr($_SESSION['security'], 'admin');
-    $s_approve      = strstr($_SESSION['security'], 'approve');
-    $s_article      = strstr($_SESSION['security'], 'article');
-    $s_article_pend = strstr($_SESSION['security'], 'article_pend');
-    $s_comment      = strstr($_SESSION['security'], 'comment');
-    $s_comment_pend = strstr($_SESSION['security'], 'comment_pend');
-    $s_event        = strstr($_SESSION['security'], 'event');
-    $s_event_pend   = strstr($_SESSION['security'], 'event_pend');
-    $s_help         = strstr($_SESSION['security'], 'help');
-    $s_help_pend    = strstr($_SESSION['security'], 'help_pend');
-    $s_job          = strstr($_SESSION['security'], 'job');
-    $s_job_pend     = strstr($_SESSION['security'], 'job_pend');
-    $s_profile      = strstr($_SESSION['security'], 'profile');
-    $s_profile_pend = strstr($_SESSION['security'], 'profile_pend');
+    $permissions = array( // ----LIST AVAILABLE PERMISSIONS----
+      'admin',            // All Permissions
+      'approve',          // Approve or reject pending items
+      'article',          // Submit articles
+      'article_pend',     // Submit articles that require approval
+      'comment',          // Submit comments
+      'comment_pend',     // Submit comments that require approval
+      'event',            // Submit events
+      'event_pend',       // Submit events that require approval
+      'help',             // Submit help articles
+      'help_event',       // Submit help articles that require approval
+      'job',              // Submit jobs
+      'job_pend',         // Submit jobs that require approval
+      'profile',          // Edit your profile
+      'profile_pend'      // Edit your profile, changes require approval
+    );
 
-    if ( !strstr($type, '_pend') ) {
-      if ($s_admin) { return TRUE; }
+    $hasPerm = array();
+
+    //Fill hasPerm array with values, TRUE or FALSE, for each permission
+    
+    foreach ($permissions as $i) {
+      if (strstr($_SESSION['security'], "$i")) {
+        $hasPerm["$i"] = TRUE;
+      } else {
+        $hasPerm["$i"] = FALSE;
+      }
     }
 
-    switch ($type) {
+    // If user has admin permission and the function call is not checking for '*_pend'
+    // return true. Otherwise, return true if type is true in $hasPerm array.
+
+    if ( $hasPerm['admin'] ) {
+      if ( !strstr($type, '_pend') ) {
+        return TRUE;
+      }
+    } elseif ( $hasPerm["$type"] ) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
     
-      case 'approve':
-        if ($s_approve) { return TRUE; }
-        break;
-
-      case 'article':
-        if ($s_article) { return TRUE; }
-        break;
-      case 'article_pend':
-        if ($s_article_pend) { return TRUE; }
-        break;
-
-      case 'comment':
-        if ($s_comment) { return TRUE; }
-        break;
-      case 'comment_pend':
-        if ($s_comment_pend) { return TRUE; }
-        break;
-      
-      case 'event':
-        if ($s_event) { return TRUE; }
-        break;
-      case 'event_pend':
-        if ($s_event_pend) { return TRUE; }
-        break;
-      
-      case 'help':
-        if ($s_help) { return TRUE; }
-        break;
-      case 'event_pend':
-        if ($s_help_pend) { return TRUE; }
-        break;
-      
-      case 'job':
-        if ($s_job) { return TRUE; }
-        break;
-      case 'job_pend':
-        if ($s_job_pend) { return TRUE; }
-        break;
-
-      case 'profile':
-        if ($s_profile) { return TRUE; }
-        break;
-      case 'profile_pend':
-        if ($s_profile_pend) { return TRUE; }
-        break;
-    }  
-  
-  }
+  } 
   return FALSE;
 }
 

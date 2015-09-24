@@ -273,8 +273,15 @@ if (isset($_POST['submit'])) {
           if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) { //CHECK REQUIRED FIELDS
             extract($_POST, EXTR_OVERWRITE);
             $userid = $_SESSION['id'];
-            $startdate = strtotime($startdate);
-            $enddate = strtotime($enddate);
+            if ( isset($startdate) && isset($enddate) ) {
+              $startdate = strtotime($startdate);
+              $enddate = strtotime($enddate);
+            } else {
+              $startdate = 0;
+              $enddate = 0;
+            }
+            $title = mysql_real_escape_string($title);
+            $body = mysql_real_escape_string($body);
             $date = time();
             
 
