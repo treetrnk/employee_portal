@@ -212,8 +212,8 @@ if (isset($_POST['submit'])) {
         if (isset($_POST['fname']) && isset($_POST['lname']) && $_POST['birthday']) { //CHECK REQUIRED FIELDS
           extract($_POST, EXTR_OVERWRITE);
           $username = strtolower(substr($fname, 0, 1) . $lname);
-          $birthday = date('Y-m-d', strtotime($birthday));
-          $startday = date('Y-m-d', strtotime($startday));
+          if ( isset($birthday) ) { $birthday = date('Y-m-d', strtotime($birthday)); } else { $birthday = NULL; }
+          if ( isset($startday) ) { $startday = date('Y-m-d', strtotime($startday)); } else { $startday = NULL; }
           if (isset($leaveday)) { $leaveday = date('Y-m-d', strtotime($leaveday)); } else { $leaveday = NULL; }
           $description = "";
           foreach ($_POST['description'] as $i) {
@@ -277,8 +277,8 @@ if (isset($_POST['submit'])) {
               $startdate = strtotime($startdate);
               $enddate = strtotime($enddate);
             } else {
-              $startdate = 0;
-              $enddate = 0;
+              $startdate = NULL;
+              $enddate = NULL;
             }
             $title = mysql_real_escape_string($title);
             $body = mysql_real_escape_string($body);

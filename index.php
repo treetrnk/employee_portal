@@ -315,6 +315,58 @@ include('engine.php');
         display: inline-block;
         float: left;
       }
+      input[type="text"], textarea, select, input[type="checkbox"] {
+        //border: none;
+        border: solid 1px #333333;
+        background-color: #efefef;
+        box-shadow: inset 1px 1px 1px 2px 0 #707070;
+        transition: box-shadow 0.3s;
+      }
+      input[type="text"]:focus, textarea:focus, select:focus, input[type="checkbox"]:focus {
+        //border: none;
+        border: solid 1px #333333;
+        background-color: #ffffff;
+      }
+      select {
+        width: 141px;
+      }
+      input[type="submit"] {
+        font-family: Verdana;
+        //border: solid 1px #777777;
+        //border-top: solid 1px #999999;
+        //border-left: solid 1px #999999;
+        //border-bottom: solid 2px #555555;
+        //border-right: solid 1px 555555;
+        //background-color: #dddddd;
+        //color: #333333;
+        //font-weight: bold;
+        //padding: 2px;
+        color: #fff;
+        //padding: 5px;
+        background-color: #417cb8; #6496c8;
+        border: solid 1px #6496c8;
+        //border-radius: 8px;
+        box-shadow 0 3px #27496d;
+      }
+      input[type="submit"]:hover {
+        font-family: Verdana;
+        //border: solid 1px #333333;
+        //border-top: solid 1px #999999;
+        //border-left: solid 1px #999999;
+        //border-bottom: solid 2px #555555;
+        //border-right: solid 1px 555555;
+        //background-color: #cccccc;
+        //color: #000000;
+        //font-weight: bold;
+        //padding: 2px;
+        background-color: #417cb8;
+      }
+      input[type="submit"]:active {
+        background-color: #376796; //##417cb8;
+        border: solid 1px #27496d;
+        //box-shadow: 0 2px #27496d;
+        //transform: translateY(1px);
+      }
       <?php if ($_GET['sample'] == false) { ?>
       .sample {
         display: none;
@@ -382,7 +434,7 @@ include('engine.php');
         //echo "<a href='?page=safety' class='navlink'>Safety</a>";
         //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
         //echo "<a href='?page=training' class='navlink'>Training</a>";
-        //echo "<a href='?page=offices' class='navlink'>Offices</a>";
+        echo "<a href='?page=offices' class='navlink'>Offices</a>";
         echo "<a href='?page=forum' class='navlink'>Forum</a>";
   
   echo "

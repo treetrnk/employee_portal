@@ -101,7 +101,7 @@ if (isset($_POST['action'])) {
               <option value='Wilkes-Barre, PA'"; 
                 if ($row['location'] == 'Wilkes-Barre, PA') { echo " selected "; } 
                 echo ">Wilkes-Barre, PA</option></select><br />
-            Email: <input type='text' name='email' value='$row[email]' placeholder='user@armgroup.net' /><br />
+            <!---Email---><input type='hidden' name='email' value='$row[email]' placeholder='user@armgroup.net' />
             Office #: <input type='text' name='phone' value='$row[phone]' placeholder='(999)999-9999' /><br />
             Extension: <input type='text' name='ext' value='$row[ext]' placeholder='9999'/><br />
             Cell #: <input type='text' name='cellphone' value='$row[cellphone]' placeholder='(999)999-9999' /><br />
@@ -223,10 +223,14 @@ if (isset($_POST['action'])) {
               <h3>Areas of Expertise...</h3>
               <ul>
               ";
-
-              foreach ($description as $i) {
-                echo "<li>$i</li>";
-              }  
+              
+              if ( !is_null($descripstion) ) {
+                foreach ($description as $i) {
+                  echo "<li>$i</li>";
+                }  
+              } else { 
+                echo "<br /><br />";
+              }
 
               echo "
               </ul>

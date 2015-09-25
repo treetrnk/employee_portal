@@ -87,8 +87,8 @@
         $result = mysql_query($sql);
         $userinfo = mysql_fetch_array($result);
         
-        if ( !is_null($row['startdate']) ) { $startdate = date('Y-m-d h:i:s', $row['startdate']); }
-        if ( !is_null($row['enddate']) ) { $enddate = date('Y-m-d h:i:s', $row['enddate']); }
+        if ( isset($row['startdate']) ) { $startdate = date('Y-m-d h:i:s', $row['startdate']); } 
+        if ( isset($row['enddate']) ) { $enddate = date('Y-m-d h:i:s', $row['enddate']); } 
         $type = ucfirst($row['type']);
         echo "
           <div class='people-list' "; if ( $count % 2 == 0 ) { echo "style='background: #dedede;'"; } echo ">  
