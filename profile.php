@@ -224,7 +224,7 @@ if (isset($_POST['action'])) {
               <ul>
               ";
               
-              if ( !is_null($descripstion) ) {
+              if ( !is_null($description) ) {
                 foreach ($description as $i) {
                   echo "<li>$i</li>";
                 }  
