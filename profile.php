@@ -117,7 +117,7 @@ if (isset($_POST['action'])) {
 
             if ( hasPermission('admin') ) {             
               echo "<br />Leave Date: <input type='text' id='datepicker3' name='leaveday' placeholder='yyyy/mm/dd' /><br /></b>";
-              echo "<center><span style='font-size:9pt;'>***This will delete the profile***</span></center><br />";
+              echo "<center><span style='font-size:9pt;color: #cc0000;'>***This will delete the profile***</span></center><br />";
             }
 
               echo "
@@ -224,7 +224,7 @@ if (isset($_POST['action'])) {
               <ul>
               ";
               
-              if ( !is_null($description) ) {
+              if ( $description[0] != "" ) {
                 foreach ($description as $i) {
                   echo "<li>$i</li>";
                 }  
