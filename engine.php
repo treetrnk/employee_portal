@@ -214,7 +214,7 @@ if (isset($_POST['submit'])) {
           $username = strtolower(substr($fname, 0, 1) . $lname);
           if ( isset($birthday) ) { $birthday = date('Y-m-d', strtotime($birthday)); } else { $birthday = NULL; }
           if ( isset($startday) ) { $startday = date('Y-m-d', strtotime($startday)); } else { $startday = NULL; }
-          if (isset($leaveday)) { $leaveday = date('Y-m-d', strtotime($leaveday)); } else { $leaveday = NULL; }
+          if ( isset($leaveday) ) { $leaveday = date('Y-m-d', strtotime($leaveday)); } else { $leaveday = NULL; }
           $description = "";
           foreach ($_POST['description'] as $i) {
             if ($description != "") { $description .= ' -- '; }

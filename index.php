@@ -332,40 +332,20 @@ include('engine.php');
       }
       input[type="submit"] {
         font-family: Verdana;
-        //border: solid 1px #777777;
-        //border-top: solid 1px #999999;
-        //border-left: solid 1px #999999;
-        //border-bottom: solid 2px #555555;
-        //border-right: solid 1px 555555;
-        //background-color: #dddddd;
-        //color: #333333;
-        //font-weight: bold;
-        //padding: 2px;
-        color: #fff;
-        //padding: 5px;
-        background-color: #417cb8; #6496c8;
-        border: solid 1px #6496c8;
-        //border-radius: 8px;
+        color: #222;
+        background-color: #ccc;
+        border: solid 1px #999;
         box-shadow 0 3px #27496d;
       }
       input[type="submit"]:hover {
         font-family: Verdana;
-        //border: solid 1px #333333;
-        //border-top: solid 1px #999999;
-        //border-left: solid 1px #999999;
-        //border-bottom: solid 2px #555555;
-        //border-right: solid 1px 555555;
-        //background-color: #cccccc;
-        //color: #000000;
-        //font-weight: bold;
-        //padding: 2px;
-        background-color: #417cb8;
+        background-color: #bbb;
+        border: 1px solid #888;
       }
       input[type="submit"]:active {
-        background-color: #376796; //##417cb8;
-        border: solid 1px #27496d;
-        //box-shadow: 0 2px #27496d;
-        //transform: translateY(1px);
+        background-color: #666;
+        color: #ddd;
+        border: solid 1px #888;
       }
       <?php if ($_GET['sample'] == false) { ?>
       .sample {
