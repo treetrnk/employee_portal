@@ -214,7 +214,7 @@ if (isset($_POST['submit'])) {
           $username = strtolower(substr($fname, 0, 1) . $lname);
           if ( isset($birthday) ) { $birthday = date('Y-m-d', strtotime($birthday)); } else { $birthday = NULL; }
           if ( isset($startday) ) { $startday = date('Y-m-d', strtotime($startday)); } else { $startday = NULL; }
-          if ( isset($leaveday) ) { $leaveday = date('Y-m-d', strtotime($leaveday)); } else { $leaveday = NULL; }
+          if ( isset($leaveday) && $leaveday != '' ) { $leaveday = date('Y-m-d', strtotime($leaveday)); } else { $leaveday = NULL; }
           $description = "";
           foreach ($_POST['description'] as $i) {
             if ($description != "") { $description .= ' -- '; }
@@ -236,7 +236,9 @@ if (isset($_POST['submit'])) {
 
               if ($_GET['profileid']) {
                 $profileid = $_GET['profileid'];
-                $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', picture='$picture', description='$description', about='$about', leaveday='$leaveday' WHERE id=$profileid";
+                $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', picture='$picture', description='$description', about='$about'";
+                if ( isset($leaveday) ) { $emp_sql .= ", leaveday='$leaveday'"; }
+                $emp_sql .= " WHERE id=$profileid";
               } else {
                 $message .= 'No profile provided.<br />';
               }

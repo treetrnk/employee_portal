@@ -116,7 +116,7 @@ if (isset($_POST['action'])) {
                 echo " /><br />";
 
             if ( hasPermission('admin') ) {             
-              echo "<br />Leave Date: <input type='text' id='datepicker3' name='leaveday 'placeholder='yyyy/mm/dd' /><br /></b>";
+              echo "<br />Leave Date: <input type='text' id='datepicker3' name='leaveday' placeholder='yyyy/mm/dd' /><br /></b>";
               echo "<center><span style='font-size:9pt;'>***This will delete the profile***</span></center><br />";
             }
 
