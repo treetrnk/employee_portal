@@ -315,14 +315,14 @@ include('engine.php');
         display: inline-block;
         float: left;
       }
-      input[type="text"], textarea, select, input[type="checkbox"] {
+      input[type="text"], textarea, select, input[type="checkbox"], input[type="password"] {
         //border: none;
         border: solid 1px #333333;
         background-color: #efefef;
         box-shadow: inset 1px 1px 1px 2px 0 #707070;
         transition: box-shadow 0.3s;
       }
-      input[type="text"]:focus, textarea:focus, select:focus, input[type="checkbox"]:focus {
+      input[type="text"]:focus, textarea:focus, select:focus, input[type="checkbox"]:focus, input[type="password"] {
         //border: none;
         border: solid 1px #333333;
         background-color: #ffffff;
