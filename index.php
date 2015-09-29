@@ -347,6 +347,9 @@ include('engine.php');
         color: #ddd;
         border: solid 1px #888;
       }
+      select.time {
+        width: 40px;
+      }
       <?php if ($_GET['sample'] == false) { ?>
       .sample {
         display: none;
@@ -414,7 +417,9 @@ include('engine.php');
         //echo "<a href='?page=safety' class='navlink'>Safety</a>";
         //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
         //echo "<a href='?page=training' class='navlink'>Training</a>";
+        if ($_SESSION['user'] == 'nhare') {
         echo "<a href='?page=offices' class='navlink'>Offices</a>";
+        }
         echo "<a href='?page=forum' class='navlink'>Forum</a>";
   
   echo "

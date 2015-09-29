@@ -201,10 +201,6 @@ function add_mysql($field) {
 }
 
 
-
-
-
-
    /////////////////////
   //  VALIDATE DATA  //
  /////////////////////
@@ -215,7 +211,7 @@ function validate($data, $required) {
 
 ////////////  DATES
 
-    if ($key == 'startday' or $key == 'birthday' or $key == 'leaveday') {
+    if ($key == 'startday' || $key == 'birthday' || $key == 'leaveday') {
       $arr = split('/', $value);
       $y = $arr[0];
       $m = $arr[1];
@@ -227,6 +223,33 @@ function validate($data, $required) {
       }
       if (!checkdate($m,$d,$y)) {
         message("Invalid $key");
+        return FALSE;
+      }
+    }
+
+////////////  PHONES
+
+    if ($key == 'phone' || $key == 'cellphone') {
+      if (!preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $value)) {
+        message("Invalid $key number. <br /> Please use the following format: 000-000-0000");
+        return FALSE;
+      }
+    }
+
+////////////  EXTENSION
+
+    if ($key == 'ext') {
+      if (!preg_match("/^[0-9]{4}$/", $value)) {
+        message("Invalid extension. <br /> Please use the following format: 0000");
+        return FALSE;
+      }
+    }
+
+////////////  EMAIL
+
+    if ($key == 'email') {
+      if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+        message("Invalid email address.");
         return FALSE;
       }
     }
@@ -248,5 +271,70 @@ function validate($data, $required) {
   return $post;
 }
 
+
+   //////////////////////////////
+  //  GENERATE SQL STATEMENT  //
+ //////////////////////////////
+
+function sqlgen($post, $table) {
+
+  switch ($post['submit']) { 
+ 
+    case 'add':
+      $sql = "INSERT INTO $table (";
+      foreach ($post as $key => $value) {
+        if ($key != 'submit' && $key != '' && $value != '') {
+          $sql .= "$value";
+        }
+      }
+      break;
+
+    case 'edit':
+      $sql = "UPDATE $table SET ";
+      break;
+
+    case 'del':
+      $sql = "UPDATE $table SET del = 'y' WHERE ";
+      break;
+
+    default:
+
+  }
+
+
+
+}
+
+
+   ///////////////////
+  //  TIME PICKER  //
+ ///////////////////
+
+function timePicker($post, $field) { 
+  echo "<select name='hour_$field' class='time'>";
+    $count = 0;
+    while ($count < 12) {
+      $count++;
+      if (date('h', $post["$field"]) == $count) {
+        echo "<option value='$count' selected>$count</option>";
+      } else {
+        echo "<option value='$count'>$count</option>";
+      }
+    }
+  echo "
+    </select>
+    <b>:</b>
+    <select name='minute_$field' class='time'>
+      <option value='00'"; if (date('i', $post["$field"]) == '00') { echo " selected"; } echo ">00</option>
+      <option value='15'"; if (date('i', $post["$field"]) == '15') { echo " selected"; } echo ">15</option>
+      <option value='30'"; if (date('i', $post["$field"]) == '30') { echo " selected"; } echo ">30</option>
+      <option value='45'"; if (date('i', $post["$field"]) == '45') { echo " selected"; } echo ">45</option>
+    </select>
+    <select name='ampm_$field' class='time'>
+      <option value='am'"; if (date('a', $post["$field"]) == 'am') { echo " selected"; } echo ">AM</option>
+      <option value='pm'"; if (date('a', $post["$field"]) == 'pm') { echo " selected"; } echo ">PM</option>
+    </select>
+  ";
+}
 
 ?>

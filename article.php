@@ -40,9 +40,17 @@
       echo "
         <br />
         <b>Start Date/Time</b><br />
-        <input type='text' name='startdate' id='datetimepicker' value='" . date('Y-m-d h:i:s', $article['startdate']) . "' /><br />
+        <input type='text' name='startdate' id='datepicker' value='" . date('Y/m/d', $article['startdate']) . "' />
+      ";
+        timePicker($article, 'startdate');
+      echo "
+        <br /><br />
         <b>End Date/Time</b><br />
-        <input type='text' name='enddate' id='datetimepicker2' value='" . date('Y-m-d h:i:s', $article['enddate']) . "' /><br />
+        <input type='text' name='enddate' id='datepicker2' value='" . date('Y/m/d', $article['enddate']) . "' />
+      ";
+        timePicker($article, 'enddate');
+      echo "
+        <br /><br />
         <input type='hidden' name='location' value'NA' />
       ";
     } elseif ($type == 'job') { 

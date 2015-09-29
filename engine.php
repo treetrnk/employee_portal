@@ -276,6 +276,8 @@ if (isset($_POST['submit'])) {
             extract($_POST, EXTR_OVERWRITE);
             $userid = $_SESSION['id'];
             if ( isset($startdate) && isset($enddate) ) {
+              $startdate = "$startdate $hour_startdate:$minute_startdate $ampm_startdate";
+              $enddate = "$enddate $hour_enddate:$minute_enddate $ampm_enddate";
               $startdate = strtotime($startdate);
               $enddate = strtotime($enddate);
             } else {

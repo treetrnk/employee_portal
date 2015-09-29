@@ -84,7 +84,7 @@ if (isset($_POST['action'])) {
             Last Name: <input type='text' name='lname' value='$row[lname]' /><br />
             Initials: <input type='text' name='initials' value='$row[initials]' /><br />
             Title: <input type='text' name='title' value='$row[title]' /><br />
-            Office:&nbsp;&nbsp;&nbsp; <select name='location'>
+            Office: <select name='location'>
               <option value='' default>Choose one...</option>
               <option value='Canonsburg, PA'"; 
                 if ($row['location'] == 'Canonsburg, PA') { echo " selected "; } 
