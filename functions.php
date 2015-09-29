@@ -202,4 +202,51 @@ function add_mysql($field) {
 
 
 
+
+
+
+   /////////////////////
+  //  VALIDATE DATA  //
+ /////////////////////
+
+function validate($data, $required) {
+  $post = array();
+  foreach ($data as $key => $value) {
+
+////////////  DATES
+
+    if ($key == 'startday' or $key == 'birthday' or $key == 'leaveday') {
+      $arr = split('/', $value);
+      $y = $arr[0];
+      $m = $arr[1];
+      $d = $arr[2];
+      $thisyear = date('Y', time());
+      if ($key == 'birthday' && $y >= $thisyear) { 
+        message("Invalid $key."); 
+        return FALSE;
+      }
+      if (!checkdate($m,$d,$y)) {
+        message("Invalid $key");
+        return FALSE;
+      }
+    }
+
+////////////  REQUIRED
+
+    if (in_array($key, $required)) {
+      if ( $value == '' ) {
+        message("Please fill in all required fields.");
+        return FALSE;
+      }
+    }
+
+    if ( $key != '' && $value != '' ) {
+      $post[$key] = mysql_real_escape_string($value);
+    }
+
+  }
+  return $post;
+}
+
+
 ?>

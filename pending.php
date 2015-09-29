@@ -132,7 +132,7 @@
                 </th>
                 <td>
                   <select name='location'>
-                    <option default>Choose one...</option>
+                    <option value='' default>Choose one...</option>
                     <option value='Canonsburg, PA'"; 
                       if ($row['location'] == 'Canonsburg, PA') { echo ' selected'; } 
                       echo ">Canonsburg, PA</option>
