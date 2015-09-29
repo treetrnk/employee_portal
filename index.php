@@ -417,7 +417,7 @@ include('engine.php');
         //echo "<a href='?page=safety' class='navlink'>Safety</a>";
         //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
         //echo "<a href='?page=training' class='navlink'>Training</a>";
-        if ($_SESSION['user'] == 'nhare') {
+        if (isset($_SESSION['user']) && $_SESSION['user'] == 'nhare') {
         echo "<a href='?page=offices' class='navlink'>Offices</a>";
         }
         echo "<a href='?page=forum' class='navlink'>Forum</a>";

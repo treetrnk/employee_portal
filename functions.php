@@ -211,7 +211,7 @@ function validate($data, $required) {
 
 ////////////  DATES
 
-    if ($key == 'startday' || $key == 'birthday' || $key == 'leaveday') {
+    if ($key == 'startday' || $key == 'birthday' || $key == 'leaveday' || $key == 'startdate' || $key == 'enddate') {
       $arr = split('/', $value);
       $y = $arr[0];
       $m = $arr[1];
@@ -224,6 +224,17 @@ function validate($data, $required) {
       if (!checkdate($m,$d,$y)) {
         message("Invalid $key");
         return FALSE;
+      }
+      if ($value != ''){
+        if ($key == 'startdate') {
+          $value  = "$value $hour_startdate:$minute_startdate $ampm_startdate";
+          $value = strtotime($value);
+        } elseif ($key == 'enddate') {
+          $value  = "$value $hour_enddate:$minute_enddate $ampm_enddate";
+          $value = strtotime($value);
+        } else {
+          $value = date('Y-m-d', strtotime($value));
+        }
       }
     }
 
@@ -276,32 +287,58 @@ function validate($data, $required) {
   //  GENERATE SQL STATEMENT  //
  //////////////////////////////
 
-function sqlgen($post, $table) {
+function sqlgen($post) {
+
+  $avoidKeys (
+    "submit",
+    "hour_startdate",
+    "hour_enddate",
+    "minute_startdate",
+    "minute_enddate",
+    "ampm_startdate",
+    "ampm_enddate"
+  );
 
   switch ($post['submit']) { 
- 
+
+////////// ADD
     case 'add':
       $sql = "INSERT INTO $table (";
       foreach ($post as $key => $value) {
-        if ($key != 'submit' && $key != '' && $value != '') {
-          $sql .= "$value";
+        if (!in_array($key, $avoidKeys)) {
+          $sql .= "$key, ";
+        }
+      }
+      $sql .= ") VALUES (";
+      foreach ($post as $key => $value) {
+        if (!in_array($key, $avoidKeys)) {
+          $sql .= "'$value', ";  
+        }
+      $sql .= ")";
+      }
+      break;
+
+//////////  EDIT
+    case 'edit':
+      $sql = "UPDATE $table SET ";
+      foreach ($post as $key => $value) {
+        if (!in_array($key, $avoidKeys)) {
+          $sql .= "$key='$value', ";
         }
       }
       break;
 
-    case 'edit':
-      $sql = "UPDATE $table SET ";
-      break;
-
+//////////  DELETE
     case 'del':
-      $sql = "UPDATE $table SET del = 'y' WHERE ";
+      $sql = "UPDATE $table SET del = 'y'";
       break;
 
+//////////  DEFAULT
     default:
 
   }
 
-
+  return $sql;
 
 }
 
