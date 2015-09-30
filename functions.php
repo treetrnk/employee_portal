@@ -40,19 +40,29 @@ function fillSidebar($start, $end, $field) {
         $day = strtotime(date('M j ', $day) . date('Y', time()));
       }
       
+
+//////  PUSH TO ARRAY  //////
+
       if ($day > $oldestdate && $day < $newestdate) {
 
         if ($field == 'anniversary') { 
           $amount = strval(($day - strtotime($staff['startday'])) / $dateunits['year']);
           $staffdate = "<br />($amount" . "yrs - " . date('n/j)', strtotime($staff['startday']));
+
+          if ($amount > 0) {
+            array_push($sidebar, "$staff[id] --  $staff[fname] --  $staff[lname] --  $staffdate");
+          }
+
         } else {
           $staffdate = date('(n/j)', strtotime($staff["$field"]));
+          array_push($sidebar, "$staff[id] --  $staff[fname] --  $staff[lname] --  $staffdate");
         }
             
-        array_push($sidebar, "$staff[id] --  $staff[fname] --  $staff[lname] --  $staffdate");
       }
     }
   }
+
+//////  DISPLAY RESULTS  //////
 
   if ($sidebar) {
     foreach ($sidebar as $i) {

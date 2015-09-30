@@ -250,7 +250,6 @@ if (isset($_POST['submit'])) {
                 if ( $_POST['picture'] != '' ) { $emp_sql .= ", picture='$picture'"; }
                 if ( isset($leaveday) ) { $emp_sql .= ", leaveday='$leaveday'"; }
                 $emp_sql .= " WHERE id=$profileid";
-                var_dump($_POST);
               } else {
                 $message .= 'No profile provided.<br />';
               }

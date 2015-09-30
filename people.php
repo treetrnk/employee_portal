@@ -19,7 +19,7 @@
   }
 
   $sql = "SELECT * FROM staff WHERE leaveday IS NULL";        // START OF QUERY
-  if (isset($_POST['search'])) {           // SEARCH BAR KEYWORDS
+  if (isset($_POST['search']) && $_POST['search'] != '') {           // SEARCH BAR KEYWORDS
     $search = $_POST['search'];
     $sql = $sql . " AND fname LIKE '%" . $search . "%' OR lname LIKE '%" . $search . "%' OR title LIKE '%" . $search . "%' OR description LIKE '%" . $search . "%' OR about LIKE '%" . $search . "%'";
   } else {
@@ -35,7 +35,6 @@
   $total_rows = mysql_num_rows(mysql_query($sql));
   $sql = $sql . " ORDER BY lname LIMIT " . $limit . " OFFSET " . $offset;         // END OF QUERY
   $result = mysql_query($sql);
-
 
   echo "
 
