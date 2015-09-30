@@ -374,4 +374,32 @@ function timePicker($post, $field) {
   ";
 }
 
+
+   ////////////////////
+  //  IMAGE UPLOAD  //
+ ////////////////////
+
+function imageUpload() {
+  
+  $allowed_exts(
+    ".jpg",
+    ".JPG",
+    ".png",
+    ".PNG",
+    ".jpeg",
+    ".JPEG"
+  );
+  $filename = $_FILES['image']['name'];
+  $file_ext = substr($filename, strpos($filename, '.'), strlen($filename)-1); 
+  if (!in_array($file_ext, $allowed_exts) {
+    return FALSE;
+  }
+  $target_dest = "img/$_SESSION[user].$file_ext";
+  if (move_uploaded_file($_FILES['image']['tmp_name'], $target_dest)) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
 ?>
