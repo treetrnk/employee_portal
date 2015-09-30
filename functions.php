@@ -227,10 +227,10 @@ function validate($data, $required) {
       }
       if ($value != ''){
         if ($key == 'startdate') {
-          $value  = "$value $hour_startdate:$minute_startdate $ampm_startdate";
+          $value  = "$value $data[hour_startdate]:$data[minute_startdate] $data[ampm_startdate]";
           $value = strtotime($value);
         } elseif ($key == 'enddate') {
-          $value  = "$value $hour_enddate:$minute_enddate $ampm_enddate";
+          $value  = "$value $data[hour_enddate]:$data[minute_enddate] $data[ampm_enddate]";
           $value = strtotime($value);
         } else {
           $value = date('Y-m-d', strtotime($value));
