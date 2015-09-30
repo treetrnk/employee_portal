@@ -114,7 +114,7 @@ if ( isset($_POST['login']) && $_POST['login'] == "y") {
             $_SESSION['user'] = $user;
             $_SESSION['fname'] = $fname;
             $_SESSION['lname'] = $lname;
-            $_SESSION['picture'] = "staff/$picture";
+            $_SESSION['picture'] = $picture;
             $_SESSION['security'] = $security;
             $message = "New user added. Please update your <a href='?page=profile&profileid=$userid'>profile</a>!";
           } else {
@@ -243,10 +243,11 @@ if (isset($_POST['submit'])) {
                   } else {
                     $filename = $_FILES['picture']['name'];
                     $file_ext = substr($filename, strpos($filename, '.'), strlen($filename)-1); 
-                    $picture = "$username$file_ext";
+                    $picture = "staff/$username$file_ext";
                   }
                 }
-                $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', description='$description', about='$about', picture='$picture'";
+                $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', description='$description', about='$about'";
+                if ( $_POST['picture'] != '' ) { $emp_sql .= ", picture='$picture'"; }
                 if ( isset($leaveday) ) { $emp_sql .= ", leaveday='$leaveday'"; }
                 $emp_sql .= " WHERE id=$profileid";
                 var_dump($_POST);

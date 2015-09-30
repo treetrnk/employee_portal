@@ -180,7 +180,7 @@ if (isset($_POST['action'])) {
         <tr>
           <td width='160' valign='top'>  <!----PICTURE---->
             <img src=";
-              if ( $row['picture'] != '' ) { echo "staff/$row[picture]"; } else { echo 'img/no_pic1.png'; }
+              if ( $row['picture'] != '' ) { echo "$row[picture]"; } else { echo 'img/no_pic1.png'; }
       echo " 
           width='150' />
           </td>
@@ -195,7 +195,7 @@ if (isset($_POST['action'])) {
               if ($row['phone'] && $row['ext']) { 
                 echo "
                   <span class='inline-left'><u>Office #</u>:</span> 
-                  <span class='inline-right'>&nbsp;$row[phone] x$row[ext]</span> <br />
+                  <span class='inline-right'>&nbsp;$row[phone] (x$row[ext])</span> <br />
                 ";
               } 
               if ($row['cellphone']) { 

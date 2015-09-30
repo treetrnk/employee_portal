@@ -20,7 +20,6 @@ $limit = 15;
 
   $result = mysql_query($sql);
   if ($result) {
-    multipageNav($limit, $total_rows);
     echo '<ul style="list-style-type: none;">';
     while ($row = mysql_fetch_array($result)) { 
       $userids = $row['userid'];
