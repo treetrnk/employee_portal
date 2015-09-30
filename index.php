@@ -17,7 +17,7 @@ include('engine.php');
         $( '*[id^="datetimepicker"]' ).datetimepicker();
         $( '#datetimepicker2' ).datetimepicker();
         $( '#datetimepicker3' ).datetimepicker();
-        $( '#datepicker' ).datetimepicker({
+        $( '*[id^="datepicker"]' ).datetimepicker({
           timepicker:false, 
           format:'Y/m/d'
         });

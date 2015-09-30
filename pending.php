@@ -156,8 +156,13 @@
                   Date/Time: 
                 </th>
                 <td>
-                  Start: <input type='text' name='startdate' id='datetimepicker$count' value='$startdate' placeholder='(events only)' />
-                  End: <input type='text' name='enddate' id='datetimepickers$count' value='$enddate' placeholder='(events only)' />
+                  Start: <br />
+                  <input type='text' name='startdate' id='datepicker$count' value='$startdate' placeholder='(events only)' /> ";
+                    timePicker($row, 'startdate'); echo "
+                  <br />
+                  End: <br />
+                  <input type='text' name='enddate' id='datepicker1$count' value='$enddate' placeholder='(events only)' /> ";
+                    timePicker($row, 'enddate'); echo "
                 </td>
               </tr>
               <tr>
