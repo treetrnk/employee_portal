@@ -87,8 +87,8 @@
           echo "'>
         <a href='?page=profile&profileid=$row[id]'>
           <img src='";
-            if ($row['picture']) { echo $row['picture']; } else { echo "img/no_pic1.png"; } 
-            echo "' width='75' />
+            if ($row['picture']) { echo "staff/$row[picture]"; } else { echo "img/no_pic1.png"; } 
+            echo "' width='75' height='75' />
         </a> 
         <table width=50% class='people-info'>
           <tr>

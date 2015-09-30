@@ -65,7 +65,7 @@ sort($areasOfExpertise);
 if (isset($_POST['action'])) {
   $action = $_POST['action'];
   
-  echo "<form method='post' action='?page=profile&profileid=$profileid'>";
+  echo "<form method='post' enctype='multipart/form-data' action='?page=profile&profileid=$profileid'>";
   if ($action == 'edit') { echo "<h2>Edit Profile</h2>"; }else{ echo "<h2>Add New Employee</h2>"; }
   echo "
     <table width=100%>
@@ -150,6 +150,7 @@ if (isset($_POST['action'])) {
           </td>
         </tr>
       </table>
+      <input type='hidden' name='user' value='$row[username]' />
       <input type='hidden' name='submit' value='$action' />
       <input type='hidden' name='type' value='employee' />
       <center><input type='submit' value='Submit' style='margin-left: auto; margin-right: auto;' /></center>
@@ -179,7 +180,7 @@ if (isset($_POST['action'])) {
         <tr>
           <td width='160' valign='top'>  <!----PICTURE---->
             <img src=";
-              if ($row['picture']) { echo $row['picture']; } else { echo 'img/no_pic1.png'; } 
+              if ( $row['picture'] != '' ) { echo "staff/$row[picture]"; } else { echo 'img/no_pic1.png'; }
       echo " 
           width='150' />
           </td>

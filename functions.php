@@ -379,9 +379,9 @@ function timePicker($post, $field) {
   //  IMAGE UPLOAD  //
  ////////////////////
 
-function imageUpload() {
+function imageUpload($user) {
   
-  $allowed_exts(
+  $allowed_exts = array(
     ".jpg",
     ".JPG",
     ".png",
@@ -389,13 +389,16 @@ function imageUpload() {
     ".jpeg",
     ".JPEG"
   );
-  $filename = $_FILES['image']['name'];
+
+  $filename = $_FILES['picture']['name'];
   $file_ext = substr($filename, strpos($filename, '.'), strlen($filename)-1); 
-  if (!in_array($file_ext, $allowed_exts) {
+  if (!in_array($file_ext, $allowed_exts)) {
+    echo "Invalid File Extension";
     return FALSE;
   }
-  $target_dest = "img/$_SESSION[user].$file_ext";
-  if (move_uploaded_file($_FILES['image']['tmp_name'], $target_dest)) {
+  var_dump($_FILES);
+  $target_dest = "staff/$user$file_ext";
+  if (move_uploaded_file($_FILES['picture']['tmp_name'], $target_dest)) {
     return TRUE;
   } else {
     return FALSE;
