@@ -383,6 +383,27 @@ if (isset($_POST['submit'])) {
 
 
 
+//==============  COMMENT PROCESSING  ===============
+if (isset($_POST['submit']) && $_POST['submit'] == 'Comment' && isset($_GET['articleid'])) {
+  if 
+  $required = array('comment');
+  $_POST['date'] = time();
+  $post = validate($_POST, $required);
+  if ($post) {
+    $sql = "INSERT INTO comments (userid, parentid, text, date) VALUES ('$_SESSION[id]', '$_GET[articleid]', '$post[comment]', '$post[date]')";
+    $result = mysql_query($sql);
+    if ($result) {
+      $message = "Comment submitted";
+    } else {
+      $message = "Message failed to submit.";
+      $message .= mysql_error();
+    }
+  } else {
+    $message .= "Please enter text to submit a comment";
+  }
+}
+
+
 
 //============== EMAIL FEEDBACK AND TICKETS ===============
 if (isset($_SESSION['security'])) {

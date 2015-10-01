@@ -148,11 +148,44 @@
         if ( hasPermission('comment') ) {
           echo "
             <form method='post' action='?page=article&articleid=$articleid'>
-              <textarea style='width:100%; height:75px;'></textarea>
+              <textarea name='comment' style='width:100%; height:75px;'></textarea>
               <input style='margin-right:auto; margin-left:auto;' type='submit' name='submit' value='Comment' />
             </form>
           ";
         }
+
+    $sql = "SELECT * FROM comments WHERE parentid = '$articleid' ORDER BY date";
+    $result = mysql_query($sql);
+    $count = 0;
+    echo "<h3 style='text-align:left;'>Comments</h3>";
+    while ($row = mysql_fetch_array($result)) {
+      $count ++;
+
+      $usersql = mysql_query("SELECT * FROM staff WHERE id = '$row[userid]'");
+      $user = mysql_fetch_array($usersql);
+
+      echo "
+
+        <div class='people-list' style='min-height: 80px; border:1px solid #dedede;";
+          if ($count % 2 == 0) { echo 'background: #dedede;'; } 
+          echo "'>
+
+        <a href='?page=profile&profileid=$user[id]'>
+          <img src='";
+            if ($user['picture']) { echo "$user[picture]"; } else { echo "img/no_pic1.png"; } 
+            echo "' width='75' height='75' />
+        </a> 
+        <p style='text-align:left;'>$row[text]</p>
+        <br />
+        <span style='font-size: 8pt;'>
+          By: <a class='hidelink' href='?page=profile&profileid=$row[userid]'>$user[fname] $user[lname]</a> - " . date('M j, Y @ g:i a', $row['date']) . "
+        </span>
+
+        
+        </div>
+      ";
+
+    }
         
 
 

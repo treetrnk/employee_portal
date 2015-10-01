@@ -228,11 +228,9 @@ function validate($data, $required) {
       $d = $arr[2];
       $thisyear = date('Y', time());
       if ($key == 'birthday' && $y >= $thisyear) { 
-        message("Invalid $key."); 
         return FALSE;
       }
       if (!checkdate($m,$d,$y)) {
-        message("Invalid $key");
         return FALSE;
       }
       if ($value != ''){
@@ -252,7 +250,6 @@ function validate($data, $required) {
 
     if ($key == 'phone' || $key == 'cellphone') {
       if (!preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $value)) {
-        message("Invalid $key number. <br /> Please use the following format: 000-000-0000");
         return FALSE;
       }
     }
@@ -261,7 +258,6 @@ function validate($data, $required) {
 
     if ($key == 'ext') {
       if (!preg_match("/^[0-9]{4}$/", $value)) {
-        message("Invalid extension. <br /> Please use the following format: 0000");
         return FALSE;
       }
     }
@@ -270,7 +266,6 @@ function validate($data, $required) {
 
     if ($key == 'email') {
       if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-        message("Invalid email address.");
         return FALSE;
       }
     }
@@ -279,7 +274,6 @@ function validate($data, $required) {
 
     if (in_array($key, $required)) {
       if ( $value == '' ) {
-        message("Please fill in all required fields.");
         return FALSE;
       }
     }

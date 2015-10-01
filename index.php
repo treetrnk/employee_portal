@@ -154,7 +154,7 @@ include('engine.php');
         width: 100%
       }
       .sidebar {
-        width: 150px;
+        width: 200px;
         padding: 5px;
         font-size: 13px;
         vertical-align: top;
@@ -459,7 +459,7 @@ include('engine.php');
                   if ($result) {
                     echo '<ul>';
                     while ($job = mysql_fetch_array($result)) {
-                      echo '<li><a href="?page=article&articleid=' . $job['id'] . '">' . $job['title'] . '</a><br />';
+                      echo "<li><a href='?page=article&articleid=$job[id]'>" . substr($job['title'], 0, 28) . "...</a><br />";
                       echo $job['location'] . '</li>';
                     }
                     if ( hasPermission('job') ) {
