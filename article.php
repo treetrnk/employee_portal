@@ -132,18 +132,25 @@
     $usersql = mysql_query("SELECT * FROM staff WHERE id = '$userids'");
     $userinfo = mysql_fetch_array($usersql);
 
-    $current_user = mysql_fetch_array(mysql_query("SELECT * FROM staff WHERE id = $_SESSION[id]"));
-    if (strstr($current_user['subscriptions'], "($articleid)")) { $subscribe = "Unsubscribe"; } else { $subscribe = "Subscribe"; }
+      echo "
+        $article[body]
+        <br /><br />
+      ";
+
+    if (isset($_SESSION['id'])) {
+      $current_user = mysql_fetch_array(mysql_query("SELECT * FROM staff WHERE id = $_SESSION[id]"));
+      if (strstr($current_user['subscriptions'], "($articleid)")) { $subscribe = "Unsubscribe"; } else { $subscribe = "Subscribe"; }
+      echo "
+        <form method='post' action='?page=article&articleid=$articleid'>
+          <input type='submit' name='submit' value='$subscribe' style='float:right;' />
+        </form>
+        <span style='font-size: 8pt;'>
+          By: <a class='hidelink' href='?page=profile&profileid=$article[userid]'>$userinfo[fname] $userinfo[lname]</a> - " . date('M j, Y @ g:i a', $article['date']) . "
+        </span>";
+
+    }
 
     echo "
-      $article[body]
-      <br /><br />
-      <form method='post' action='?page=article&articleid=$articleid'>
-        <input type='submit' name='submit' value='$subscribe' style='float:right;' />
-      </form>
-      <span style='font-size: 8pt;'>
-        By: <a class='hidelink' href='?page=profile&profileid=$article[userid]'>$userinfo[fname] $userinfo[lname]</a> - " . date('M j, Y @ g:i a', $article['date']) . "
-      </span>
       <br /><br /><br /><br />
       
       <div style='width:60%; margin-right:auto; margin-left:auto; text-align:right;'>
@@ -179,10 +186,13 @@
             if ($user['picture']) { echo "$user[picture]"; } else { echo "img/no_pic1.png"; } 
             echo "' width='75' height='75' />
         </a> 
-        <p style='text-align:left;'>$row[text]</p>
-        <br />
+        <p style='text-align:left;'>
+          <a class='hidelink' href='?page=profile&profileid=$row[userid]'><u>$user[fname] $user[lname]</u></a>:<br />
+          $row[text]
+        </p>
+        
         <span style='font-size: 8pt;'>
-          By: <a class='hidelink' href='?page=profile&profileid=$row[userid]'>$user[fname] $user[lname]</a> - " . date('M j, Y @ g:i a', $row['date']) . "
+          " . date('M j, Y @ g:i a', $row['date']) . "
         </span>
 
         
