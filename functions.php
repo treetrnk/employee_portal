@@ -140,9 +140,9 @@ function multipageNav($limit, $total_rows) {
 }
 
 
-   //////////////////////////////
-  //  ARTICLE SECURITY CHECK  //
- //////////////////////////////
+   //////////////////////
+  //  SECURITY CHECK  //
+ //////////////////////
 
 function hasPermission($type) {
   
@@ -408,5 +408,32 @@ function imageUpload($user) {
     return FALSE;
   }
 }
+
+
+   //////////////////////////
+  //  UPDATE SUBSCRIBERS  //
+ //////////////////////////
+
+function updateSubscribers($articleid) {
+  
+  $art_sql = mysql_query("SELECT * FROM articles WHERE id = '$articleid'");
+  $article = mysql_fetch_array($art_sql);
+
+  $sql = mysql_query("SELECT * FROM staff WHERE subscriptions LIKE '%($articleid)%'"); 
+  while ($row = mysql_fetch_array($sql)) {
+
+    $to = $row['email'];
+    $subject = "ARM PORTAL - An article you are subscribed to has been updated";
+    $body = "Article #$article[id], titled '$article[title]', has been updated. \n";
+    $body .= "Please follow the link below to view the article: \n \n";
+    $body .= "$website/?page=article&articleid=$article[id]";
+    $headers = 'From: ARMPORTAL@armgroup.net' . "\r\n" . 
+      'Reply-To: ARMPORTAL@armgroup.net' . "\r\n" .
+      'X-Mailer: PHP/' . phpversion();
+    mail ($to, $subject, $body, $headers);
+
+  }
+}
+
 
 ?>

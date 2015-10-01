@@ -374,6 +374,7 @@ if (isset($_POST['submit'])) {
             if (mysql_query($art_sql)) { // IF SUCCESS
               if (!$_GET['articleid']) { $_GET[articleid] = mysql_insert_id(); }
               $message .= ucfirst($type) . " " . $verb . " successfully!!!";
+              updateSubscribers($_GET['articleid']);
             } else { 
               $message .= "There was a problem.<br />" . mysql_error() . ".";
             }
@@ -385,7 +386,6 @@ if (isset($_POST['submit'])) {
 
 //==============  COMMENT PROCESSING  ===============
 if (isset($_POST['submit']) && $_POST['submit'] == 'Comment' && isset($_GET['articleid'])) {
-  if 
   $required = array('comment');
   $_POST['date'] = time();
   $post = validate($_POST, $required);
@@ -394,6 +394,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Comment' && isset($_GET['art
     $result = mysql_query($sql);
     if ($result) {
       $message = "Comment submitted";
+      updateSubscribers($_GET['articleid']);
     } else {
       $message = "Message failed to submit.";
       $message .= mysql_error();
@@ -401,6 +402,31 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Comment' && isset($_GET['art
   } else {
     $message .= "Please enter text to submit a comment";
   }
+}
+
+
+
+//================= SUBSCRIBE ===================
+if (isset($_POST['submit']) && $_POST['submit'] == 'Subscribe' && isset($_GET['articleid']) && isset($_SESSION['id'])) {
+
+  $sql = "UPDATE staff SET subscriptions = CONCAT(subscriptions, '($_GET[articleid])') WHERE id = '$_SESSION[id]'";
+  $result = mysql_query($sql);
+  if ($result) {
+    $message = "You are now subscribed to this article." . mysql_error();
+  } else {
+    $message = "Subscription failed. <br />" . mysql_error();
+  }
+
+} elseif (isset($_POST['submit']) && $_POST['submit'] == 'Unsubscribe' && isset($_GET['articleid']) && isset($_SESSION['id'])) {
+
+  $sql = "UPDATE staff SET subscriptions = REPLACE(subscriptions, '($_GET[articleid])', '') WHERE id = '$_SESSION[id]'";
+  $result = mysql_query($sql);
+  if ($result) {
+    $message = "You are now unsubscribed from this article." . mysql_error();
+  } else {
+    $message = "Unsubscription failed. <br />" . mysql_error();
+  }
+
 }
 
 

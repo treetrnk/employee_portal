@@ -131,11 +131,15 @@
     $userids = $article['userid'];
     $usersql = mysql_query("SELECT * FROM staff WHERE id = '$userids'");
     $userinfo = mysql_fetch_array($usersql);
+
+    $current_user = mysql_fetch_array(mysql_query("SELECT * FROM staff WHERE id = $_SESSION[id]"));
+    if (strstr($current_user['subscriptions'], "($articleid)")) { $subscribe = "Unsubscribe"; } else { $subscribe = "Subscribe"; }
+
     echo "
       $article[body]
       <br /><br />
       <form method='post' action='?page=article&articleid=$articleid'>
-        <input type='submit' name='submit' value='Subscribe' style='float:right;' />
+        <input type='submit' name='submit' value='$subscribe' style='float:right;' />
       </form>
       <span style='font-size: 8pt;'>
         By: <a class='hidelink' href='?page=profile&profileid=$article[userid]'>$userinfo[fname] $userinfo[lname]</a> - " . date('M j, Y @ g:i a', $article['date']) . "
