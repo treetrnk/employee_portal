@@ -438,7 +438,7 @@ include('engine.php');
 
   echo "
       <div class='content'>  
-        <hr color=#f3c60d width=100% />
+       <!--- <hr color=#f3c60d width=100% /> --->
         <br />
         <table width=100%>
           <tr>
@@ -482,7 +482,7 @@ include('engine.php');
                 <ul>
               ";
 
-                $before = 0;
+                $before = $dateunits['month'];
                 $after = $dateunits['month'];
 
                 fillSidebar($before, $after, 'startday');
@@ -497,8 +497,8 @@ include('engine.php');
                 <ul>
               ";
 
-                $before = $dateunits['day'] * 20;
-                $after = $dateunits['day'] * 20;
+                $before = $dateunits['month'];
+                $after = $dateunits['month'];
                 
                 fillSidebar($before, $after, 'leaveday');
 

@@ -194,13 +194,13 @@ if (isset($_POST['action'])) {
                 <span class='inline-right'>&nbsp;<a href='mailto:$row[email]'>$row[email]</a></span><br />";
               if ($row['phone'] && $row['ext']) { 
                 echo "
-                  <span class='inline-left'><u>Office #</u>:</span> 
+                  <span class='inline-left'><u>Phone</u>:</span> 
                   <span class='inline-right'>&nbsp;$row[phone] (x$row[ext])</span> <br />
                 ";
               } 
               if ($row['cellphone']) { 
                 echo "
-                  <span class='inline-left'><u>Cell #</u>:</span> 
+                  <span class='inline-left'><u>Mobile</u>:</span> 
                   <span class='inline-right'>&nbsp;$row[cellphone]</span> <br />
                 ";
               } 
