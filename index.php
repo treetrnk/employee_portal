@@ -350,13 +350,70 @@ include('engine.php');
       select.time {
         width: 40px;
       }
+      .togglebtn {
+        width: 100%;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width:1px;
+        border-style:solid;
+        border-color: #424242;
+        background: #E5E5E5;
+        cursor: pointer;
+        height: 35px;
+        line-height: 35px;
+      }
+      .togglediv {
+        display: none;
+        width: 100%;
+      }
       <?php if ($_GET['sample'] == false) { ?>
       .sample {
         display: none;
       }
       <?php } ?>
-      </style>
-      <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
+    </style>
+    <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+      // Add a script element as a child of the body
+      function downloadJSAtOnload() {
+        var element = document.createElement("script");
+        element.src = "//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js";
+        document.body.appendChild(element);
+      } // Check for browser support of event handling capability
+      if (window.addEventListener)
+        window.addEventListener("load", downloadJSAtOnload, false);
+      else if (window.attachEvent)
+        window.attachEvent("onload", downloadJSAtOnload);
+      else window.onload = downloadJSAtOnload;
+      //https://developers.google.com/speed/docs/insights/BlockingJS
+
+      
+      // SLIDE TOGGLE DIVS
+      function hidediv(d) {
+        var did = '#' + d;
+        $('.togglebtn').css('color', '#424242');
+        $('.togglebtn').css('background-color', '#E5E5E5');
+        $('.togglediv').slideUp("slow");
+        $(did).slideDown("slow");
+        var tid = did + 'btn';
+        $(tid).css('color', '#00AEFF');
+        $(tid).css('background-color', '#424242');
+      }
+      
+      // WHEN PAGE IS LOADED (NO JQUERY TILL AFTER (BECAUSE GOOGLE SAYS SO))
+      var tid = setInterval( function () {
+        if ( document.readyState !== 'complete' ) return;
+        clearInterval( tid );      
+        
+        // ACTION
+        $(function() {			
+          cycleslides();
+        });
+        
+      }, 1000 );
+      
+    </script>
   </head>
 
 <?php    
