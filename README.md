@@ -1,3 +1,3 @@
-# Arm Portal
+# Employee Portal
 
-arm_portal is an employee portal that I working on for my current job.  The code has been made available for referrence and examples.
+Employee_portal is a portal that displays current employees, articles, events, and help for the employees of a company. It is was developed for a specific company, and therefore it is not very portable. The code has been made available for ideas, reuse, and examples. 
