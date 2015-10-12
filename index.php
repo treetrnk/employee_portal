@@ -435,7 +435,7 @@ include('engine.php');
           <td align='center'>
           </td>
           <td align='right' valign='bottom'>
-            <h1 style='color: #0D59A8;font-weight: normal;'>Employee Portal</h1> <!----LOGIN/LOGOUT---->
+            <h1 style='color: #0D59A8;font-weight: normal;'>DEV Portal</h1> <!----LOGIN/LOGOUT---->
             <span class='profile-links'>
   ";
               if (isset($_SESSION['user'])) {
