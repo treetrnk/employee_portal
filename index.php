@@ -359,6 +359,7 @@ include('engine.php');
         border-style:solid;
         border-color: #424242;
         background: #E5E5E5;
+        font-weight: bold;
         cursor: pointer;
         height: 35px;
         line-height: 35px;
@@ -374,11 +375,12 @@ include('engine.php');
       <?php } ?>
     </style>
     <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
+    <script type="text/javascript" src="./tools/jquery.js"></script>
     <script type="text/javascript">
       // Add a script element as a child of the body
-      function downloadJSAtOnload() {
+      /*function downloadJSAtOnload() {
         var element = document.createElement("script");
-        element.src = "//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js";
+        element.src = "http://code.jquery.com/jquery-latest.min.js";
         document.body.appendChild(element);
       } // Check for browser support of event handling capability
       if (window.addEventListener)
@@ -386,6 +388,7 @@ include('engine.php');
       else if (window.attachEvent)
         window.attachEvent("onload", downloadJSAtOnload);
       else window.onload = downloadJSAtOnload;
+       */
       //https://developers.google.com/speed/docs/insights/BlockingJS
 
       
@@ -396,22 +399,12 @@ include('engine.php');
         $('.togglebtn').css('background-color', '#E5E5E5');
         $('.togglediv').slideUp("slow");
         $(did).slideDown("slow");
-        var tid = did + 'btn';
-        $(tid).css('color', '#00AEFF');
+        var tid = did + '-btn';
+        var aid = '#' + d + '-arw';
+        $(aid).html("&#9660; &nbsp;&nbsp;");
+        $(tid).css('color', '#eeeeee');
         $(tid).css('background-color', '#424242');
       }
-      
-      // WHEN PAGE IS LOADED (NO JQUERY TILL AFTER (BECAUSE GOOGLE SAYS SO))
-      var tid = setInterval( function () {
-        if ( document.readyState !== 'complete' ) return;
-        clearInterval( tid );      
-        
-        // ACTION
-        $(function() {			
-          cycleslides();
-        });
-        
-      }, 1000 );
       
     </script>
   </head>
