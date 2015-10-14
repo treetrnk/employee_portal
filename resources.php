@@ -1,6 +1,6 @@
 <?php 
 
-  $sql = "SELECT * FROM articles WHERE type = 'resources' ORDER BY title";
+  $sql = "SELECT * FROM articles WHERE type = 'resources' AND del = 'n' ORDER BY title";
   $result = mysql_query($sql);
   
   if ( hasPermission('resources') ) {
@@ -33,7 +33,8 @@
               <form method='post' action='index.php?page=article&articleid=$articleid'>
                 <input type='hidden' name='action' value='edit' />
                 <input type='hidden' name='type' value='$type' />
-                <input type='submit' value='Edit Article' style='float:right;' />
+                <input type='submit' name='submit' value='Delete' style='float:right; position:relative; top:18px;' />
+                <input type='submit' value='Edit' style='float:right; position:relative; top:18px;' />
               </form>
             ";
           }
