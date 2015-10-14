@@ -3,7 +3,7 @@
   $sql = "SELECT * FROM articles WHERE type = 'resources' ORDER BY title";
   $result = mysql_query($sql);
   
-  if ( hasPermission('admin') ||  $article['userid'] == $_SESSION['id']) {
+  if ( hasPermission('resources') ) {
     echo "
       <form method='post' action='index.php?page=article' style='float:right;'>
         <input type='hidden' name='action' value='add' />
@@ -28,7 +28,7 @@
         <div class='togglebtn' onClick='hidediv(\"$identifier\")' id='$identifier-btn'><span id='$identifier-arw' style='float:right;font-weight:normal;'>&#9650; &nbsp;&nbsp;</span>&nbsp;&nbsp;$article[title]</div>
         <div class='togglediv' id='$identifier'>
       ";
-          if ( hasPermission('admin') ||  $article['userid'] == $_SESSION['id']) {
+          if ( hasPermission('resources') ||  $article['userid'] == $_SESSION['id']) {
             echo "
               <form method='post' action='index.php?page=article&articleid=$articleid'>
                 <input type='hidden' name='action' value='edit' />

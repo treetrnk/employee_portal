@@ -397,6 +397,7 @@ include('engine.php');
         var did = '#' + d;
         $('.togglebtn').css('color', '#424242');
         $('.togglebtn').css('background-color', '#E5E5E5');
+        $("span[id$='-arw']").html("&#9650; &nbsp;&nbsp;");
         $('.togglediv').slideUp("slow");
         $(did).slideDown("slow");
         var tid = did + '-btn';
