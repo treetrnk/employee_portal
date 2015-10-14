@@ -9,54 +9,7 @@ if ($_GET['profileid']) {
   }
 }
 
-$areasOfExpertise = array (     ////  AREAS OF EXPERTISE  ////
-  'Water Supply', 
-  'Hydrogeology', 
-  'SRBC',
-  'Fill Management',
-  'Site Remediation',
-  'Brownfield/Act 2',
-  'Ecological/Wetlands',
-  'Cultural Resources',
-  'Threatened and Endagered Species',
-  'Aquatic Assessments',
-  'Watershed Management/Improvement',
-  'Environmental Permitting',
-  'NEPA',
-  'Spill Planning',
-  'Hazmat',
-  'Water Resources/Dams',
-  'Grotechnical',
-  'Soil Mechanics',
-  'Foundations',
-  'Sinkhole',
-  'Landfill',
-  'Solid Waste Management Facilities',
-  'Renewable Energy Services',
-  'GIS',
-  'GPS',
-  'Surveying',
-  'Stormwater Management',
-  'E&S Planning',
-  'Wastewater Treatment/Permitting',
-  'PADOT Highway Occupancy Permitting (HOP)',
-  'Oil & Gas',
-  'Construction Oversight/Certification',
-  'Electrical',
-  'Mechanical',
-  'Controls/Automation',
-  'Environmental/Geotechnical',
-  'Borehole',
-  'Marketing',
-  'Human Resources',
-  'Accounting',
-  'Graphic Design',
-  'Computer Support',
-  'Web Development',
-  'IT Infrastructure'
-);
-sort($areasOfExpertise);
-
+$areasOfExpertise = expertiseList();
 
        ////////////////////
       //  EDIT PROFILE  //
