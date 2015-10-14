@@ -459,7 +459,7 @@ function expertiseList() {
     'Spill Planning',
     'Hazmat',
     'Water Resources/Dams',
-    'Grotechnical',
+    'Geotechnical',
     'Soil Mechanics',
     'Foundations',
     'Sinkhole',
