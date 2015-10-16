@@ -394,17 +394,28 @@ include('engine.php');
       
       // SLIDE TOGGLE DIVS
       function hidediv(d) {
-        var did = '#' + d;
-        $('.togglebtn').css('color', '#424242');
-        $('.togglebtn').css('background-color', '#E5E5E5');
-        $("span[id$='-arw']").html("&#9650; &nbsp;&nbsp;");
-        $('.togglediv').slideUp("slow");
-        $(did).slideDown("slow");
-        var tid = did + '-btn';
-        var aid = '#' + d + '-arw';
-        $(aid).html("&#9660; &nbsp;&nbsp;");
-        $(tid).css('color', '#eeeeee');
-        $(tid).css('background-color', '#424242');
+        var div = '#' + d;
+        var divBtn = div + '-btn';
+        var divArw = div + '-arw';
+        var divDisplay = $(div).css('display');
+
+        if (divDisplay == "none") {
+          $('.togglediv').slideUp("slow");
+          $('.togglebtn').css('color', '#424242');
+          $('.togglebtn').css('background-color', '#E5E5E5');
+          $("span[id$='-arw']").html("&#9650; &nbsp;&nbsp;");
+
+          $(div).slideDown("slow");
+          $(divArw).html("&#9660; &nbsp;&nbsp;");
+          $(divBtn).css('color', '#eeeeee');
+          $(divBtn).css('background-color', '#424242');
+
+        } else {
+          $('.togglediv').slideUp("slow");
+          $('.togglebtn').css('color', '#424242');
+          $('.togglebtn').css('background-color', '#E5E5E5');
+          $("span[id$='-arw']").html("&#9650; &nbsp;&nbsp;");
+        }
       }
       
     </script>
