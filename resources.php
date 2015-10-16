@@ -26,7 +26,7 @@
       
       echo "
         <div class='togglebtn' onClick='hidediv(\"$identifier\")' id='$identifier-btn'><span id='$identifier-arw' style='float:right;font-weight:normal;'>&#9650; &nbsp;&nbsp;</span>&nbsp;&nbsp;$article[title]</div>
-        <div class='togglediv' id='$identifier'>
+        <div class='togglediv' id='$identifier'><br />
       ";
           if ( hasPermission('resources') ||  $article['userid'] == $_SESSION['id']) {
             echo "
