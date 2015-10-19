@@ -25,7 +25,7 @@
   } 
 
   echo "
-    <h2>Career Opportunities</h2>
+    <h2>Career Opportunities</h2><br />
     <div style='width: 700px; margin-right: auto; margin-left: auto;'>
   ";
 
@@ -35,7 +35,7 @@
 
     echo "
       <div class='togglebtn' onClick='hidediv(\"$identifier\")' id='$identifier-btn'><span id='$identifier-arw' style='float:right;font-weight:normal;'>&#9650; &nbsp;&nbsp;</span>&nbsp;&nbsp;$o</div>
-      <div class='togglediv' id='$identifier'><br />
+      <div class='togglediv' id='$identifier'><ul><br />
     ";
 
     $sql = "SELECT * FROM articles WHERE location LIKE '%$o%' AND type = 'job' and del = 'n' ORDER BY title";
@@ -43,20 +43,8 @@
     if ($result = mysql_query($sql)) {
 
       while ($job = mysql_fetch_array($result)) {
-        if ( hasPermission('admin') ||  $job['userid'] == $_SESSION['id']) {
-          echo "
-            <form method='post' action='index.php?page=article&articleid=$job[id]'>
-              <input type='hidden' name='action' value='edit' />
-              <input type='hidden' name='type' value='$type' />
-              <input type='submit' name='submit' value='Delete' style='float:right; position:relative; top:18px;' />
-              <input type='submit' value='Edit' style='float:right; position:relative; top:18px;' />
-            </form>
-          ";
-        }
         echo "
-          <a href='?page=article&articleid=$job[id]'><b>$job[title]</b></a><br /> 
-          $job[body]
-          <br /><br />
+          <li><a href='?page=article&articleid=$job[id]'><b>$job[title]</b></a></li><br /> 
         ";
       }
 
