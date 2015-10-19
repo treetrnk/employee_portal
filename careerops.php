@@ -13,8 +13,19 @@
   
   sort($offices);
 
+  if ( hasPermission('job') ) {
+    echo "
+      <br />
+      <form method='post' action='?page=article'>
+        <input type='hidden' name='action' value='add' />
+        <input type='hidden' name='type' value='job' />
+        <input type='submit' value='Add Position' style='float:right;' />
+      </form>
+    ";
+  } 
+
   echo "
-    <h2>Areas of Expertise</h2>
+    <h2>Career Opportunities</h2>
     <div style='width: 700px; margin-right: auto; margin-left: auto;'>
   ";
 
@@ -27,7 +38,7 @@
       <div class='togglediv' id='$identifier'><br />
     ";
 
-    $sql = "SELECT * FROM articles WHERE location LIKE '%$o%' AND type = 'job' ORDER BY title";
+    $sql = "SELECT * FROM articles WHERE location LIKE '%$o%' AND type = 'job' and del = 'n' ORDER BY title";
     
     if ($result = mysql_query($sql)) {
 

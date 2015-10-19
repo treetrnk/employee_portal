@@ -335,7 +335,11 @@ if (isset($_POST['submit'])) {
                 } else {
                   $message = "Unknown article . . .";
                 }
-                $page = "home";
+                if ($type == "job") {
+                  $page = "careerops";
+                } else {
+                  $page = "home";
+                }
                 $verb = "deleted";
                 break;
 

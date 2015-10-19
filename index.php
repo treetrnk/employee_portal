@@ -520,20 +520,22 @@ include('engine.php');
                   $jobsql = "SELECT * FROM articles WHERE type = 'job' ORDER BY date DESC LIMIT 5 ";
                   $result = mysql_query($jobsql);
                   if ($result) {
-                    echo '<ul>';
+                    echo "<ul>";
                     while ($job = mysql_fetch_array($result)) {
                       echo "<li><a href='?page=article&articleid=$job[id]'>" . substr($job['title'], 0, 28) . "...</a><br />";
                       echo $job['location'] . '</li>';
                     }
                     if ( hasPermission('job') ) {
-                      echo '<br />';
-                      echo '<form method="post" action="?page=article">';
-                        echo '<input type="hidden" name="action" value="add" />';
-                        echo '<input type="hidden" name="type" value="job" />';
-                        echo '<input type="submit" value="Add Position" />';
-                      echo '</form>';
+                      echo "
+                        <br />
+                        <form method='post' action='?page=article'>
+                          <input type='hidden' name='action' value='add' />
+                          <input type='hidden' name='type' value='job' />
+                          <input type='submit' value='Add Position' />
+                        </form>
+                      ";
                     } 
-                    echo '</ul>';
+                    echo "</ul>";
                   }  
                   echo "</ul>";
 
