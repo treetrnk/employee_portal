@@ -100,6 +100,7 @@ if ( isset($_POST['login']) && $_POST['login'] == "y") {
           $_SESSION['fname'] = $userdata['fname'];
           $_SESSION['lname'] = $userdata['lname'];
           $_SESSION['email'] = $userdata['email'];
+          $_SESSION['picture'] = $userdata['picture'];
           $_SESSION['security'] = $userdata['security'];
         } else {
           $fname = ucfirst(substr($user, 0, 1));
@@ -114,7 +115,6 @@ if ( isset($_POST['login']) && $_POST['login'] == "y") {
             $_SESSION['user'] = $user;
             $_SESSION['fname'] = $fname;
             $_SESSION['lname'] = $lname;
-            $_SESSION['picture'] = $picture;
             $_SESSION['security'] = $security;
             $message = "New user added. Please update your <a href='?page=profile&profileid=$userid'>profile</a>!";
           } else {

@@ -86,6 +86,12 @@ include('engine.php');
         padding-bottom: 10px;
         padding-top: 10px;
       }
+      .nav-icons tr td {
+        width: 50px;
+      }
+      .nav-icons tr td a {
+        font-size: 8pt;
+      }
       .navlinkbar {
         margin-left: auto;
         margin-right: auto;
@@ -302,7 +308,7 @@ include('engine.php');
         text-decoration: underline;
       } 
      .profile-links {
-        font-size: 11pt;
+        font-size: 9pt;
       }
       .inline-left {
         display: inline-block;
@@ -442,9 +448,37 @@ include('engine.php');
           <td align='right' valign='bottom'>
             <h1 style='color: #0D59A8;font-weight: normal;'>DEV Portal</h1> <!----LOGIN/LOGOUT---->
             <span class='profile-links'>
-  ";
-              if (isset($_SESSION['user'])) {
-                echo "<a href='?page=profile&profileid=$_SESSION[id]'>$_SESSION[user] </a> &nbsp;|&nbsp; ";
+              <table class='nav-icons'>
+                <tr>
+                  <td align='center'>
+                    <a href='?page=article&articleid=93'> 
+                      <img src='icons/manual.png' />
+                      eManual
+                    </a>
+                  </td>
+                  <td align='center'>
+                    <a href='https://www.zoho.com/crm/' target='_blank'> 
+                      <img src='icons/zoho.png' />
+                      Zoho
+                    </a>
+                  </td>
+          ";
+          if (isset($_SESSION['id'])) {
+            echo "
+                  <td align='center'>
+                    <a href='?page=email&type=ticket'> 
+                      <img src='icons/helpdesk.png' />
+                      Helpdesk
+                    </a>
+                  </td>
+                  <td align='center'>
+                    <a href='?page=email&type=feedback'> 
+                      <img src='icons/feedback.png' />
+                      Feedback
+                    </a>
+                  </td>
+            ";
+
                 if ( hasPermission('approve') ) {
                   $pendsql = "SELECT * FROM articlesPending WHERE del = 'n'";
                   $result = mysql_query($pendsql);
@@ -453,13 +487,45 @@ include('engine.php');
                   $result = mysql_query($pendsql);
                   $pend += mysql_num_rows($result);
                   if ( $pend > 0 ) {
-                    echo " <a href='?page=pending'>Pending</a> <span style='color:#ff0000;'>" . $unicnumbers[$pend] . "</span>&nbsp;|&nbsp; ";
+                    echo " 
+                      <td align='center'>
+                        <a href=''> 
+                          <img src='icons/pending-red.png' />
+                          Pending
+                        </a>
+                        </td>
+                    ";
                   }
                 }
-                echo " <a href='?page=$page&logout=y'>Logout?</a> <br />";
-              } else {
-                echo "<a href='?page=login'>Employee Login</a> <br />";
-              } 
+            echo "
+                  <td align='center'>
+                    <a href='?page=profile&profileid=$_SESSION[id]'> 
+                      <img src='$_SESSION[picture]' width=30 height=30 />
+                      $_SESSION[user]
+                    </a>
+                  </td>
+                  <td align='center'>
+                    <a href='?page=$page&logout=y'> 
+                      <img src='icons/logout.png' />
+                      Logout
+                    </a>
+                  </td>
+            ";
+          } else {
+            echo "
+                  <td align='center'>
+                    <a href='?page=login'> 
+                      <img src='icons/login.png' />
+                      Login
+                    </a>
+                  </td>
+            ";
+          }
+          echo "
+                </tr>
+              </table>
+  ";
+
 
   echo "
             </span>
