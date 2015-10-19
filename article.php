@@ -171,7 +171,9 @@
     $sql = "SELECT * FROM comments WHERE parentid = '$articleid' ORDER BY date";
     $result = mysql_query($sql);
     $count = 0;
-    echo "<h3 style='text-align:left;'>Comments</h3>";
+    if (mysql_num_rows($result)) {
+      echo "<h3 style='text-align:left;'>Comments</h3>";
+    }
     while ($row = mysql_fetch_array($result)) {
       $count ++;
 

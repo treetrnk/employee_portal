@@ -39,8 +39,9 @@
     ";
 
     $sql = "SELECT * FROM articles WHERE location LIKE '%$o%' AND type = 'job' and del = 'n' ORDER BY title";
+    $result = mysql_query($sql);
     
-    if ($result = mysql_query($sql)) {
+    if (mysql_num_rows($result)) {
 
       while ($job = mysql_fetch_array($result)) {
         echo "
@@ -49,10 +50,11 @@
       }
 
     } else {
-      echo "None found.";
+      echo "<li>None found</li><br />";
     }
 
     echo "
+        </ul>
       </div>
     ";
 

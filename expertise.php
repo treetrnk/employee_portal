@@ -15,11 +15,13 @@
       <div class='togglebtn' onClick='hidediv(\"$identifier\")' id='$identifier-btn'><span id='$identifier-arw' style='float:right;font-weight:normal;'>&#9650; &nbsp;&nbsp;</span>&nbsp;&nbsp;$cat</div>
       <div class='togglediv' id='$identifier'>
         <ul>
+          <br />
     ";
 
     $sql = "SELECT * FROM staff WHERE description LIKE '%$cat%' ORDER BY lname";
+    $result = mysql_query($sql);
     
-    if ($result = mysql_query($sql)) {
+    if (mysql_num_rows($result)) {
 
       while ($staff = mysql_fetch_array($result)) {
         echo "
@@ -28,10 +30,11 @@
       }
 
     } else {
-      echo "None found.";
+      echo "<li>None found</li>";
     }
 
     echo "
+          <br />
         </ul>
       </div>
     ";
