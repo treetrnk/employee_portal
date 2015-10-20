@@ -305,8 +305,13 @@ if (isset($_POST['submit'])) {
               case 'add':   ///////////////  ADD  ////
                
                 if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
-                  $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
-                  $_GET['articleid'] = mysql_insert_id();
+                  if ($type == 'job' && $_POST['location'] != '') {
+                    $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) 
+                      VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+                    $_GET['articleid'] = mysql_insert_id();
+                  } else {
+                    $message = "Please fill all fields.";
+                  }
                 } else { 
                   $message = "Please fill all fields.";
                 }
@@ -380,7 +385,9 @@ if (isset($_POST['submit'])) {
               $message .= ucfirst($type) . " " . $verb . " successfully!!!";
               updateSubscribers($_GET['articleid']);
             } else { 
-              $message .= "There was a problem.<br />" . mysql_error() . ".";
+              if (!isset($message)) {
+                $message = "There was a problem.<br />" . mysql_error() . ".";
+              }
             }
     }
   }

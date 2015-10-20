@@ -1,7 +1,6 @@
 <?php 
-  if (isset($_GET['articleid'])) {
+  if (isset($_GET['articleid']) && $_GET['articleid'] != "") {
     $articleid = $_GET['articleid'];
-
     $sql = "SELECT * FROM articles WHERE id = '$articleid'";
     $result = mysql_query($sql);
     if ($result) {
@@ -24,11 +23,6 @@
 
   if (isset($_POST['action'])) {                                          
     $action = $_POST['action'];
-
-    if ($action == 'edit' && $_GET['articleid']) {
-
-    }
-
 
     echo "
       <h3>" . ucfirst($action) . " " . ucfirst($type) . "</h3>
@@ -101,7 +95,7 @@
     ";
 
   
-  } elseif ($result) { 
+  } elseif (isset($article)) { 
 
 
     ////////////////////////

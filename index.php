@@ -583,7 +583,7 @@ include('engine.php');
     //////////  CAREER OPPORTUNITIES  //////////
 
                 echo "<h3><a href='?page=careerops' style='color:#ffffff; text-decoration:none;'>Career Opportunities</a></h3>"; 
-                  $jobsql = "SELECT * FROM articles WHERE type = 'job' ORDER BY date DESC LIMIT 5 ";
+                  $jobsql = "SELECT * FROM articles WHERE type = 'job' AND del = 'n' ORDER BY date DESC LIMIT 5 ";
                   $result = mysql_query($jobsql);
                   if ($result) {
                     echo "<ul>";
