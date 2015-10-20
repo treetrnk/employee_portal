@@ -10,8 +10,8 @@ include('engine.php');
     <!---DATEPICKER FROM: http://xdsoft.net/jqplugins/datetimepicker/ --->
     <link rel="stylesheet" type="text/css" href="datetimepicker-master/jquery.datetimepicker.css"/ >
     <link rel="stylesheet" type="text/css" href="mini-event-calendar/cal-style.css"/ >
-    <script src="datetimepicker-master/jquery.js"></script>
-    <script src="datetimepicker-master/jquery.datetimepicker.js"></script>
+    <script src="datetimepicker/jquery.js"></script>
+    <script src="datetimepicker/jquery.datetimepicker.js"></script>
     <script>
       $(function() {
         $( '*[id^="datetimepicker"]' ).datetimepicker();
