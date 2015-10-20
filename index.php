@@ -441,24 +441,24 @@ include('engine.php');
       <table class='header' cellspacing='0'> 
         <tr> 
           <td>
-            <a href='index.php'><img src='img/arm_logo.png' /></a>
+            <a href='index.php'><img src='logo.png' /></a>
           </td>
           <td align='center'>
           </td>
           <td align='right' valign='bottom'>
-            <h1 style='color: #0D59A8;font-weight: normal;'>DEV Portal</h1> <!----LOGIN/LOGOUT---->
+            <h1 style='color: #0D59A8;font-weight: normal;'>Employee Portal</h1> <!----LOGIN/LOGOUT---->
             <span class='profile-links'>
               <table class='nav-icons'>
                 <tr>
                   <td align='center'>
                     <a href='?page=article&articleid=93'> 
-                      <img src='icons/manual.png' />
+                      <img src='img/manual.png' />
                       eManual
                     </a>
                   </td>
                   <td align='center'>
                     <a href='https://www.zoho.com/crm/' target='_blank'> 
-                      <img src='icons/zoho.png' />
+                      <img src='img/zoho.png' />
                       Zoho
                     </a>
                   </td>
@@ -467,13 +467,13 @@ include('engine.php');
             echo "
                   <td align='center'>
                     <a href='?page=email&type=ticket'> 
-                      <img src='icons/helpdesk.png' />
+                      <img src='img/helpdesk.png' />
                       Helpdesk
                     </a>
                   </td>
                   <td align='center'>
                     <a href='?page=email&type=feedback'> 
-                      <img src='icons/feedback.png' />
+                      <img src='img/feedback.png' />
                       Feedback
                     </a>
                   </td>
@@ -490,7 +490,7 @@ include('engine.php');
                     echo " 
                       <td align='center'>
                         <a href=''> 
-                          <img src='icons/pending-red.png' />
+                          <img src='img/pending-red.png' />
                           Pending
                         </a>
                         </td>
@@ -506,7 +506,7 @@ include('engine.php');
                   </td>
                   <td align='center'>
                     <a href='?page=$page&logout=y'> 
-                      <img src='icons/logout.png' />
+                      <img src='img/logout.png' />
                       Logout
                     </a>
                   </td>
@@ -515,7 +515,7 @@ include('engine.php');
             echo "
                   <td align='center'>
                     <a href='?page=login'> 
-                      <img src='icons/login.png' />
+                      <img src='img/login.png' />
                       Login
                     </a>
                   </td>
