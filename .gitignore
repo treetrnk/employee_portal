@@ -5,10 +5,14 @@
 # *.[oa]
 # *~
 
+# Files
 logo.png
 footer.php
 servers.php
 offices.php
+.ht*
+
+# Folders
 staff/*
 other/*
-.ht*
+dev/*
