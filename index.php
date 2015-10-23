@@ -459,7 +459,6 @@ include('engine.php');
                   <td align='center'>
                     <a href='https://www.zoho.com/crm/lp/login.html' target='_blank'> 
                       <img src='img/zoho.png' />
-                      Zoho
                     </a>
                   </td>
           ";
