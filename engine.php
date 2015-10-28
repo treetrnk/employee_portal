@@ -100,7 +100,11 @@ if ( isset($_POST['login']) && $_POST['login'] == "y") {
           $_SESSION['fname'] = $userdata['fname'];
           $_SESSION['lname'] = $userdata['lname'];
           $_SESSION['email'] = $userdata['email'];
-          $_SESSION['picture'] = $userdata['picture'];
+          if ($userdata['picture'] != "") {
+            $_SESSION['picture'] = $userdata['picture'];
+          } else {
+            $_SESSION['picture'] = "img/no_pic1.png";
+          }
           $_SESSION['security'] = $userdata['security'];
         } else {
           $fname = ucfirst(substr($user, 0, 1));
