@@ -28,7 +28,7 @@
         $count ++;
 
         echo "
-          <div class='people-list' style='padding:15px; height:100px; border:1px solid #dedede;";
+          <div class='people-list' style='padding:15px; height:150px; border:1px solid #dedede;";
             if ($count % 2 == 0) { echo 'background: #dedede;'; }
             echo "'>
           
