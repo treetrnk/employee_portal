@@ -309,7 +309,7 @@ if (isset($_POST['submit'])) {
               case 'add':   ///////////////  ADD  ////
                
                 if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
-                  if ($type == 'job' && $_POST['location'] != '') {
+                  if ($type != 'job' || ($type == 'job' && $_POST['location'] != '')) {
                     $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) 
                       VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
                     $_GET['articleid'] = mysql_insert_id();
