@@ -53,8 +53,8 @@
         <b>Location</b><br />
         <select name='location'>
           <option value='' default>Choose one...</option>
-          <option value='Any'"; 
-            if ($article['location'] == 'Any') { echo " selected "; } 
+          <option value='Company-wide'"; 
+            if ($article['location'] == 'Company-wide') { echo " selected "; } 
             echo ">Any</option>
           <option value='Canonsburg, PA'"; 
             if ($article['location'] == 'Canonsburg, PA') { echo " selected "; } 
