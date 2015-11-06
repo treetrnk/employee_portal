@@ -33,12 +33,12 @@ if (isset($_POST['action'])) {
         </td>
         <td valign='top'>  <!----INFORMATION---->
           <div style='margin-left: 0px; margin-right: 75px; width=300px; text-align: right;line-height: 27px;'><b>
-            Full Name: <input type='text' name='fname' placeholder='First' size='7' value='$row[fname]' />
+            *Full Name: <input type='text' name='fname' placeholder='First' size='7' value='$row[fname]' />
             <input type='text' name='initials' placeholder='MI' maxlength='1' style='width:30px' value='$row[initials]' />
             <input type='text' name='lname' placeholder='Last' size='7' value='$row[lname]' /><br />
             No Middle Initial: <input type='checkbox' name='noinitial' value='y' />&nbsp;&nbsp;&nbsp;&nbsp;<br />
             Title: <input type='text' name='title' value='$row[title]' /><br />
-            Office: <select name='location'>
+            Office: <select name='location' style='width:196px;'>
               <option value='' default>Choose one...</option>
               <option value='Canonsburg, PA'"; 
                 if ($row['location'] == 'Canonsburg, PA') { echo " selected "; } 
@@ -62,7 +62,7 @@ if (isset($_POST['action'])) {
             Start Day: <input type='text' id='datepicker' name='startday' value='";
               if (isset($row['startday'])) { echo date('Y/m/d', strtotime($row['startday'])); }
               echo "' placeholder='yyyy/mm/dd' /><br />
-            Birthday: <input type='text' id='datepicker2' name='birthday' value='"; 
+            *Birthday: <input type='text' id='datepicker2' name='birthday' value='"; 
               if (isset($row['birthday'])) { echo date('Y/m/d', strtotime($row['birthday'])); }
               echo "' placeholder='yyyy/mm/dd' /><br />
             Show Birthday: <input type='checkbox' name='showbday' value='y'";
@@ -139,7 +139,7 @@ if (isset($_POST['action'])) {
           width='150' />
           </td>
           <td valign='top'>  <!----INFORMATION---->
-            <b>$row[fname] $row[initials]. $row[lname]</b><br />";
+            <b>$row[fname] $row[initials] $row[lname]</b><br />";
             if ($row['title']){ echo "$row[title]<br />"; }
             if ($row['location']) { echo "<br />$row[location]<br />"; } 
               echo "

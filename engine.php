@@ -214,7 +214,7 @@ if (isset($_POST['submit'])) {
         $table = "staff";    
         if ( hasPermission('profile_pend') ) { $table = "staffPending"; $submit = 'add'; $message = $table; }
 
-        if (isset($_POST['fname']) && isset($_POST['lname']) && $_POST['birthday']) { //CHECK REQUIRED FIELDS
+        if ($_POST['fname'] != ''  && $_POST['lname'] != '' && $_POST['birthday'] != '' && ($_POST['initials'] != '' || $_POST['noinitial'] == 'y') ) { //CHECK REQUIRED FIELDS
           extract($_POST, EXTR_OVERWRITE);
           $username = strtolower(substr($fname, 0, 1) . $lname);
           if ( isset($birthday) ) { $birthday = date('Y-m-d', strtotime($birthday)); } else { $birthday = NULL; }
