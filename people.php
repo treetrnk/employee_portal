@@ -95,7 +95,7 @@
               <b>Phone:</b>
             </td>
             <td width=50%>
-              $row[phone] (x$row[ext])
+              $row[phone] <b>Ext:</b>$row[ext]
             </td>
           </tr>
           <tr>

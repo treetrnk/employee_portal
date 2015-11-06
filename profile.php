@@ -33,9 +33,10 @@ if (isset($_POST['action'])) {
         </td>
         <td valign='top'>  <!----INFORMATION---->
           <div style='margin-left: 0px; margin-right: 75px; width=300px; text-align: right;line-height: 27px;'><b>
-            First Name: <input type='text' name='fname' value='$row[fname]' /><br />
-            Last Name: <input type='text' name='lname' value='$row[lname]' /><br />
-            Initials: <input type='text' name='initials' value='$row[initials]' /><br />
+            Full Name: <input type='text' name='fname' placeholder='First' size='7' value='$row[fname]' />
+            <input type='text' name='initials' placeholder='MI' maxlength='1' style='width:30px' value='$row[initials]' />
+            <input type='text' name='lname' placeholder='Last' size='7' value='$row[lname]' /><br />
+            No Middle Initial: <input type='checkbox' name='noinitial' value='y' />&nbsp;&nbsp;&nbsp;&nbsp;<br />
             Title: <input type='text' name='title' value='$row[title]' /><br />
             Office: <select name='location'>
               <option value='' default>Choose one...</option>
@@ -138,19 +139,25 @@ if (isset($_POST['action'])) {
           width='150' />
           </td>
           <td valign='top'>  <!----INFORMATION---->
-            <b>$row[fname] $row[lname]</b> ($row[initials])<br />";
+            <b>$row[fname] $row[initials]. $row[lname]</b><br />";
             if ($row['title']){ echo "$row[title]<br />"; }
             if ($row['location']) { echo "<br />$row[location]<br />"; } 
               echo "
                 <br />
                 <span class='inline-left'><u>Email</u>:</span>
                 <span class='inline-right'>&nbsp;<a href='mailto:$row[email]'>$row[email]</a></span><br />";
-              if ($row['phone'] && $row['ext']) { 
+              if ($row['phone']) { 
                 echo "
                   <span class='inline-left'><u>Phone</u>:</span> 
-                  <span class='inline-right'>&nbsp;$row[phone] (x$row[ext])</span> <br />
+                  <span class='inline-right'>&nbsp;$row[phone]</span> <br />
                 ";
               } 
+              if ($row['ext']) { 
+                echo "
+                  <span class='inline-left'><u>Ext</u>:</span> 
+                  <span class='inline-right'>&nbsp;$row[ext]</span> <br />
+                ";
+              }
               if ($row['cellphone']) { 
                 echo "
                   <span class='inline-left'><u>Mobile</u>:</span> 
