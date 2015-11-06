@@ -3,15 +3,14 @@
   $type = "job";
 
   $offices = array(
-    "Any",
+    "Company-wide",
+    "Canonsburg, PA",
+    "Columbia, MD",
     "Hershey, PA",
     "State College, PA",
-    "Columbia, MD",
-    "Wilkes-barre, PA",
-    "Canonsburg, PA"
+    "Wilkes-barre, PA"
   );
   
-  sort($offices);
 
   if ( hasPermission('job') ) {
     echo "
