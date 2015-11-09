@@ -45,11 +45,18 @@ include('engine.php');
         height: 100%;
       }
       body {
-        background: url("img/sky.jpg") fixed no-repeat;
+        background: url("img/sky.jpg") fixed;
         background-size: 100% 110%;
         margin: 0px;
         font-family: Helvetica;
-        font-size: 13px;
+        font-size: 13px; 
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+        src='img/sky.jpg',
+        sizingMethod='scale');
+
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(
+        src='img/sky.jpg',
+        sizingMethod='scale')";
       }
       a:link, a:visited, a:active {
         color: #0066ff;
@@ -134,7 +141,10 @@ include('engine.php');
         padding-left: 15px;
         padding-top: 8px;
         padding-bottom: 8px;
-        margin: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         border-left: solid 1px #386BC8;
         border-right: solid 1px #85ACF4;
         width: 50px;
@@ -197,7 +207,8 @@ include('engine.php');
         font-size: 12px;
       }
       .sidebar ul {
-        margin-left: -20px;
+        width: 200px;
+        margin-left: 0px;
       }
       .smalltext {
         font-size: 11.5px;
@@ -206,11 +217,6 @@ include('engine.php');
         width: 100%;
         height: 150px;
         background: #4C74C1;
-      }
-      .footer-links table {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
       }
       .footer-links td {
         color: #FFFFFF;
@@ -557,12 +563,7 @@ include('engine.php');
           <table cellpadding=0 cellspacing=0 width=100% style='margin:0px; padding:0px;'>
             <tr>
               <td>
-                <a href='?page=home' class='navlink'>Home</a>
-                <a href='?page=people' class='navlink'>People</a>
-                <a href='?page=resources' class='navlink'>Resources</a>
-                <a href='?page=expertise' class='navlink'>Expertise</a>
-                <a href='?page=help' class='navlink'>I.T. Support</a>
-      ";
+                <a href='?page=home' class='navlink'>Home</a><a href='?page=people' class='navlink'>People</a><a href='?page=resources' class='navlink'>Resources</a><a href='?page=expertise' class='navlink'>Expertise</a><a href='?page=help' class='navlink'>I.T. Support</a>";
                 //echo "<a href='?page=safety' class='navlink'>Safety</a>";
                 //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
                 //echo "<a href='?page=training' class='navlink'>Training</a>";
@@ -616,7 +617,7 @@ include('engine.php');
                   if ($result) {
                     echo "<ul>";
                     while ($job = mysql_fetch_array($result)) {
-                      echo "<li><a href='?page=article&articleid=$job[id]'>" . substr($job['title'], 0, 28) . "...</a><br />";
+                      echo "<li><a href='?page=article&articleid=$job[id]'>" . substr($job['title'], 0, 23) . "...</a><br />";
                       echo $job['location'] . '</li>';
                     }
                     if ( hasPermission('job') ) {
@@ -708,7 +709,7 @@ include('engine.php');
                   if ($result) {
                     echo '<ul>';
                     while ($event = mysql_fetch_array($result)) {
-                      echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 18) . '...</a> ';
+                      echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 15) . '...</a> ';
                       echo date('(m/d)', $event['startdate']) . '</li>';
                     }
                     if ( hasPermission('event') ) {
@@ -766,6 +767,7 @@ include('engine.php');
       </div>
 
       <div class='footer-links'>  <!---FOOTER LINKS--->
+      <br />
         ";
         
         include('footer.php'); 
