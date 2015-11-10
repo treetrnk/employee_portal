@@ -11,6 +11,9 @@ footer.php
 servers.php
 offices.php
 .ht*
+*.hwm
+*.pwd
+*.pwi
 
 # Folders
 staff/*

@@ -582,7 +582,7 @@ include('engine.php');
               <td align='right'>
 
                 <form method='post' action='?page=search'>
-                  <label>Search <input type='text' name='search' size='20' /></label> &nbsp; 
+                  <input type='text' name='search' size='15' placeholder='Search' /> &nbsp; 
               </td>
               <td align='right'>
                   <input style='margin-top: 6px; margin-left: 0px; margin-right: 3px;' type='image' src='img/search.png' align='right' alt='Search'>&nbsp;
