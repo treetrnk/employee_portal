@@ -41,6 +41,9 @@ include('engine.php');
       });
     </script>--->
     <style type="text/css">
+      html {
+        overflow-y:hidden;
+      }
       html, body, .wrapper {
         height: 100%;
       }
@@ -50,6 +53,8 @@ include('engine.php');
         margin: 0px;
         font-family: Helvetica;
         font-size: 13px; 
+        height: 100%;
+        overflow-y:scroll;
         filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
         src='img/sky.jpg',
         sizingMethod='scale');
@@ -577,7 +582,7 @@ include('engine.php');
               <td align='right'>
 
                 <form method='post' action='?page=search'>
-                  <label>Search <input type='text' name='search' size='20' /></label> &nbsp; 
+                  <input type='text' name='search' size='15' placeholder='Search' /> &nbsp; 
               </td>
               <td align='right'>
                   <input style='margin-top: 6px; margin-left: 0px; margin-right: 3px;' type='image' src='img/search.png' align='right' alt='Search'>&nbsp;
