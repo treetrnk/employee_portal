@@ -772,7 +772,7 @@ include('engine.php');
       </div>
 
       <div class='footer-links'>  <!---FOOTER LINKS--->
-      <br /><br />
+      <br />
         ";
         
         include('footer.php'); 
