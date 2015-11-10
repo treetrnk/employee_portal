@@ -41,6 +41,9 @@ include('engine.php');
       });
     </script>--->
     <style type="text/css">
+      html {
+        overflow-y:hidden;
+      }
       html, body, .wrapper {
         height: 100%;
       }
@@ -50,6 +53,8 @@ include('engine.php');
         margin: 0px;
         font-family: Helvetica;
         font-size: 13px; 
+        height: 100%;
+        overflow-y:scroll;
         filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
         src='img/sky.jpg',
         sizingMethod='scale');
