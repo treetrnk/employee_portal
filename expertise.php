@@ -22,22 +22,18 @@
             <br />
       ";
 
-
       while ($staff = mysql_fetch_array($result)) {
         echo "
             <li><a href='?page=profile&profileid=$staff[id]'>$staff[fname] $staff[lname]</a> ($staff[location])</li><br />
         ";
       }
 
-    } else {
-      //echo "<li>None found</li><br />";
-    }
-
     echo "
         </ul>
       </div>
     ";
 
+    }
   }
 
 

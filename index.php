@@ -4,6 +4,7 @@
 include('engine.php');
 
 ?>
+<!doctype html>
 <html>
   <head>
     <title>ARM Group Inc. | Employee Portal</title>
@@ -44,17 +45,27 @@ include('engine.php');
         height: 100%;
       }
       body {
-        background: url("img/sky.jpg") fixed no-repeat;
+        background: url("img/sky.jpg") fixed;
         background-size: 100% 110%;
         margin: 0px;
         font-family: Helvetica;
-        font-size: 13px;
+        font-size: 13px; 
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+        src='img/sky.jpg',
+        sizingMethod='scale');
+
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(
+        src='img/sky.jpg',
+        sizingMethod='scale')";
       }
       a:link, a:visited, a:active {
         color: #0066ff;
       }
       a:hover {
         color: #0000ff;
+      }
+      a img { 
+        border: 0px;
       }
       .wrapper {
         height: auto;
@@ -97,6 +108,7 @@ include('engine.php');
         margin-right: auto;
         text-align: left;
         background: url('img/nav.png');
+        height: 32px;
         /*background: -webkit-linear-gradient(#023AA7, #6387CD); /* For Safari 5.1 to 6.0 */
         /*background: -o-linear-gradient(#023AA7, #6387CD); /* For Opera 11.1 to 12.0 */
         /*background: -moz-linear-gradient(#023AA7, #6387CD); /* For Firefox 3.6 to 15 */
@@ -110,6 +122,15 @@ include('engine.php');
         line-height: 32px;
         width: 95%;
       }
+      .navlinkbar table {
+        height: 32px;
+        line-height: 32px;
+      }
+      .navlinkbar table tr td {
+        margin: 0px;
+        padding: 0px;
+        vertical-align: baseline;
+      }
       .navlink:active, .navlink:visited, .navlink:link {
         color: #FFFFFF;
         font-size:  13px;
@@ -120,7 +141,10 @@ include('engine.php');
         padding-left: 15px;
         padding-top: 8px;
         padding-bottom: 8px;
-        margin: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         border-left: solid 1px #386BC8;
         border-right: solid 1px #85ACF4;
         width: 50px;
@@ -138,12 +162,13 @@ include('engine.php');
       }
       .banner {
         background: url('img/banner3.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
         width: 95%;
         height: 150px;
-        background-size: 100% 100%;
         margin-top: 5px;
         margin-right: auto;
-       margin-left: auto;
+        margin-left: auto;
         <?php if ($page != 'home') { echo 'display: none;'; } ?>
       }
       .content {
@@ -167,11 +192,11 @@ include('engine.php');
       }
       .sidebar h3 {
         text-align: center;
+        background: #017e44; 
         background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
         background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
         background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
         background: linear-gradient(#33935e, #017e44);
-        /* background: #017e44; */
         border-radius: 5px;
         -moz-border-radius: 5px;
         color: #ffffff;
@@ -182,7 +207,8 @@ include('engine.php');
         font-size: 12px;
       }
       .sidebar ul {
-        margin-left: -20px;
+        width: 200px;
+        margin-left: 0px;
       }
       .smalltext {
         font-size: 11.5px;
@@ -191,11 +217,6 @@ include('engine.php');
         width: 100%;
         height: 150px;
         background: #4C74C1;
-      }
-      .footer-links table {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
       }
       .footer-links td {
         color: #FFFFFF;
@@ -249,11 +270,11 @@ include('engine.php');
       }
       .profile-about h3 {
         text-align: center;
+        background: #017e44; 
         background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
         background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
         background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
         background: linear-gradient(#33935e, #017e44);
-        /* background: #017e44; */
         border-radius: 5px;
         -moz-border-radius: 5px;
         color: #ffffff;
@@ -261,6 +282,7 @@ include('engine.php');
         padding-bottom: 5px;
       }
       .greenbox {
+        background: #017e44; 
         background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
         background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
         background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
@@ -276,11 +298,11 @@ include('engine.php');
         font-size: 12pt;
         text-align: center;
         width: 400px;
+        background: #ff3030;
         background: -webkit-linear-gradient(#ff6e6e, #ff3030); /* For Safari 5.1 to 6.0 */
         background: -o-linear-gradient(#ff6e6e, #ff3030); /* For Opera 11.1 to 12.0 */
         background: -moz-linear-gradient(#ff6e6e, #ff3030); /* For Firefox 3.6 to 15 */
         background: linear-gradient(#ff6e6e, #ff3030);
-        /* background: #017e44; */
         border-radius: 7px;
         -moz-border-radius: 5px;
         color: #ffffff;
@@ -536,26 +558,34 @@ include('engine.php');
             //  NAVIGATION  //
            //////////////////
 
-      echo "<div class='navlinkbar'>";
-        echo "<a href='?page=home' class='navlink'>Home</a>";
-        echo "<a href='?page=people' class='navlink'>People</a>";
-        echo "<a href='?page=resources' class='navlink'>Resources</a>";
-        echo "<a href='?page=expertise' class='navlink'>Expertise</a>";
-        echo "<a href='?page=help' class='navlink'>I.T. Support</a>";
-        //echo "<a href='?page=safety' class='navlink'>Safety</a>";
-        //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
-        //echo "<a href='?page=training' class='navlink'>Training</a>";
-        if (isset($_SESSION['user']) && $_SESSION['user'] == 'nhare') {
-        echo "<a href='?page=offices' class='navlink'>Offices</a>";
-        }
-        echo "<a href='?page=forum' class='navlink'>Forum</a>";
-  
-  echo "
-            <form method='post' action='?page=search' style='float: right;'>
-              <label>Search <input type='text' name='search' size='20' /></label> &nbsp; 
-              <input style='margin-top: 6px; margin-left: 0px; margin-right: 3px;' type='image' src='img/search.png' align='right' alt='Search'>&nbsp;
-            </form>
-      </div>
+      echo "
+        <div class='navlinkbar'>
+          <table cellpadding=0 cellspacing=0 width=100% style='margin:0px; padding:0px;'>
+            <tr>
+              <td>
+                <a href='?page=home' class='navlink'>Home</a><a href='?page=people' class='navlink'>People</a><a href='?page=resources' class='navlink'>Resources</a><a href='?page=expertise' class='navlink'>Expertise</a><a href='?page=help' class='navlink'>I.T. Support</a>";
+                //echo "<a href='?page=safety' class='navlink'>Safety</a>";
+                //echo "<a href='?page=hr' class='navlink'>H.R.</a>";
+                //echo "<a href='?page=training' class='navlink'>Training</a>";
+                if (isset($_SESSION['user']) && $_SESSION['user'] == 'nhare') {
+                  echo "<a href='?page=offices' class='navlink'>Offices</a>";
+                }
+                  echo "<a href='?page=forum' class='navlink'>Forum</a>";
+
+      echo "
+              </td>
+              <td align='right'>
+
+                <form method='post' action='?page=search'>
+                  <label>Search <input type='text' name='search' size='20' /></label> &nbsp; 
+              </td>
+              <td align='right'>
+                  <input style='margin-top: 6px; margin-left: 0px; margin-right: 3px;' type='image' src='img/search.png' align='right' alt='Search'>&nbsp;
+                </form>
+              </td>
+            </tr>
+          </table>
+        </div>
 
       <div class='banner'></div>
   ";
@@ -587,7 +617,7 @@ include('engine.php');
                   if ($result) {
                     echo "<ul>";
                     while ($job = mysql_fetch_array($result)) {
-                      echo "<li><a href='?page=article&articleid=$job[id]'>" . substr($job['title'], 0, 28) . "...</a><br />";
+                      echo "<li><a href='?page=article&articleid=$job[id]'>" . substr($job['title'], 0, 23) . "...</a><br />";
                       echo $job['location'] . '</li>';
                     }
                     if ( hasPermission('job') ) {
@@ -679,7 +709,7 @@ include('engine.php');
                   if ($result) {
                     echo '<ul>';
                     while ($event = mysql_fetch_array($result)) {
-                      echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 18) . '...</a> ';
+                      echo '<li><a href="?page=article&articleid=' . $event['id'] . '">' . substr($event['title'], 0, 15) . '...</a> ';
                       echo date('(m/d)', $event['startdate']) . '</li>';
                     }
                     if ( hasPermission('event') ) {
@@ -737,6 +767,7 @@ include('engine.php');
       </div>
 
       <div class='footer-links'>  <!---FOOTER LINKS--->
+      <br />
         ";
         
         include('footer.php'); 
