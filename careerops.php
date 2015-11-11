@@ -11,10 +11,6 @@
     "Wilkes-barre, PA"
   );
   
-<<<<<<< HEAD
-=======
-
->>>>>>> 077a8122677de011186dac177d7fb4ac5869181b
   if ( hasPermission('job') ) {
     echo "
       <br />
