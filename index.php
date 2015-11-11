@@ -342,7 +342,7 @@ include('engine.php');
         float: left;
         clear: left;
         width: 70px;
-        text-align: right;
+        text-align: left;
       }
       .inline-right {
         display: inline-block;
