@@ -58,7 +58,7 @@ if (isset($_POST['action'])) {
             <!---Email---><input type='hidden' name='email' value='$row[email]' placeholder='user@armgroup.net' />
             Office #: <input type='text' name='phone' value='$row[phone]' placeholder='(999)999-9999' /><br />
             Extension: <input type='text' name='ext' value='$row[ext]' placeholder='9999'/><br />
-            Cell #: <input type='text' name='cellphone' value='$row[cellphone]' placeholder='(999)999-9999' /><br />
+            Mobile #: <input type='text' name='cellphone' value='$row[cellphone]' placeholder='(999)999-9999' /><br />
             Start Day: <input type='text' id='datepicker' name='startday' value='";
               if (isset($row['startday'])) { echo date('Y/m/d', strtotime($row['startday'])); }
               echo "' placeholder='yyyy/mm/dd' /><br />
@@ -144,36 +144,36 @@ if (isset($_POST['action'])) {
             if ($row['location']) { echo "<br />$row[location]<br />"; } 
               echo "
                 <br />
-                <span class='inline-left'><u>Email</u>:</span>
+                <span class='inline-left'>Email:</span>
                 <span class='inline-right'>&nbsp;<a href='mailto:$row[email]'>$row[email]</a></span><br />";
               if ($row['phone']) { 
                 echo "
-                  <span class='inline-left'><u>Phone</u>:</span> 
+                  <span class='inline-left'>Phone:</span> 
                   <span class='inline-right'>&nbsp;$row[phone]</span> <br />
                 ";
               } 
               if ($row['ext']) { 
                 echo "
-                  <span class='inline-left'><u>Ext</u>:</span> 
+                  <span class='inline-left'>Ext:</span> 
                   <span class='inline-right'>&nbsp;$row[ext]</span> <br />
                 ";
               }
               if ($row['cellphone']) { 
                 echo "
-                  <span class='inline-left'><u>Mobile</u>:</span> 
+                  <span class='inline-left'>Mobile:</span> 
                   <span class='inline-right'>&nbsp;$row[cellphone]</span> <br />
                 ";
               } 
               echo "<br />";
               if ($row['startday']) { 
                 echo "
-                  <span class='inline-left'><u>Start Date</u>:</span>
+                  <span class='inline-left'>Start Date:</span>
                   <span class='inline-right'>&nbsp;". date('F j, Y', strtotime($row['startday'])) . "</span><br />
                 "; 
               } 
               if ($row['birthday'] && $row['showbday'] == 'y') { 
                 echo "
-                  <span class='inline-left'><u>Birthday</u>:</span> 
+                  <span class='inline-left'>Birthday:</span> 
                   <span class='inline-right'>&nbsp;". date('F j', strtotime($row['birthday'])) . "</span>
                 "; 
               }

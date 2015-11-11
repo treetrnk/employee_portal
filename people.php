@@ -100,7 +100,7 @@
           </tr>
           <tr>
             <td align='right'>
-              <b>Cellphone:</b>
+              <b>Mobile:</b>
             </th>
             <td>
               $row[cellphone]
