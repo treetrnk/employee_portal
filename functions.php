@@ -395,19 +395,31 @@ function imageUpload($user) {
     ".JPEG"
   );
 
+  $results = array();
+  $results['success'] = FALSE;
+
   $filename = $_FILES['picture']['name'];
   $file_ext = substr($filename, strpos($filename, '.'), strlen($filename)-1); 
   if (!in_array($file_ext, $allowed_exts)) {
-    echo "Invalid File Extension";
-    return FALSE;
+    $results['message'] = "Invalid File Extension";
+    return $results;
   }
   var_dump($_FILES);
   $target_dest = "staff/$user$file_ext";
-  if (move_uploaded_file($_FILES['picture']['tmp_name'], $target_dest)) {
-    return TRUE;
+  if (copy($_FILES['picture']['tmp_name'], $target_dest)) {
+
+    $results = array(
+      'filename' => $filename,
+      'file_ext' => $file_ext,
+      'path' => "staff/$user$file_ext",
+      'message' => "Image uploaded successfully.\n",
+      'success' => TRUE
+    );
+
   } else {
-    return FALSE;
+    $results['message'] = "Image could not be moved to target destination. \r\n";
   }
+  return $results;
 }
 
 
@@ -445,9 +457,11 @@ function expertiseList() {
   $areasOfExpertise = array (     ////  AREAS OF EXPERTISE  ////
     'Hydrogeology',
     'Engineering Geology',
-    'Subsurface/Bedrock Characterization',
+    'Subsurface',
+    'Bedrock Characterization',
     'Natural Resource Evaluation',
-    'Oil and Gas/Mining Exploration & Development',
+    'Oil and Gas',
+    'Mining Exploration & Development',
     'Hydrology',
     'PADEP',
     'SRBC & other Regulatory Permitting',
@@ -457,17 +471,29 @@ function expertiseList() {
     'Property Transaction Due Dilligence',
     'Fill Management',
     'Site Remediation and Brownfield/Act 2',
-    'Ecological/Wetlands',
+    'Ecological',
+    'Wetlands',
     'Cultural Resources',
     'Threatened and Endangered Species',
     'Aquatic Assessments',
     'Watershed Management/Improvement',
     'Environmental Permitting',
     'NEPA',
-    'EHS/EERPs/PPC/SPCC/Spill Planning',
-    'IH/ACM/LBP/Hazmat/IAQ',
+    'EHS',
+    'EERPs',
+    'PPC',
+    'SPCC',
+    'Spill Planning',
+    'IH',
+    'ACM',
+    'LBP',
+    'Hazmat',
+    'IAQ',
     'Water Resources/Dams',
-    'Geotechnical/Soil Mechanics/Foundations/Sinkhole',
+    'Geotechnical',
+    'Soil Mechanics',
+    'Foundations',
+    'Sinkhole',
     'Landfill/Solid Waste Management Facilities',
     'Renewable Energy Services',
     'Civil Engineering',
@@ -476,7 +502,8 @@ function expertiseList() {
     'GIS',
     'GPS',
     'Surveying',
-    'Stormwater Management/E&S Planning',
+    'Stormwater Management',
+    'E&S Planning',
     'Wastewater Treatment/Permitting',
     'PADOT Highway Occupancy Permitting (HOP)',
     'Oil & Gas',
@@ -484,9 +511,10 @@ function expertiseList() {
     'Electrical (AETA)',
     'Mechanical (AETA)',
     'Controls/Automation (AETA)',
-    'Eviromental/Geotechnical Geophysics',
+    'Eviromental Geophysics',
+    'Geotechnical Geophysics',
     'Borehole',
-    'IT/Computer Support',
+    'IT Computer Support',
     'Human Resources',
     'Accounting',
     'Marketing'
