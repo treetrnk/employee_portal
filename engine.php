@@ -262,12 +262,15 @@ if (isset($_POST['submit'])) {
               $message .= "Uh oh! Something went wrong. <br /> Submit = " . $submit . ".<br />";
           }
             
-
           if (mysql_query($emp_sql)) { // IF SUCCESS
-            if (!$_GET['profileid']) { $_GET['profileid'] = mysql_insert_id(); }
-            $message .= "Profile " . $submit . "ed successfully!!!";
+            if (isset($pic_data) && $pic_data['success'] == FALSE) {
+              $message .= "There was a problem with the image. ";
+            } else {
+              if (!$_GET['profileid']) { $_GET['profileid'] = mysql_insert_id(); }
+              $message .= "Profile " . $submit . "ed successfully!!!";
+            }
           } else { 
-            $message .= "There was a problem.<br />" . mysql_error() . ".";
+            $message .= "There was a problem.<br />" . mysql_error();
           }
         } else { //IF REQUIRED FIELDS ARE EMPTY
           $_POST['action'] = 'edit'; 

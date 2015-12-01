@@ -398,24 +398,26 @@ function imageUpload($user) {
   $results = array();
   $results['success'] = FALSE;
 
-  $filename = str_replace(' ', '\ ', $_FILES['picture']['name']);
+  $filename = str_replace(' ', '_', $_FILES['picture']['name']);
   $file_ext = substr($filename, strpos($filename, '.'), strlen($filename)-1); 
+  $target_dest = "staff/$user$file_ext";
+  $path = "staff/$user$file_ext";
+
   if (!in_array($file_ext, $allowed_exts)) {
     $results['message'] = "Invalid File Extension";
     return $results;
-  }
-
-  //var_dump($_FILES);
+  } elseif (!$_FILES['picture']['tmp_name']) {
+    $results['message'] = "Something went wrong. " . var_export($_FILES, TRUE) . " ";
+  } elseif (copy($_FILES['picture']['tmp_name'], $target_dest)) {
   
-  $target_dest = "staff/$user$file_ext";
-  if (copy($_FILES['picture']['tmp_name'], $target_dest)) {
+    if ($path != $_SESSION['picture']) { unlink($_SESSION['picture']); }
 
     $results = array(
-      'filename' => $filename,
-      'file_ext' => $file_ext,
-      'path' => "staff/$user$file_ext",
-      'message' => "Image uploaded. \n",
-      'success' => TRUE
+      'filename'  =>  $filename,
+      'file_ext'  =>  $file_ext,
+      'path'      =>  $path,
+      'message'   =>  "Image uploaded. \n",
+      'success'   =>  TRUE
     );
 
   } else {
