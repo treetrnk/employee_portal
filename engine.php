@@ -245,7 +245,10 @@ if (isset($_POST['submit'])) {
                   $message .= $pic_data['message'];
                 }
                 $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', description='$description', about='$about'";
-                if ( $pic_data['success'] == TRUE ) { $emp_sql .= ", picture='$pic_data[path]'"; }
+                if ( $pic_data['success'] == TRUE && $pic_data['path'] != '' ) { 
+                  $emp_sql .= ", picture='$pic_data[path]'"; 
+                  $_SESSION['picture'] = $pic_data['path'];
+                }
                 if ( isset($leaveday) ) { $emp_sql .= ", leaveday='$leaveday'"; }
                 $emp_sql .= " WHERE id=$profileid";
               } else {
@@ -256,7 +259,7 @@ if (isset($_POST['submit'])) {
 
             default:  ////////////////  DEFAULT  ////
 
-              $message .= "Submit is not set. <br /> Submit = " . $submit . ".<br />";
+              $message .= "Uh oh! Something went wrong. <br /> Submit = " . $submit . ".<br />";
           }
             
 

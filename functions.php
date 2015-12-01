@@ -398,13 +398,15 @@ function imageUpload($user) {
   $results = array();
   $results['success'] = FALSE;
 
-  $filename = $_FILES['picture']['name'];
+  $filename = str_replace(' ', '\ ', $_FILES['picture']['name']);
   $file_ext = substr($filename, strpos($filename, '.'), strlen($filename)-1); 
   if (!in_array($file_ext, $allowed_exts)) {
     $results['message'] = "Invalid File Extension";
     return $results;
   }
-  var_dump($_FILES);
+
+  //var_dump($_FILES);
+  
   $target_dest = "staff/$user$file_ext";
   if (copy($_FILES['picture']['tmp_name'], $target_dest)) {
 
@@ -412,12 +414,12 @@ function imageUpload($user) {
       'filename' => $filename,
       'file_ext' => $file_ext,
       'path' => "staff/$user$file_ext",
-      'message' => "Image uploaded successfully.\n",
+      'message' => "Image uploaded. \n",
       'success' => TRUE
     );
 
   } else {
-    $results['message'] = "Image could not be moved to target destination. \r\n";
+    $results['message'] = "Image could not be moved to target destination. ";
   }
   return $results;
 }
