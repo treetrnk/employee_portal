@@ -236,22 +236,16 @@ if (isset($_POST['submit'])) {
               $emp_sql = "INSERT INTO $table (username, password, fname, lname, initials, birthday, startday, location, title, email, phone, ext, cellphone, picture, description, about, security, updateid) VALUES ('$username', '$password', '$fname', '$lname', '$initials', '$birthday', '$startday', '$location', '$title', '$email', '$phone', '$ext', '$cellphone', '$picture', '$description', '$about', '1', '$profileid' )"; 
               break;
 
-
             case 'edit':   ///////////////  EDIT  ////
 
               if ($_GET['profileid']) {
                 $profileid = $_GET['profileid'];
                 if ( $_FILES['picture']['name'] != '' ) { 
-                  if (!imageUpload($_POST['user'])) {
-                    $message .= "Invalid image.";
-                  } else {
-                    $filename = $_FILES['picture']['name'];
-                    $file_ext = substr($filename, strpos($filename, '.'), strlen($filename)-1); 
-                    $picture = "staff/$username$file_ext";
-                  }
+                  $pic_data = imageUpload($_POST['user']);
+                  $message .= $pic_data['message'];
                 }
                 $emp_sql = "UPDATE $table SET username='$username', fname='$fname', lname='$lname', initials='$initials', birthday='$birthday', showbday='$showbday', startday='$startday', location='$location', title='$title', email='$email', phone='$phone', ext='$ext', cellphone='$cellphone', description='$description', about='$about'";
-                if ( $_POST['picture'] != '' ) { $emp_sql .= ", picture='$picture'"; }
+                if ( $pic_data['success'] == TRUE ) { $emp_sql .= ", picture='$pic_data[path]'"; }
                 if ( isset($leaveday) ) { $emp_sql .= ", leaveday='$leaveday'"; }
                 $emp_sql .= " WHERE id=$profileid";
               } else {
@@ -273,7 +267,7 @@ if (isset($_POST['submit'])) {
             $message .= "There was a problem.<br />" . mysql_error() . ".";
           }
         } else { //IF REQUIRED FIELDS ARE EMPTY
-          $page = "edit";
+          $_POST['action'] = 'edit'; 
           $message = "Please fill all required fields.";
         }
 
