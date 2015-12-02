@@ -478,7 +478,7 @@ include('engine.php');
               <table class='nav-icons'>
                 <tr>
                   <td align='center'>
-                    <a href='?page=article&articleid=93'> 
+                    <a href='?page=article&articleid=112'> 
                       <img src='img/manual.png' />
                       eManual
                     </a>
