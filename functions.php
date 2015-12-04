@@ -521,7 +521,12 @@ function expertiseList() {
     'IT Computer Support',
     'Human Resources',
     'Accounting',
-    'Marketing'
+    'Marketing',
+    'Ornithology',
+    'Aquatic Surveys',
+    'Stream Surveys',
+    'Botany',
+    'Threatened & Endangered Species'
   );
   sort($areasOfExpertise);
   return $areasOfExpertise;
