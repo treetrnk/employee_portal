@@ -166,7 +166,10 @@ include('engine.php');
         height: 30px;
       }
       .banner {
-        background: url('img/banner3.jpg');
+        <?php
+          $num = rand(1,10);
+          echo "background: url('img/banner$num.jpg');"
+        ?>
         background-size: 100% 100%;
         background-repeat: no-repeat;
         width: 95%;
