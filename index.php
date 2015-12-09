@@ -557,6 +557,12 @@
                     </a>
                   </td>
                   <td align='center'>
+                    <a href='http://accounting1.armgroup.lcl/ajera/' target='_blank'> 
+                      <img src='img/ajera.png' width=30 height=30 />
+                      Ajera
+                    </a>
+                  </td>
+                  <td align='center'>
                     <a href='https://www.zoho.com/crm/lp/login.html' target='_blank'> 
                       <img src='img/zoho.png' />
                     </a>
