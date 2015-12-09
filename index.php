@@ -1,7 +1,9 @@
 <?php
 
-//LINK TO ENGINE - PHP PROCESSING
-include('engine.php');
+  //LINK TO ENGINE - PHP PROCESSING
+  include('engine.php');
+
+  $banners = glob("img/banner*");
 
 ?>
 <!doctype html>
@@ -166,14 +168,19 @@ include('engine.php');
         height: 30px;
       }
       .banner {
+        /*
         <?php
           $num = rand(1,10);
           echo "background: url('img/banner$num.jpg');"
         ?>
         background-size: 100% 100%;
         background-repeat: no-repeat;
+*/
+        background: #fff;
         width: 95%;
         height: 150px;
+        max-height: 150px;
+        overflow-y: hidden;
         margin-top: 5px;
         margin-right: auto;
         margin-left: auto;
@@ -404,6 +411,14 @@ include('engine.php');
         display: none;
         width: 100%;
       }
+      .active {
+        z-index: 99;
+        display: block;
+      }
+      .hide {
+        display: none;
+        z-index: 99;
+      }
       <?php if ($_GET['sample'] == false) { ?>
       .sample {
         display: none;
@@ -453,7 +468,62 @@ include('engine.php');
           $("span[id$='-arw']").html("&#9650; &nbsp;&nbsp;");
         }
       }
-      
+
+      var $slide = 1;
+
+      function slideSwitch() {
+
+        var $next = $slide + 1;
+
+        if ($slide == <?php echo count($banners) ?>) {
+          $next = 1;
+        }
+
+        $('#banner' + $next).fadeIn("slow");
+        $('#banner' + $next).removeClass('hide');
+
+        $('#banner' + $slide).fadeOut("fast");
+        $('#banner' + $slide).addClass('hide');
+
+        $slide = $next;
+      }
+
+      $(function() {
+        setInterval( "slideSwitch()", 7500 );
+      });
+
+      /*
+      // SET DEFAULTS FOR SLIDES
+      var slidenum = 0;
+      var nextslide = 1;
+      var timer = 0;
+                 
+      // CYCLE IMAGES FUNCTION
+      function cycleslides() {
+        timer = setInterval(function() {
+          if (slidenum == 10) {
+            slidenum = 11;
+            nextslide = 1;
+            console.log("if");
+          } else {
+            slidenum = nextslide;
+            nextslide = slidenum + 1;
+            console.log("else");
+            console.log(slidenum);
+            console.log(nextslide);
+          }
+
+          $("#slide" + slidenum).fadeOut("slow");
+          $("#sltxt" + slidenum).fadeOut("slow");
+          $("#bull" + slidenum).removeClass("active");
+          console.log(slidenum);
+          $("#slide" + nextslide).fadeIn("slow");
+          $("#sltxt" + nextslide).fadeIn("slow");
+          $("#bull" + nextslide).addClass("active");
+          return slidenum;
+        }, 5000);
+      } */
+
     </script>
   </head>
 
@@ -484,6 +554,12 @@ include('engine.php');
                     <a href='?page=article&articleid=112'> 
                       <img src='img/manual.png' />
                       eManual
+                    </a>
+                  </td>
+                  <td align='center'>
+                    <a href='http://accounting1.armgroup.lcl/ajera/' target='_blank'> 
+                      <img src='img/ajera.png' width=30 height=30 />
+                      Ajera
                     </a>
                   </td>
                   <td align='center'>
@@ -594,8 +670,23 @@ include('engine.php');
             </tr>
           </table>
         </div>
+      <div class='banner' id='banner'>
+  ";
 
-      <div class='banner'></div>
+  // $banners is set at line 6
+
+  shuffle($banners);
+
+  $count = 1;
+  foreach ($banners as $banner) {
+    echo "<img src='$banner' id='banner$count' width=855 height=150 ' ";
+    if ($count != 1) { echo "class='hide'"; }
+    echo " />";
+    $count++;
+  }
+
+  echo "
+    </div>
   ";
 
          ///////////////
