@@ -482,14 +482,14 @@
         $('#banner' + $next).fadeIn("slow");
         $('#banner' + $next).removeClass('hide');
 
-        $('#banner' + $slide).fadeOut("slow");
+        $('#banner' + $slide).fadeOut("fast");
         $('#banner' + $slide).addClass('hide');
 
         $slide = $next;
       }
 
       $(function() {
-        setInterval( "slideSwitch()", 2500 );
+        setInterval( "slideSwitch()", 7500 );
       });
 
       /*
