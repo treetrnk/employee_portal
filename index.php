@@ -1,7 +1,9 @@
 <?php
 
-//LINK TO ENGINE - PHP PROCESSING
-include('engine.php');
+  //LINK TO ENGINE - PHP PROCESSING
+  include('engine.php');
+
+  $banners = glob("img/banner*");
 
 ?>
 <!doctype html>
@@ -473,7 +475,7 @@ include('engine.php');
 
         var $next = $slide + 1;
 
-        if ($slide == 10) {
+        if ($slide == <?php echo count($banners) ?>) {
           $next = 1;
         }
 
@@ -665,22 +667,17 @@ include('engine.php');
       <div class='banner' id='banner'>
   ";
 
-  $range = array();
-  $counter = 1;
-  while ($counter <= 10) {
-    array_push($range, $counter);
-    $counter++;
-  }
+  // $banners is set at line 6
 
-  shuffle($range);
+  shuffle($banners);
+
   $count = 1;
-  foreach ($range as $num) {
-    echo "<img src='img/banner$num.jpg' id='banner$count' width=855 height=150 ' ";
+  foreach ($banners as $banner) {
+    echo "<img src='$banner' id='banner$count' width=855 height=150 ' ";
     if ($count != 1) { echo "class='hide'"; }
     echo " />";
     $count++;
   }
-
 
   echo "
     </div>
