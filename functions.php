@@ -46,7 +46,7 @@ function fillSidebar($start, $end, $field) {
       if ($day > $oldestdate && $day < $newestdate) {
 
         if ($field == 'anniversary') { 
-          $amount = strval(($day - strtotime($staff['startday'])) / $dateunits['year']);
+          $amount = round(strval(($day - strtotime($staff['startday'])) / $dateunits['year']));
           $staffdate = "<br />($amount" . "yrs - " . date('n/j)', strtotime($staff['startday']));
 
           if ($amount > 0) {
