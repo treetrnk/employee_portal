@@ -97,10 +97,15 @@
         width: 95%;
         margin-left: auto;
         margin-right: auto;
+        background: #fff;
+        background-image: url('logo.jpg');
+        background-size: 855px;
+        background-position: left top;
+        background-repeat: no-repeat;
+        height: 191px;  
       }
       .header tr td {
         width: 33%;
-        background: #FFFFFF;
         padding-bottom: 10px;
         padding-top: 10px;
       }
@@ -539,14 +544,11 @@
 
   echo "
       <table class='header' cellspacing='0'> 
-        <tr> 
-          <td>
-            <a href='index.php'><img src='logo.png' /></a>
-          </td>
-          <td align='center'>
-          </td>
-          <td align='right' valign='bottom'>
-            <h1 style='color: #0D59A8;font-weight: normal;'>Employee Portal</h1> <!----LOGIN/LOGOUT---->
+        <tr height='100'> 
+          <td></td>
+        </tr>
+        <tr>
+          <td align='right'>
             <span class='profile-links'>
               <table class='nav-icons'>
                 <tr>
