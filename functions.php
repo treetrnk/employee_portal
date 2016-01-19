@@ -464,7 +464,6 @@ function expertiseList() {
     'Subsurface',
     'Bedrock Characterization',
     'Natural Resource Evaluation',
-    'Oil and Gas',
     'Mining Exploration & Development',
     'Hydrology',
     'PADEP',

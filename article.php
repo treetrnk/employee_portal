@@ -14,6 +14,10 @@
   } else { 
     $type = "article"; 
   }
+
+  if (isset($_POST['subcat'])) {
+    $subcat = $_POST['subcat'];
+  }
   
 
     ////////////////////////////
@@ -73,6 +77,25 @@
             echo ">Wilkes-Barre, PA</option>
         </select><br />
       ";
+    } elseif ($type == 'resources') {
+
+      echo "
+        <br />
+        <b>Subcategory</b><br />
+        <select name='subcat'>
+          <option value='' default>Choose one...</option>
+      ";
+      foreach ($subcategories as $sc) {
+        echo "
+          <option value='$sc'"; 
+            if ($subcat == $sc) { echo " selected "; } 
+            echo ">$sc</option>
+        ";
+      }
+      echo"
+        </select><br />
+      "; 
+
     } else { 
       echo "
         <input type='hidden' name='eventdate' value='NA' />
@@ -102,11 +125,18 @@
    //    VIEW ARTICLE    //
   ////////////////////////
 
+    if ( $article['type'] == 'resources' ) {
+      echo "
+        <a href='index.php?page=resources'>&lt; Back to Resources</a>
+      ";
+    }
+
     if ( hasPermission('admin') ||  $article['userid'] == $_SESSION['id']) {
       echo "
         <form method='post' action='index.php?page=article&articleid=$articleid'>
           <input type='hidden' name='action' value='edit' />
           <input type='hidden' name='type' value='$type' />
+          <input type='hidden' name='subcat' value='$article[subcat]' />
           <input type='submit' name='submit' value='Delete' style='float:right; position:relative; top:18px;' />
           <input type='submit' value='Edit' style='float:right; position:relative; top:18px;' />
         </form>

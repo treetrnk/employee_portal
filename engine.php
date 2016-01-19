@@ -80,6 +80,18 @@ $unicnumbers = array (
 );
 
 
+
+//==============RESOURCE CATEGORIES ARRAY===============
+$subcategories = array(
+  "General Administration",
+  "Health & Safety",
+  "Human Resources",
+  "Marketing",
+  "Standard Operating Procedures & Checklists"
+);
+
+
+
 //==============AUTHENTICATE LOGIN==============
 if ( isset($_POST['login']) && $_POST['login'] == "y") { 
   if ($_POST['user'] && $_POST['pass']) {
@@ -299,6 +311,9 @@ if (isset($_POST['submit'])) {
               $startdate = NULL;
               $enddate = NULL;
             }
+            if ( !isset($subcat) ) {
+              $subcat = NULL;
+            }
             $title = mysql_real_escape_string($title);
             $body = mysql_real_escape_string($body);
             $date = time();
@@ -310,8 +325,8 @@ if (isset($_POST['submit'])) {
                
                 if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
                   if ($type != 'job' || ($type == 'job' && $_POST['location'] != '')) {
-                    $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) 
-                      VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+                    $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del, subcat) 
+                      VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n', '$subcat')";
                     $_GET['articleid'] = mysql_insert_id();
                   } else {
                     $message = "Please fill all fields.";
@@ -328,7 +343,7 @@ if (isset($_POST['submit'])) {
                 if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
                   if ($_GET['articleid']) {
                     $articleid = $_GET['articleid'];
-                    $art_sql = "UPDATE articles SET title='$title', body='$body', startdate='$startdate', enddate='$enddate', type='$type' WHERE id=$articleid";
+                    $art_sql = "UPDATE articles SET title='$title', body='$body', startdate='$startdate', enddate='$enddate', type='$type', subcat='$subcat' WHERE id=$articleid";
                   }
                 } else { 
                   $message = "Please fill all fields.";
@@ -358,7 +373,7 @@ if (isset($_POST['submit'])) {
                 if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
                   $sql = "UPDATE articlesPending SET del = 'y' WHERE id = $_POST[id]";
                   if (mysql_query($sql)) {
-                    $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) VALUES ('$title', '$body', '$penduserid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+                    $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del, subcat) VALUES ('$title', '$body', '$penduserid', '$date', '$startdate', '$enddate', '$location', '$type', 'n', '$subcat')";
                     $_GET['articleid'] = mysql_insert_id();
                     pendingResponse($_GET['articleid']);
                   }
