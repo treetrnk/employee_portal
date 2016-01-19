@@ -440,12 +440,12 @@ function updateSubscribers($articleid) {
   while ($row = mysql_fetch_array($sql)) {
 
     $to = $row['email'];
-    $subject = "ARM PORTAL - An article you are subscribed to has been updated";
+    $subject = "ARMory - An article you are subscribed to has been updated";
     $body = "Article #$article[id], titled '$article[title]', has been updated. \n";
     $body .= "Please follow the link below to view the article: \n \n";
     $body .= "$website/?page=article&articleid=$article[id]";
-    $headers = 'From: ARMPORTAL@armgroup.net' . "\r\n" . 
-      'Reply-To: ARMPORTAL@armgroup.net' . "\r\n" .
+    $headers = 'From: ARMory@armgroup.net' . "\r\n" . 
+      'Reply-To: ARMory@armgroup.net' . "\r\n" .
       'X-Mailer: PHP/' . phpversion();
     mail ($to, $subject, $body, $headers);
 

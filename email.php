@@ -1,7 +1,7 @@
 <?php 
 
   if ($_GET['type'] == "feedback") {
-    echo "<h2>Submit ARM Portal feedback</h2>";
+    echo "<h2>Submit ARMory feedback</h2>";
   } else {
     echo "<h2>Submit a Help Desk ticket</h2>";
     $_GET['type'] = 'ticket';
@@ -16,7 +16,7 @@
     
     if ($_GET['type'] == "feedback") {
       echo "
-        This form can be used to report a bug, request features, or ask questions. All ARM Portal Feedback submissions should be in regards to the ARM Portal website only. If you are submitting a bug report, please include the following information
+        This form can be used to report a bug, request features, or ask questions. All ARMory Feedback submissions should be in regards to the ARMory website only. If you are submitting a bug report, please include the following information
         <ul>
           <li>The issue itself</li>
           <li>What you were doing prior to the problem occuring</li>  

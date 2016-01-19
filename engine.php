@@ -184,9 +184,9 @@ if (isset($_POST['submit'])) {
         $line2 = "If you have any questions, please direct them to $_SESSION[email].";
       }
       $to = $_POST['useremail'];
-      $subject = "ARM PORTAL - Submission #$_POST[id] has been $verb";
+      $subject = "ARMory - Submission #$_POST[id] has been $verb";
       $body = "
-        The following submission to ARM PORTAL was $verb by $_SESSION[fname] $_SESSION[lname].
+        The following submission to ARMory was $verb by $_SESSION[fname] $_SESSION[lname].
         $line2
 
 
@@ -451,7 +451,7 @@ if (isset($_SESSION['security'])) {
   if (isset($_POST['submit']) && $_POST['submit'] == "Send") { 
     if (isset($_POST['subject']) && isset($_POST['body'])) {
       if ($_POST['type'] == 'feedback') {
-        $subject = "ARM PORTAL - Feedback - $_POST[subject]";
+        $subject = "ARMory - Feedback - $_POST[subject]";
       } elseif ($_POST['type'] == 'ticket') {
         $subject = $_POST['subject'];
       }
@@ -462,7 +462,7 @@ if (isset($_SESSION['security'])) {
         $body .= "
 
 
-          Sent from ARM PORTAL
+          Sent from ARMory
         ";
       }
       $headers = 'From: ' . $_SESSION['email'] . "\r\n" . 

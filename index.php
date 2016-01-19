@@ -9,7 +9,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>ARM Group Inc. | Employee Portal</title>
+    <title>ARM Group Inc. | ARMory</title>
     <!---DATEPICKER FROM: http://xdsoft.net/jqplugins/datetimepicker/ --->
     <link rel="stylesheet" type="text/css" href="datetimepicker-master/jquery.datetimepicker.css"/ >
     <link rel="stylesheet" type="text/css" href="mini-event-calendar/cal-style.css"/ >

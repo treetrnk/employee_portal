@@ -12,7 +12,7 @@
           </td>
           <td>
             <div class='greenbox' style='width:300px;' align='center'>
-              <a href='?page=email&type=feedback' style='padding:20px; font-size:18px; color:#ffffff;'>Submit ARM Portal Feedback</a>
+              <a href='?page=email&type=feedback' style='padding:20px; font-size:18px; color:#ffffff;'>Submit ARMory Feedback</a>
             </div>
           </td>
         </tr>
