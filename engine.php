@@ -2,7 +2,7 @@
 session_start();
 date_default_timezone_set('America/New_York');
 
-$website = '192.168.1.64';
+$website = 'https://armory/';
 
 
 include('functions.php');

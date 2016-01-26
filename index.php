@@ -98,11 +98,11 @@
         margin-left: auto;
         margin-right: auto;
         background: #fff;
-        background-image: url('logo.jpg');
+        background-image: url('logo.png');
         background-size: 855px;
         background-position: left top;
         background-repeat: no-repeat;
-        height: 191px;  
+        height: 150px;  
       }
       .header tr td {
         width: 33%;
@@ -544,7 +544,7 @@
 
   echo "
       <table class='header' cellspacing='0'> 
-        <tr height='100'> 
+        <tr height='85'> 
           <td></td>
         </tr>
         <tr>
