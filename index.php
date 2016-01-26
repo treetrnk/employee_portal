@@ -9,13 +9,28 @@
 <!doctype html>
 <html>
   <head>
-    <title>ARM Group Inc. | ARMory</title>
+    <title>The ARMory</title>
     <!---DATEPICKER FROM: http://xdsoft.net/jqplugins/datetimepicker/ --->
     <link rel="stylesheet" type="text/css" href="datetimepicker-master/jquery.datetimepicker.css"/ >
     <link rel="stylesheet" type="text/css" href="mini-event-calendar/cal-style.css"/ >
+    <link rel="stylesheet" type="text/css" href="css/main.css"/ >
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/datetimepicker.js"></script>
+    <script type="text/javascript" src="./tools/jquery.js"></script>
     <script src="datetimepicker/jquery.js"></script>
     <script src="datetimepicker/jquery.datetimepicker.js"></script>
+    <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
+    <!---<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script>
+      $(function() {
+        $( "#datepicker" ).datepicker();
+      });
+    </script>--->
+    <script type="text/javascript">
+
+      // DATE TIME PICKER
       $(function() {
         $( '*[id^="datetimepicker"]' ).datetimepicker();
         $( '#datetimepicker2' ).datetimepicker();
@@ -33,421 +48,8 @@
           format:'Y/m/d'
         });
       });
-    </script>
-    <!---<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script>
-      $(function() {
-        $( "#datepicker" ).datepicker();
-      });
-    </script>--->
-    <style type="text/css">
-      html {
-        overflow-y:hidden;
-      }
-      html, body, .wrapper {
-        height: 100%;
-      }
-      body {
-        background: url("img/sky.jpg") fixed;
-        background-size: 100% 110%;
-        margin: 0px;
-        font-family: Helvetica;
-        font-size: 13px; 
-        height: 100%;
-        overflow-y:scroll;
-        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
-        src='img/sky.jpg',
-        sizingMethod='scale');
 
-        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(
-        src='img/sky.jpg',
-        sizingMethod='scale')";
-      }
-      a:link, a:visited, a:active {
-        color: #0066ff;
-      }
-      a:hover {
-        color: #0000ff;
-      }
-      a img { 
-        border: 0px;
-      }
-      .wrapper {
-        height: auto;
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-        background: #FFFFFF;
-      }
-      hr {
-       display: block; 
-       height: 2px;
-       border: 0; 
-       border-top: 2px solid #f3c60d ;
-       margin-right: auto;
-       margin-left: auto;
-       padding: 0;
-      }
-      h1 {
-        font-family: Times New Roman;
-      }
-      .header {
-        width: 95%;
-        margin-left: auto;
-        margin-right: auto;
-        background: #fff;
-        background-image: url('logo.png');
-        background-size: 855px;
-        background-position: left top;
-        background-repeat: no-repeat;
-        height: 150px;  
-      }
-      .header tr td {
-        width: 33%;
-        padding-bottom: 10px;
-        padding-top: 10px;
-      }
-      .nav-icons tr td {
-        width: 50px;
-      }
-      .nav-icons tr td a {
-        font-size: 8pt;
-      }
-      .navlinkbar {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;
-        background: url('img/nav.png');
-        height: 32px;
-        /*background: -webkit-linear-gradient(#023AA7, #6387CD); /* For Safari 5.1 to 6.0 */
-        /*background: -o-linear-gradient(#023AA7, #6387CD); /* For Opera 11.1 to 12.0 */
-        /*background: -moz-linear-gradient(#023AA7, #6387CD); /* For Firefox 3.6 to 15 */
-        /*background: linear-gradient(#023AA7, #6387CD);
-        border-left: solid 1px #386BC8;
-        border-bottom: solid 1px #386BC8;
-        border-top: solid 1px #85ACF4;*/
-        border-right: solid 1px #85ACF4;
-        color: #FFFFFF;
-        font-weight: bold;
-        line-height: 32px;
-        width: 95%;
-      }
-      .navlinkbar table {
-        height: 32px;
-        line-height: 32px;
-      }
-      .navlinkbar table tr td {
-        margin: 0px;
-        padding: 0px;
-        vertical-align: baseline;
-      }
-      .navlink:active, .navlink:visited, .navlink:link {
-        color: #FFFFFF;
-        font-size:  13px;
-        font-weight: lighter;
-        text-decoration: none;
-        line-height: 32px;
-        padding-right: 15px;
-        padding-left: 15px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        border-left: solid 1px #386BC8;
-        border-right: solid 1px #85ACF4;
-        width: 50px;
-        height: 30px;
-      }
-      .navlink:hover {
-        color: #000000;
-        text-decoration: none;
-        background: #8ca7db;
-      }
-      .navblock {
-        background: #0D59A8;
-        width: 100%;
-        height: 30px;
-      }
-      .banner {
-        /*
-        <?php
-          $num = rand(1,10);
-          echo "background: url('img/banner$num.jpg');"
-        ?>
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-*/
-        background: #fff;
-        width: 95%;
-        height: 150px;
-        max-height: 150px;
-        overflow-y: hidden;
-        margin-top: 5px;
-        margin-right: auto;
-        margin-left: auto;
-        <?php if ($page != 'home') { echo 'display: none;'; } ?>
-      }
-      .content {
-        width: 95%;
-        margin-left: auto;
-        margin-right: auto;
-        background: #FFFFFF;
-        vertical-align: top;
-      }
-      .content table tr td {
-        font-size: 14px;
-      }
-      .main-content {
-        width: 100%
-      }
-      .sidebar {
-        width: 200px;
-        padding: 5px;
-        font-size: 13px;
-        vertical-align: top;
-      }
-      .sidebar h3 {
-        text-align: left;
-        background: #017e44; 
-        background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(#33935e, #017e44);
-        background: url('img/green.png');
-        background-size: 100% 100%;
-        color: #ffffff;
-        padding-top: 5px;
-        padding-left: 5px;
-        padding-bottom: 5px;
-      }
-      .sidebar table tr td {
-        font-size: 12px;
-      }
-      .sidebar ul {
-        width: 200px;
-        margin-left: 0px;
-      }
-      .smalltext {
-        font-size: 11.5px;
-      }
-      .footer-links {
-        width: 100%;
-        height: 150px;
-        background: #4C74C1;
-      }
-      .footer-links td {
-        color: #FFFFFF;
-        font-size: 13px;
-      }
-      .footer-links th {
-        color: #FFFFFF;
-        font-size: 14px;
-        font-weight: normal;
-        text-align: left;
-      }
-      .footer-links a {
-        color: #ffffff;
-      }
-      .footer-links a:hover {
-        color: #000000;
-      }
-      .footer {
-        width: 100%;
-        height: 75px;
-        background: #33935e;
-        text-align: center;
-        color: #ffffff;
-        font-size: 11px;
-      }
-      .login {
-        width: 220px; 
-        margin-left: auto; 
-        margin-right: auto; 
-        text-align: right;
-        background: #eeeeee;
-        border: 3px solid #017e44;
-        border-radius: 15px;
-        -moz-border-radius: 15px;
-        padding: 20px;
-      }
-      .people-list {
-        width: 820px;
-        padding: 5px;
-      }
-      .people-list img {
-        float: left;
-        padding-right: 10px;
-      }
-      .people-list table.people-info {
-        float: right;
-        width: 50%;
-      }
-      .profile-about {
-        max-width: 350px;
-      }
-      .profile-about h3 {
-        text-align: center;
-        background: #017e44; 
-        background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(#33935e, #017e44);
-        border-radius: 5px;
-        -moz-border-radius: 5px;
-        color: #ffffff;
-        padding-top: 5px;
-        padding-bottom: 5px;
-      }
-      .greenbox {
-        background: #017e44; 
-        background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(#33935e, #017e44);
-        color: #ffffff;
-        font-weight: bold;
-        margin-right: auto;
-        margin-left: auto;
-        padding: 20px;
-      }
-      .message {
-        font-size: 12pt;
-        text-align: center;
-        width: 400px;
-        background: #ff3030;
-        background: -webkit-linear-gradient(#ff6e6e, #ff3030); /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(#ff6e6e, #ff3030); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(#ff6e6e, #ff3030); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(#ff6e6e, #ff3030);
-        border-radius: 7px;
-        -moz-border-radius: 5px;
-        color: #ffffff;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-right: auto;
-        margin-left: auto;
-      }
-      .message a {
-        color: #ffffff;
-        text-decoration: underline;
-        /*font-weight: bold;*/
-      }
-      .message a:hover {
-        color: #000000;
-        text-decoration: underline;
-        /*font-weight: bold;*/
-      }
-      .hidelink:active, .hidelink:visited, .hidelink:link {
-        color: #000000;
-        text-decoration: none;
-      } 
-      .hidelink:hover {
-        color: #0000ff;
-        text-decoration: underline;
-      } 
-     .profile-links {
-        font-size: 9pt;
-      }
-      .inline-left {
-        display: inline-block;
-        float: left;
-        clear: left;
-        width: 70px;
-        text-align: left;
-      }
-      .inline-right {
-        display: inline-block;
-        float: left;
-      }
-      input[type="text"], textarea, select, input[type="checkbox"], input[type="password"] {
-        //border: none;
-        border: solid 1px #333333;
-        background-color: #efefef;
-        box-shadow: inset 1px 1px 1px 2px 0 #707070;
-        transition: box-shadow 0.3s;
-      }
-      input[type="text"]:focus, textarea:focus, select:focus, input[type="checkbox"]:focus, input[type="password"] {
-        //border: none;
-        border: solid 1px #333333;
-        background-color: #ffffff;
-      }
-      select {
-        width: 141px;
-      }
-      input[type="submit"] {
-        font-family: Verdana;
-        color: #222;
-        background-color: #ccc;
-        border: solid 1px #999;
-        box-shadow 0 3px #27496d;
-      }
-      input[type="submit"]:hover {
-        font-family: Verdana;
-        background-color: #bbb;
-        border: 1px solid #888;
-      }
-      input[type="submit"]:active {
-        background-color: #666;
-        color: #ddd;
-        border: solid 1px #888;
-      }
-      select.time {
-        width: 40px;
-      }
-      .togglebtn {
-        width: 100%;
-        border-top-width: 1px;
-        border-right-width: 1px;
-        border-bottom-width: 1px;
-        border-left-width:1px;
-        border-style:solid;
-        border-color: #424242;
-        background: #E5E5E5;
-        font-weight: bold;
-        cursor: pointer;
-        height: 35px;
-        line-height: 35px;
-      }
-      .togglediv {
-        display: none;
-        width: 100%;
-      }
-      .active {
-        z-index: 99;
-        display: block;
-      }
-      .hide {
-        display: none;
-        z-index: 99;
-      }
-      <?php if ($_GET['sample'] == false) { ?>
-      .sample {
-        display: none;
-      }
-      <?php } ?>
-    </style>
-    <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
-    <script type="text/javascript" src="./tools/jquery.js"></script>
-    <script type="text/javascript">
-      // Add a script element as a child of the body
-      /*function downloadJSAtOnload() {
-        var element = document.createElement("script");
-        element.src = "http://code.jquery.com/jquery-latest.min.js";
-        document.body.appendChild(element);
-      } // Check for browser support of event handling capability
-      if (window.addEventListener)
-        window.addEventListener("load", downloadJSAtOnload, false);
-      else if (window.attachEvent)
-        window.attachEvent("onload", downloadJSAtOnload);
-      else window.onload = downloadJSAtOnload;
-       */
-      //https://developers.google.com/speed/docs/insights/BlockingJS
 
-      
       // SLIDE TOGGLE DIVS
       function hidediv(d) {
         var div = '#' + d;
@@ -474,6 +76,7 @@
         }
       }
 
+      // HOME PAGE BANNER
       var $slide = 1;
 
       function slideSwitch() {
@@ -496,39 +99,6 @@
       $(function() {
         setInterval( "slideSwitch()", 7500 );
       });
-
-      /*
-      // SET DEFAULTS FOR SLIDES
-      var slidenum = 0;
-      var nextslide = 1;
-      var timer = 0;
-                 
-      // CYCLE IMAGES FUNCTION
-      function cycleslides() {
-        timer = setInterval(function() {
-          if (slidenum == 10) {
-            slidenum = 11;
-            nextslide = 1;
-            console.log("if");
-          } else {
-            slidenum = nextslide;
-            nextslide = slidenum + 1;
-            console.log("else");
-            console.log(slidenum);
-            console.log(nextslide);
-          }
-
-          $("#slide" + slidenum).fadeOut("slow");
-          $("#sltxt" + slidenum).fadeOut("slow");
-          $("#bull" + slidenum).removeClass("active");
-          console.log(slidenum);
-          $("#slide" + nextslide).fadeIn("slow");
-          $("#sltxt" + nextslide).fadeIn("slow");
-          $("#bull" + nextslide).addClass("active");
-          return slidenum;
-        }, 5000);
-      } */
-
     </script>
   </head>
 
@@ -672,25 +242,28 @@
             </tr>
           </table>
         </div>
+  ";
+  if ($page == 'home') {
+    echo "
       <div class='banner' id='banner'>
   ";
 
   // $banners is set at line 6
 
-  shuffle($banners);
+    shuffle($banners);
 
-  $count = 1;
-  foreach ($banners as $banner) {
-    echo "<img src='$banner' id='banner$count' width=855 height=150 ' ";
-    if ($count != 1) { echo "class='hide'"; }
-    echo " />";
-    $count++;
-  }
+    $count = 1;
+    foreach ($banners as $banner) {
+      echo "<img src='$banner' id='banner$count' width=855 height=150 ' ";
+      if ($count != 1) { echo "class='hide'"; }
+      echo " />";
+      $count++;
+    }
 
   echo "
     </div>
   ";
-
+  }
          ///////////////
         //  CONTENT  //
        ///////////////
