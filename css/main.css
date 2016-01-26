@@ -147,14 +147,6 @@ h1 {
 }
 
 .banner {
-  /*
-  <?php
-    $num = rand(1,10);
-    echo "background: url('../img/banner$num.jpg');"
-  ?>
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-*/
   background: #fff;
   width: 95%;
   height: 150px;
