@@ -8,7 +8,7 @@
 # Files
 logo.png
 logo.jpg
-logo2.png
+logo*.png
 footer.php
 servers.php
 offices.php

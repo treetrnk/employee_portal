@@ -105,6 +105,7 @@
                   $userinfo[fname] $userinfo[lname]
                 </td>
               </tr>
+                <!----
               <tr>
                 <th>
                   Type:
@@ -118,14 +119,18 @@
                   </select>
                 </td>
               </tr>
+                  ---->
               <tr>
                 <th>
                   Title: 
                 </th>
                 <td>
-                  <input type='text' name='title' value='$row[title]' size=100% />
+                  <input type='text' name='title' value='$row[title]' style='width: 100%;' />
                 </td>
               </tr>
+          ";
+        if ($row['type'] == 'job') {
+          echo " 
               <tr>
                 <th>
                   Location: 
@@ -151,6 +156,9 @@
                   </select> (job listings only)
                 </td>
               </tr>
+          ";
+        } elseif ($row['type'] == 'event') {
+          echo "
               <tr>
                 <th>
                   Date/Time: 
@@ -165,6 +173,9 @@
                     timePicker($row, 'enddate'); echo "
                 </td>
               </tr>
+          ";
+        }
+        echo "
               <tr>
                 <th>
                   Body: 
@@ -175,7 +186,7 @@
                     CKEDITOR.replace('body$count');
                   </script>
                 </td>
-              </tr>
+                </tr>
               <tr>
                 <td align='center' colspan='2'>
                   <input type='hidden' name='id' value='$row[id]' />

@@ -211,16 +211,17 @@
         vertical-align: top;
       }
       .sidebar h3 {
-        text-align: center;
+        text-align: left;
         background: #017e44; 
         background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
         background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
         background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
         background: linear-gradient(#33935e, #017e44);
-        border-radius: 5px;
-        -moz-border-radius: 5px;
+        background: url('img/green.png');
+        background-size: 100% 100%;
         color: #ffffff;
         padding-top: 5px;
+        padding-left: 5px;
         padding-bottom: 5px;
       }
       .sidebar table tr td {
@@ -274,7 +275,7 @@
         padding: 20px;
       }
       .people-list {
-        width: 100%;
+        width: 820px;
         padding: 5px;
       }
       .people-list img {
@@ -307,7 +308,6 @@
         background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
         background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
         background: linear-gradient(#33935e, #017e44);
-        border-radius: 10px;
         color: #ffffff;
         font-weight: bold;
         margin-right: auto;
@@ -596,7 +596,7 @@
                   if ( $pend > 0 ) {
                     echo " 
                       <td align='center'>
-                        <a href=''> 
+                        <a href='?page=pending'> 
                           <img src='img/pending-red.png' />
                           Pending
                         </a>
