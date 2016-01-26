@@ -176,7 +176,6 @@ h1 {
 .sidebar {
   width: 200px;
   padding: 5px;
-  font-size: 13px;
   vertical-align: top;
 }
 
@@ -193,6 +192,8 @@ h1 {
   padding-top: 5px;
   padding-left: 5px;
   padding-bottom: 5px;
+  font-size: 14px;
+  line-height: 25px;
 }
 
 .sidebar table tr td {
