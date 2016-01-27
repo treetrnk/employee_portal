@@ -161,6 +161,12 @@
     }
 
     echo "<h2>$article[title]</h2>";
+    if ($article['type'] == 'resources') {
+      echo "
+        <b>Category:</b> $article[category]<br />
+        <b>Subcategory:</b> $article[subcat]<br /><br />
+      ";
+    }
     if ($article['type'] == 'event') {
         echo "<b>" . date('l, M. j Y', $article['startdate']) . "</b><br />";
       if (date('Y-m-d', $article['startdate']) == date('Y-m-d', $article['enddate'])) {
