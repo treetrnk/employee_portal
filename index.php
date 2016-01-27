@@ -114,9 +114,6 @@
 
   echo "
       <table class='header' cellspacing='0'> 
-        <tr height='85'> 
-          <td></td>
-        </tr>
         <tr>
           <td align='right'>
             <span class='profile-links'>
@@ -148,6 +145,8 @@
                       Helpdesk
                     </a>
                   </td>
+                </tr>
+                <tr>
                   <td align='center'>
                     <a href='?page=email&type=feedback'> 
                       <img src='img/feedback.png' />
