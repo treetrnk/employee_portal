@@ -309,9 +309,9 @@ if (isset($_POST['submit'])) {
               case 'add':   ///////////////  ADD  ////
                
                 if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
-                  if ($type != 'job' || ($type == 'job' && $_POST['location'] != '')) {
-                    $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del) 
-                      VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n')";
+                  if (($type != 'job' || ($type == 'job' && $_POST['location'] != '')) && ($type != 'resources' || ($type == 'resources' && $_POST['category'] != '' && $_POST['subcat'] != ''))) {
+                    $art_sql = "INSERT INTO $table (title, body, userid, date, startdate, enddate, location, type, del, category, subcat) 
+                      VALUES ('$title', '$body', '$userid', '$date', '$startdate', '$enddate', '$location', '$type', 'n', '$category', '$subcat')";
                     $_GET['articleid'] = mysql_insert_id();
                   } else {
                     $message = "Please fill all fields.";
@@ -326,9 +326,13 @@ if (isset($_POST['submit'])) {
               case 'edit':  //////////////  EDIT  ////
 
                 if (isset($_POST['title']) && isset($_POST['body']) && hasPermission($type)) {
-                  if ($_GET['articleid']) {
-                    $articleid = $_GET['articleid'];
-                    $art_sql = "UPDATE articles SET title='$title', body='$body', startdate='$startdate', enddate='$enddate', type='$type' WHERE id=$articleid";
+                  if (($type != 'job' || ($type == 'job' && $_POST['location'] != '')) && ($type != 'resources' || ($type == 'resources' && $_POST['category'] != '' && $_POST['subcat'] != ''))) {
+                    if ($_GET['articleid']) {
+                      $articleid = $_GET['articleid'];
+                      $art_sql = "UPDATE articles SET title='$title', body='$body', startdate='$startdate', enddate='$enddate', type='$type', category='$category', subcat='$subcat' WHERE id=$articleid";
+                    }
+                  } else {
+                    $message = "Please fill all fields.";
                   }
                 } else { 
                   $message = "Please fill all fields.";

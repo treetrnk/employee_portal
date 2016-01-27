@@ -56,11 +56,14 @@
         </select><br /><br />
 
         <b>Subcategory</b><br />
-        <select name='category'>
+        <select name='subcat'>
           <option value='' default>Choose one...</option>
           <option value='General'"; 
             if ($article['subcat'] == 'General') { echo " selected "; } 
             echo ">General</option>
+          <option value='Standards'";
+            if ($article['subcat'] == 'Standards') { echo " selected "; } 
+            echo ">Standards</option>
         </select><br /><br />
       "; 
     }
