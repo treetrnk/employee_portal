@@ -15,6 +15,10 @@
     $type = "article"; 
   }
   
+  if (isset($_POST['category']) && isset($_POST['subcat'])) {
+    $article['category'] = $_POST['category'];
+    $article['subcat'] = $_POST['subcat'];
+  }
 
     ////////////////////////////
    //    ADD/EDIT ARTICLE    //
@@ -73,6 +77,38 @@
             echo ">Wilkes-Barre, PA</option>
         </select><br />
       ";
+    } elseif ($type == 'resources') {
+      echo "
+        <br />
+        <b>Category</b><br />
+        <select name='category'>
+          <option value='' default>Choose one...</option>
+          <option value='General Administration'"; 
+            if ($article['category'] == 'General Administration') { echo " selected "; } 
+            echo ">General Administration</option>
+          <option value='Health & Safety'"; 
+            if ($article['category'] == 'Health & Safety') { echo " selected "; } 
+            echo ">Health & Safety</option>
+          <option value='Human Resources'"; 
+            if ($article['category'] == 'Human Resources') { echo " selected "; } 
+            echo ">Human Resources</option>
+          <option value='Marketing'"; 
+            if ($article['category'] == 'Marketing') { echo " selected "; } 
+            echo ">Marketing</option>
+          <option value='Standard Operating Procedures & Checklists'"; 
+            if ($article['category'] == 'Standard Operating Procedures & Checklists') { echo " selected "; } 
+            echo ">Standard Operating Procedures & Checklists</option>
+        </select><br /><br />
+
+        <b>Subcategory</b><br />
+        <select name='category'>
+          <option value='' default>Choose one...</option>
+          <option value='General'"; 
+            if ($article['subcat'] == 'General') { echo " selected "; } 
+            echo ">General</option>
+        </select><br />
+
+      "; 
     } else { 
       echo "
         <input type='hidden' name='eventdate' value='NA' />
