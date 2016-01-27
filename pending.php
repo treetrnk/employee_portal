@@ -102,6 +102,7 @@
                 <td width=90% >
                   <input type='hidden' name='useremail' value='$userinfo[email]' />
                   <input type='hidden' name='penduserid' value='$row[userid]' />
+                  <input type='hidden' name='type' value='$row[type]' />
                   $userinfo[fname] $userinfo[lname]
                 </td>
               </tr>
