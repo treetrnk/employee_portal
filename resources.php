@@ -42,7 +42,7 @@
 
         if ( hasPermission('resources') ||  $article['userid'] == $_SESSION['id']) {
           echo "
-            <form method='post' action='index.php?page=article&articleid=$articleid'>
+            <form method='post' action='index.php?page=article'>
               <input type='hidden' name='action' value='add' />
               <input type='hidden' name='type' value='resources' />
               <input type='hidden' name='category' value='$category[category]' />
