@@ -402,7 +402,7 @@
           echo "<h3>Events </h3>";
 
                   include('mini-event-calendar/calendar.php');
-                  $eventsql = "SELECT * FROM articles WHERE type = 'event' AND startdate >= '$todaystart' ORDER BY startdate ASC LIMIT 5";
+                  $eventsql = "SELECT * FROM articles WHERE type = 'event' AND startdate >= '$todaystart' and del='n' ORDER BY startdate ASC LIMIT 5";
                   $result = mysql_query($eventsql);
                   if ($result) {
                     echo '<ul>';
