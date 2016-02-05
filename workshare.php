@@ -15,13 +15,14 @@
   echo "<h2>Workshare</h2>";
 
   $result = mysql_query($wssql);
-  if ($result) {
+  if (mysql_num_rows($result)) {
     echo "<ul>";
     while ($workshare = mysql_fetch_array($result)) {
       echo "<li><a href='?page=article&articleid=$workshare[id]'>$workshare[title]</a><br />";
     }
     echo "</ul>";
-  }  
-  echo "</ul>";
+  } else {
+    echo "<p>There are no current work share opportunities.</p>";  
+  }
 
 ?>
