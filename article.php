@@ -85,11 +85,13 @@
         <input type='text' name='enddate' id='datepicker2' value='" . date('Y/m/d', $article['enddate']) . "' />
       ";
         timePicker($article, 'enddate');
+      $checked = "";
+      if ($article['category'] == 'holiday') { $checked = 'checked'; }
       echo "
         <br /><br />
         <input type='hidden' name='location' value'NA' />
         <br />
-        <input type='checkbox' value='holdiay' name='category' /> <b>Holiday</b><br />
+        <input type='checkbox' value='holiday' $checked name='category' /> <b>Holiday</b><br />
       ";
     } elseif ($type == 'job') { 
       echo "
@@ -164,6 +166,7 @@
     }
 
     echo "<h2>$article[title]</h2>";
+    if ($article['category'] == "holiday") { echo "<b>Holiday Event</b><br /><br />"; }
     if ($article['type'] == 'resources') {
       echo "
         <b>Category:</b> $article[category]<br />
@@ -178,6 +181,7 @@
       }else{
         echo "<b>" . date('g:i A', $article['startdate']) . "</b>";
       }
+
 
     } elseif ($article['type'] == 'job') {
       echo "<b>$article[location]</b>";
