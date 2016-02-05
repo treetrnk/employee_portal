@@ -120,12 +120,6 @@
               <table class='nav-icons'>
                 <tr>
                   <td align='center'>
-                    <a href='?page=article&articleid=112'> 
-                      <img src='img/manual.png' />
-                      eManual
-                    </a>
-                  </td>
-                  <td align='center'>
                     <a href='http://accounting1.armgroup.lcl/ajera/' target='_blank'> 
                       <img src='img/ajera.png' width=30 height=30 />
                       Ajera
@@ -145,14 +139,15 @@
                       Helpdesk
                     </a>
                   </td>
-                </tr>
-                <tr>
                   <td align='center'>
                     <a href='?page=email&type=feedback'> 
                       <img src='img/feedback.png' />
                       Feedback
                     </a>
                   </td>
+                </tr>
+                <tr>
+                  <td align='center'>
             ";
 
                 if ( hasPermission('approve') ) {
@@ -164,16 +159,21 @@
                   $pend += mysql_num_rows($result);
                   if ( $pend > 0 ) {
                     echo " 
-                      <td align='center'>
                         <a href='?page=pending'> 
                           <img src='img/pending-red.png' />
                           Pending
                         </a>
-                        </td>
                     ";
                   }
                 }
             echo "
+                  </td>
+                  <td align='center'>
+                    <a href='?page=article&articleid=112'> 
+                      <img src='img/manual.png' />
+                      eManual
+                    </a>
+                  </td>
                   <td align='center'>
                     <a href='?page=profile&profileid=$_SESSION[id]'> 
                       <img src='$_SESSION[picture]' width=30 height=30 />
@@ -282,10 +282,35 @@
     ";
 
 
+    //////////  WORK SHARE  //////////
+
+                echo "<h3><a href='?page=workshare' style='color:#ffffff; text-decoration:none;'>Work Share</a></h3>"; 
+                  $wssql = "SELECT * FROM articles WHERE type = 'workshare' AND del = 'n' ORDER BY date DESC LIMIT 3 ";
+                  $result = mysql_query($wssql);
+                  if ($result) {
+                    echo "<ul>";
+                    while ($workshare = mysql_fetch_array($result)) {
+                      echo "<li><a href='?page=article&articleid=$workshare[id]'>" . substr($workshare['title'], 0, 23) . "...</a><br />";
+                    }
+                    if ( hasPermission('workshare') ) {
+                      echo "
+                        <br />
+                        <form method='post' action='?page=article'>
+                          <input type='hidden' name='action' value='add' />
+                          <input type='hidden' name='type' value='workshare' />
+                          <input type='submit' value='Add Job' />
+                        </form>
+                      ";
+                    } 
+                    echo "</ul>";
+                  }  
+                  echo "</ul>";
+
+
     //////////  CAREER OPPORTUNITIES  //////////
 
                 echo "<h3><a href='?page=careerops' style='color:#ffffff; text-decoration:none;'>Career Opportunities</a></h3>"; 
-                  $jobsql = "SELECT * FROM articles WHERE type = 'job' AND del = 'n' ORDER BY date DESC LIMIT 5 ";
+                  $jobsql = "SELECT * FROM articles WHERE type = 'job' AND del = 'n' ORDER BY date DESC LIMIT 3 ";
                   $result = mysql_query($jobsql);
                   if ($result) {
                     echo "<ul>";

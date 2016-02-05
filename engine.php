@@ -283,6 +283,7 @@ if (isset($_POST['submit'])) {
       case 'event':                        //    ARTICLES    // 
       case 'article':                     ////////////////////
       case 'help':
+      case 'workshare':
 
         $table = "articles";
        

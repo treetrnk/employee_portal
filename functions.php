@@ -163,7 +163,9 @@ function hasPermission($type) {
       'job_pend',         // Add jobs that require approval
       'profile',          // Edit your profile
       'profile_pend',     // Edit your profile, changes require approval
-      'resources'         // Edit the resources page
+      'resources',        // Edit the resources page
+      'workshare',        // Add work share articles
+      'workshare_pend',   // Add work share articles that require approval
     );
 
     $hasPerm = array();

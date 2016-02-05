@@ -15,6 +15,7 @@
     $type = "article"; 
   }
   
+
   if (isset($_POST['category']) && isset($_POST['subcat'])) {
     $article['category'] = $_POST['category'];
     $article['subcat'] = $_POST['subcat'];
@@ -87,6 +88,8 @@
       echo "
         <br /><br />
         <input type='hidden' name='location' value'NA' />
+        <br />
+        <input type='checkbox' value='holdiay' name='category' /> <b>Holiday</b><br />
       ";
     } elseif ($type == 'job') { 
       echo "
