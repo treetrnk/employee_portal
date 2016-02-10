@@ -45,9 +45,6 @@ a img {
 
 hr {
  display: block; 
- height: 2px;
- border: 0; 
- border-top: 2px solid #f3c60d ;
  margin-right: auto;
  margin-left: auto;
  padding: 0;
