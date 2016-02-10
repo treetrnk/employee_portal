@@ -7,7 +7,7 @@
     $date = strtotime($_GET['date'] . ' 00:00:00');
     $endofdate = $date + $dateunits['day'] - 1;
     $fulldate = date('l, M. j, Y', strtotime($_GET['date']));
-    $sql = "SELECT * FROM articles WHERE type = 'event' AND startdate BETWEEN '$date' AND '$endofdate' ORDER BY startdate ASC";
+    $sql = "SELECT * FROM articles WHERE type = 'event' AND del = 'n' AND startdate BETWEEN '$date' AND '$endofdate' ORDER BY startdate ASC";
     $result = mysql_query($sql); 
     if ($result) { 
       echo "<h3>" . $fulldate . "</h3>";
