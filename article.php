@@ -168,6 +168,12 @@
       ";
     }
 
+    if ($article['type'] == 'help') {
+      echo "
+        <a href='?page=help'>&lt; return to I.T. Help</a>
+      ";
+    }
+
     echo "<h2>$article[title]</h2>";
     if ($article['category'] == "holiday") { echo "<b>Holiday Event</b><br /><br />"; }
     if ($article['type'] == 'resources') {
