@@ -20,14 +20,14 @@
     <script src="datetimepicker/jquery.js"></script>
     <script src="datetimepicker/jquery.datetimepicker.js"></script>
     <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
-    <!---<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script>
       $(function() {
-        $( "#datepicker" ).datepicker();
+        $( '*[id^="datepicker"]' ).datepicker();
       });
-    </script>--->
+    </script>
     <script type="text/javascript">
 
       // DATE TIME PICKER
