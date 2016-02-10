@@ -519,7 +519,7 @@ function expertiseList() {
     'Eviromental Geophysics',
     'Geotechnical Geophysics',
     'Borehole',
-    'IT Computer Support',
+    'Information Technology',
     'Human Resources',
     'Accounting',
     'Marketing',
