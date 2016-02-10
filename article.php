@@ -65,6 +65,9 @@
           <option value='Standards'";
             if ($article['subcat'] == 'Standards') { echo " selected "; } 
             echo ">Standards</option>
+          <option value='Meeting Minutes'";
+            if ($article['subcat'] == 'Meeting Minutes') { echo " selected "; } 
+            echo ">Meeting Minutes</option>
         </select><br /><br />
       "; 
     }
