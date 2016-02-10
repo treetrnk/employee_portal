@@ -20,7 +20,7 @@
       <br /><br />
   ";
 
-  $sql = "SELECT * FROM articles WHERE type = 'help' ORDER BY title";
+  $sql = "SELECT * FROM articles WHERE type = 'help' AND del = 'n' ORDER BY title";
   $result = mysql_query($sql);
   if ($result) {
 
