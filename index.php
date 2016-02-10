@@ -477,16 +477,8 @@
              //////////////
 
     echo "
-      <div class='footer'>
-        <br />
-        <br />
-        &copy; Copyright 2011 ARM Group Inc. | Terms & Conditions<br />
-        ARM Enertech | ARM Geophysics
-      </div>
 
     </div> <!----WRAPPER END---->
-
-
 
   </body>
 </html>
