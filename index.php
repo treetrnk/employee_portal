@@ -290,7 +290,7 @@
                   if ($result) {
                     echo "<ul>";
                     while ($workshare = mysql_fetch_array($result)) {
-                      echo "<li><a href='?page=article&articleid=$workshare[id]'>" . substr($workshare['title'], 0, 23) . "...</a><br />";
+                      echo "<li><a href='?page=article&articleid=$workshare[id]'>" . substr($workshare['title'], 0, 20) . "...</a><br />";
                     }
                     if ( hasPermission('workshare') ) {
                       echo "
@@ -315,7 +315,7 @@
                   if ($result) {
                     echo "<ul>";
                     while ($job = mysql_fetch_array($result)) {
-                      echo "<li><a href='?page=article&articleid=$job[id]'>" . substr($job['title'], 0, 23) . "...</a><br />";
+                      echo "<li><a href='?page=article&articleid=$job[id]'>" . substr($job['title'], 0, 20) . "...</a><br />";
                       echo $job['location'] . '</li>';
                     }
                     if ( hasPermission('job') ) {
