@@ -16,6 +16,8 @@ offices.php
 *.hwm
 *.pwd
 *.pwi
+banner*
+img/
 
 # Folders
 staff/*
