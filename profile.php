@@ -25,7 +25,7 @@ if (isset($_POST['action'])) {
       <tr>
         <td width='160' valign='top'>  <!----PICTURE---->";
           if ($row['picture']) { 
-            echo "<img src='$row[picture]' width='150' />"; 
+            echo "<img src='$row[picture]?" . rand(1, 9999) . "' width='150' />"; 
           } else { 
             echo "<img src='img/no_pic1.png' width='150' />"; }
   echo "

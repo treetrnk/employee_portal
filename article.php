@@ -253,7 +253,7 @@
         <a href='?page=profile&profileid=$user[id]'>
           <img src='";
             if ($user['picture']) { echo "$user[picture]"; } else { echo "img/no_pic1.png"; } 
-            echo "' width='75' height='75' />
+            echo "?" . rand(1, 9999) . "' width='75' height='75' />
         </a> 
         <p style='text-align:left;'>
           <a class='hidelink' href='?page=profile&profileid=$row[userid]'><u>$user[fname] $user[lname]</u></a>:<br />
