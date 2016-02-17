@@ -4,15 +4,15 @@
   if (isset($_GET['post'])) { $_POST = unserialize(base64_decode($_GET['post'])); }
   if (isset($_GET['offset'])) { $offset = $_GET['offset']; } else { $offset = 0; }
   $search = $_POST['search'];
-  $sql = "SELECT * FROM articles WHERE del = 'n'";        // START OF QUERY
-  $sql = $sql . " AND title LIKE '%$search%' OR body LIKE '%$search%' OR location LIKE '%$search%'";
+  $sql = "SELECT * FROM articles WHERE title LIKE '%$search%' 
+    OR body LIKE '%$search%' OR location LIKE '%$search%' AND del='n'";
   $total_rows = mysql_num_rows(mysql_query($sql));
   $sql = $sql . " ORDER BY date DESC LIMIT " . $limit . " OFFSET " . $offset;         // END OF QUERY
   $result = mysql_query($sql);
 
   echo "
     <h2>Search results for '$search':</h2><br />
-    <div style='width: 700px; margin-right:auto; margin-left:auto;'> 
+    <div style='margin-right:auto; margin-left:auto;'> 
   ";
 
 
