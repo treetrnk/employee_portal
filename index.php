@@ -176,7 +176,7 @@
                   </td>
                   <td align='center'>
                     <a href='?page=profile&profileid=$_SESSION[id]'> 
-                      <img src='$_SESSION[picture]' width=30 height=30 />
+                      <img src='$_SESSION[picture]?" . rand(1, 9999) . "' width=30 height=30 />
                       $_SESSION[user]
                     </a>
                   </td>
