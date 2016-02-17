@@ -116,11 +116,9 @@
       <table class='header' cellspacing='0'> 
         <tr>
           <td align='right'>
-            <div class='logo-crop'>
-              <a href='http://armory/'>
-                <img src='logo.png?" . rand(1, 9999) . "' style='float: left;' />
-              </a>
-            </div>
+            <a href='http://armory/'>
+              <img src='logo.png?" . rand(1, 9999) . "' style='float: left;' />
+            </a>
             <span class='profile-links'>
               <table class='nav-icons'>
                 <tr>

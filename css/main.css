@@ -60,23 +60,9 @@ h1 {
   margin-right: auto;
   background: #fff;
   background-image: url('../logo.png');
-  background-size: 855px;
-  background-position: left top;
+  background-position: left middle;
   background-repeat: no-repeat;
   height: 171px;
-}
-
-.logo-crop {
-  width: 500px;
-  height: 150px;
-  display: inline-block;
-  overflow: hidden;
-  float: left;
-  margin: 0;
-}
-
-.logo-crop img {
-  margin-top: -11px;
 }
 
 .header tr td {
