@@ -445,7 +445,7 @@ function updateSubscribers($articleid) {
     $subject = "ARMory - An article you are subscribed to has been updated";
     $body = "Article #$article[id], titled '$article[title]', has been updated. \n";
     $body .= "Please follow the link below to view the article: \n \n";
-    $body .= "$website/?page=article&articleid=$article[id]";
+    $body .= "http://thearmory/?page=article&articleid=$article[id]";
     $headers = 'From: ARMory@armgroup.net' . "\r\n" . 
       'Reply-To: ARMory@armgroup.net' . "\r\n" .
       'X-Mailer: PHP/' . phpversion();
