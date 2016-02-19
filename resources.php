@@ -40,7 +40,7 @@
       
       while ($subcat = mysql_fetch_array($subcat_result)) {
 
-        if ( hasPermission('resources') ||  $article['userid'] == $_SESSION['id']) {
+        if ( hasPermission('resources') ) {
           echo "
             <form method='post' action='index.php?page=article'>
               <input type='hidden' name='action' value='add' />
