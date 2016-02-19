@@ -86,7 +86,7 @@
         <div class='people-list' style='height: 80px; border:1px solid #dedede;";
           if ($count % 2 == 0) { echo 'background: #dedede;'; } 
           echo "'>
-        <a href='?page=profile&profileid=$row[id]&rdm=" . date() . "'>
+        <a href='?page=profile&profileid=$row[id]'>
           <img src='";
             if ($row['picture']) { echo "$row[picture]"; } else { echo "img/no_pic1.png"; } 
             echo "?" . rand(1, 9999) . "' width='75' height='75' />

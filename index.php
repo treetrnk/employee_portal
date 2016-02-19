@@ -256,7 +256,7 @@
 
     $count = 1;
     foreach ($banners as $banner) {
-      echo "<img src='$banner' id='banner$count' width=855 height=150 ' ";
+      echo "<img src='$banner?" . rand(1, 9999) . "' id='banner$count' width=855 height=150 ' ";
       if ($count != 1) { echo "class='hide'"; }
       echo " />";
       $count++;
