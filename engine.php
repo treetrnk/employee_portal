@@ -462,7 +462,7 @@ if (isset($_SESSION['security'])) {
       }
       
       $to = "helpdesk@armgroup.net";
-      $body = "SUBMITTED BY: " . $_SESSION['email'] . "\r\n\r\n" . $_POST['body'];
+      $body = "SUBMITTED BY: $_SESSION[fname] $_SESSION[lname], $_SESSION[email] \r\n\r\n $_POST[body]";
       if ($_POST['type'] == 'ticket') { 
         $body .= "
 
