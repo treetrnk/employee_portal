@@ -211,11 +211,14 @@
         <form method='post' action='?page=article&articleid=$articleid'>
           <input type='submit' name='submit' value='$subscribe' style='float:right;' />
         </form>
+      ";
+    }
+
+    echo "
         <span style='font-size: 8pt;'>
           By: <a class='hidelink' href='?page=profile&profileid=$article[userid]'>$userinfo[fname] $userinfo[lname]</a> - " . date('M j, Y @ g:i a', $article['date']) . "
-        </span>";
-
-    }
+        </span>
+    ";
 
     echo "
       <br /><br /><br /><br />
