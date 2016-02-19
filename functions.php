@@ -516,7 +516,7 @@ function expertiseList() {
     'Electrical (AETA)',
     'Mechanical (AETA)',
     'Controls/Automation (AETA)',
-    'Eviromental Geophysics',
+    'Enviromental Geophysics',
     'Geotechnical Geophysics',
     'Borehole',
     'Information Technology',
