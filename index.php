@@ -23,32 +23,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script>
+    <script type="text/javascript">
+
       $(function() {
         $( '*[id^="datepicker"]' ).datepicker();
       });
-    </script>
-    <script type="text/javascript">
-
-      // DATE TIME PICKER
-      $(function() {
-        $( '*[id^="datetimepicker"]' ).datetimepicker();
-        $( '#datetimepicker2' ).datetimepicker();
-        $( '#datetimepicker3' ).datetimepicker();
-        $( '*[id^="datepicker"]' ).datetimepicker({
-          timepicker:false, 
-          format:'Y/m/d'
-        });
-        $( '#datepicker2' ).datetimepicker({
-          timepicker:false, 
-          format:'Y/m/d'
-        });
-        $( '#datepicker3' ).datetimepicker({
-          timepicker:false, 
-          format:'Y/m/d'
-        });
-      });
-
 
       // SLIDE TOGGLE DIVS
       function hidediv(d) {
