@@ -150,12 +150,19 @@
                 }
             echo "
                   </td>
+            ";
+          }
+            echo "
                   <td align='center'>
                     <a href='?page=article&articleid=112'> 
                       <img src='img/manual.png' />
                       eManual
                     </a>
                   </td>
+            ";
+
+          if (isset($_SESSION['id'])) {
+            echo "
                   <td align='center'>
                     <a href='?page=profile&profileid=$_SESSION[id]'> 
                       <img src='$_SESSION[picture]?" . rand(1, 9999) . "' width=30 height=30 />
