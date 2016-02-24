@@ -20,24 +20,42 @@ $limit = 15;
 
   $result = mysql_query($sql);
   if ($result) {
-    echo '<ul style="list-style-type: none;">';
-    while ($row = mysql_fetch_array($result)) { 
-      $userids = $row['userid'];
-      $usersql = mysql_query("SELECT * FROM staff WHERE id = '$userids'");
-      $userinfo = mysql_fetch_array($usersql);
-
-      echo "
+    $sticky = mysql_fetch_array(mysql_query("SELECT * FROM articles WHERE id = 93"));
+    $sticky_user = mysql_fetch_array(mysql_query("SELECT * FROM staff WHERE id = '$sticky[userid]'"));
+    echo "<ul style='list-style-type: none;'>
         <li> 
-          <b><a href='?page=article&articleid=$row[id]' style='font-size:12pt'>$row[title]</a></b>
+          <b><a href='?page=article&articleid=$sticky[id]' style='font-size:12pt'>$sticky[title]</a></b>
           <br />
           <span style='font-size: 8pt;'>
-            By: <a class='hidelink' href='?page=profile&profileid=$row[userid]'>$userinfo[fname] $userinfo[lname]</a>
-            -  " . date('M j, Y @ g:i a', $row['date']) . "
+            By: <a class='hidelink' href='?page=profile&profileid=$sticky[userid]'>$sticky_user[fname] $sticky_user[lname]</a>
+            -  " . date('M j, Y @ g:i a', $sticky['date']) . "
           </span>
           <br />
           <br />
-        </li>
+          </li>
       ";
+
+    while ($row = mysql_fetch_array($result)) { 
+      if ($row['id'] != 93) {
+
+        $userids = $row['userid'];
+        $usersql = mysql_query("SELECT * FROM staff WHERE id = '$userids'");
+        $userinfo = mysql_fetch_array($usersql);
+
+        echo "
+          <li> 
+            <b><a href='?page=article&articleid=$row[id]' style='font-size:12pt'>$row[title]</a></b>
+            <br />
+            <span style='font-size: 8pt;'>
+              By: <a class='hidelink' href='?page=profile&profileid=$row[userid]'>$userinfo[fname] $userinfo[lname]</a>
+              -  " . date('M j, Y @ g:i a', $row['date']) . "
+            </span>
+            <br />
+            <br />
+          </li>
+        ";
+
+      }
 
     }
     echo '</ul>';
