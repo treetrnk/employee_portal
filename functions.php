@@ -527,7 +527,10 @@ function expertiseList() {
     'Aquatic Surveys',
     'Stream Surveys',
     'Botany',
-    'Threatened & Endangered Species'
+    'Threatened & Endangered Species',
+    'CAD',
+    'CQA',
+    'Property Maintenence'
   );
   sort($areasOfExpertise);
   return $areasOfExpertise;
