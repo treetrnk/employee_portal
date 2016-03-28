@@ -129,6 +129,14 @@
                   <input type='text' name='title' value='$row[title]' style='width: 100%;' />
                 </td>
               </tr>
+              <tr>
+                <th>
+                  Type:
+                </th>
+                <td>
+                  $row[type]
+                </td>
+              </tr>
           ";
         if ($row['type'] == 'job') {
           echo " 
