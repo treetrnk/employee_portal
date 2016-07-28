@@ -102,7 +102,7 @@
               <table class='nav-icons'>
                 <tr>
                   <td align='center'>
-                    <a href='http://login.ajera.com/' target='_blank'> 
+                    <a href='https://login.ajera.com/' target='_blank'> 
                       <img src='img/ajera.png' width=30 height=30 />
                       Ajera
                     </a>
