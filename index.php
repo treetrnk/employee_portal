@@ -19,7 +19,7 @@
     <script type="text/javascript" src="./tools/jquery.js"></script>
     <script src="datetimepicker/jquery.js"></script>
     <script src="datetimepicker/jquery.datetimepicker.js"></script>
-    <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
+    <script src="ckeditor/ckeditor.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
