@@ -209,26 +209,29 @@ h1 {
   width: 100%;
   height: 150px;
   background: #4C74C1;
+  color: #fff;
 }
 
-.footer-links td {
-  color: #FFFFFF;
+.footer-links div {
+  color: #FFF;
   font-size: 13px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 20%;
 }
 
-.footer-links th {
-  color: #FFFFFF;
+.footer-links div h4 {
+  color: #FFF;
   font-size: 14px;
   font-weight: normal;
-  text-align: left;
 }
 
-.footer-links a {
-  color: #ffffff;
+.footer-links div a {
+  color: #fff;
 }
 
-.footer-links a:hover {
-  color: #000000;
+.footer-links div a:hover {
+  color: #000;
 }
 
 .footer {
@@ -236,7 +239,7 @@ h1 {
   height: 75px;
   background: #33935e;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
   font-size: 11px;
 }
 
@@ -245,7 +248,7 @@ h1 {
   margin-left: auto; 
   margin-right: auto; 
   text-align: right;
-  background: #eeeeee;
+  background: #eee;
   border: 3px solid #017e44;
   border-radius: 15px;
   -moz-border-radius: 15px;
