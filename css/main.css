@@ -215,9 +215,8 @@ h1 {
 .footer-links div {
   color: #FFF;
   font-size: 13px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 20%;
+  padding-left: 50px;
+  padding-top: 30px;
 }
 
 .footer-links div h4 {
