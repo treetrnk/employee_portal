@@ -11,8 +11,8 @@ body {
   background-size: 100% 110%;
   margin: 0px;
   font-family: Helvetica;
-  font-size: 13px; 
-  height: 100%;
+  font-size: 30px;
+  height: 50%;
   overflow-y:scroll;
   filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
   src='../img/sky.jpg',
@@ -31,7 +31,7 @@ a:hover {
   color: #0000ff;
 }
 
-a img { 
+a img {
   border: 0px;
 }
 
@@ -44,7 +44,7 @@ a img {
 }
 
 hr {
- display: block; 
+ display: block;
  margin-right: auto;
  margin-left: auto;
  padding: 0;
@@ -177,7 +177,7 @@ h1 {
 
 .sidebar h3 {
   text-align: left;
-  background: #017e44; 
+  background: #017e44;
   background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
@@ -243,9 +243,9 @@ h1 {
 }
 
 .login {
-  width: 220px; 
-  margin-left: auto; 
-  margin-right: auto; 
+  width: 220px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: right;
   background: #eee;
   border: 3px solid #017e44;
@@ -275,7 +275,7 @@ h1 {
 
 .profile-about h3 {
   text-align: center;
-  background: #017e44; 
+  background: #017e44;
   background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
@@ -286,7 +286,7 @@ h1 {
 }
 
 .greenbox {
-  background: #017e44; 
+  background: #017e44;
   background: -webkit-linear-gradient(#33935e, #017e44); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#33935e, #017e44); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#33935e, #017e44); /* For Firefox 3.6 to 15 */
@@ -331,12 +331,12 @@ h1 {
 .hidelink:active, .hidelink:visited, .hidelink:link {
   color: #000000;
   text-decoration: none;
-} 
+}
 
 .hidelink:hover {
   color: #0000ff;
   text-decoration: underline;
-} 
+}
 
 .profile-links {
   font-size: 9pt;
