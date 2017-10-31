@@ -11,8 +11,8 @@ body {
   background-size: 100% 110%;
   margin: 0px;
   font-family: Helvetica;
-  font-size: 30px;
-  height: 50%;
+  font-size: 13px;
+  height: 100%;
   overflow-y:scroll;
   filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
   src='../img/sky.jpg',
